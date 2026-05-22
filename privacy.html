@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>プライバシーポリシー - さくっと動画翻訳</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Segoe UI","Meiryo","Hiragino Sans",sans-serif;background:#FFF7ED;color:#1E293B;line-height:1.8}
+a{color:#EA580C;text-decoration:none}
+a:hover{text-decoration:underline}
+.lang-toggle{position:fixed;top:16px;right:16px;z-index:1000;background:rgba(255,255,255,.92);border:1px solid #FED7AA;border-radius:999px;padding:6px 16px;font-size:.85rem;font-weight:600;cursor:pointer;box-shadow:0 2px 12px rgba(0,0,0,.1);transition:background .2s}
+.lang-toggle:hover{background:#fff;box-shadow:0 4px 16px rgba(0,0,0,.15)}
+[data-lang="ja"] .en,[data-lang="en"] .ja{display:none!important}
+.header{background:linear-gradient(135deg,#9A3412,#EA580C);color:#fff;padding:40px 24px;text-align:center}
+.header h1{font-size:1.6rem;font-weight:700}
+.header p{opacity:.85;margin-top:4px;font-size:.95rem}
+.container{max-width:720px;margin:0 auto;padding:48px 24px}
+h2{font-size:1.15rem;font-weight:700;margin:32px 0 12px;padding-bottom:6px;border-bottom:2px solid #FED7AA}
+h2:first-of-type{margin-top:0}
+p,ul{margin-bottom:16px;font-size:.95rem;color:#334155}
+ul{padding-left:24px}
+li{margin-bottom:6px}
+.updated{text-align:center;color:#94A3B8;font-size:.85rem;margin-top:48px;padding-top:24px;border-top:1px solid #FED7AA}
+.back{display:inline-block;margin-top:24px;text-align:center;width:100%}
+footer{background:#1E293B;color:#CBD5E1;padding:32px 24px;text-align:center;font-size:.85rem;margin-top:48px}
+footer a{color:#FDBA74}
+</style>
+</head>
+<body data-lang="ja">
+
+<button class="lang-toggle" onclick="toggleLang()">
+  <span class="ja">EN</span>
+  <span class="en">日本語</span>
+</button>
+
+<div class="header">
+  <h1><span class="ja">プライバシーポリシー</span><span class="en">Privacy Policy</span></h1>
+  <p><span class="ja">さくっと動画翻訳</span><span class="en">Sakutto Video Translator</span></p>
+</div>
+
+<div class="container">
+
+<!-- Japanese -->
+<div class="ja">
+<h2>はじめに</h2>
+<p>「さくっと動画翻訳」（以下「本アプリ」）は、ユーザーのプライバシーを尊重して設計されています。本ポリシーでは、本アプリにおける情報の取り扱いについて説明します。</p>
+
+<h2>個人情報の収集について</h2>
+<p><strong>本アプリは、ユーザーの個人情報を収集しません。</strong></p>
+<ul>
+  <li>氏名、メールアドレス、電話番号などの個人情報は収集しません</li>
+  <li>利用状況やアクセスログなどの分析データは収集しません</li>
+  <li>Cookie やトラッキング技術は使用しません</li>
+  <li>開発元（Mojosoft）がユーザーのデータを受け取ることはありません</li>
+</ul>
+
+<h2>文字起こし（ローカル処理）</h2>
+<p>動画・音声の文字起こしは、OpenAI Whisper を<strong>ユーザーのPC上で実行</strong>します。音声データが外部サーバーに送信されることはありません。</p>
+
+<h2>AI翻訳について</h2>
+<p>AI翻訳機能を有効にした場合、字幕テキストは、ユーザーが選択したAIサービスに送信されます。</p>
+<ul>
+  <li>クラウドのAIサービス（Gemini・OpenAI・Claude など）を選択した場合、字幕テキストは当該サービスに送信されます。送信内容は各サービスのプライバシーポリシーに従って扱われます。</li>
+  <li>OpenAI互換のローカルLLMを選択した場合、データはユーザーの環境内で処理されます。</li>
+  <li>AIサービスのAPIキーは、ユーザーのPC内（Windowsレジストリ）にのみ保存され、選択したサービスへの接続にのみ使用されます。開発元に送信されることはありません。</li>
+</ul>
+
+<h2>AI吹き替えについて</h2>
+<p>AI吹き替え機能を使用した場合、翻訳後のテキストは、音声を生成するために Microsoft のオンライン音声合成サービス（Edge TTS）に送信されます。</p>
+
+<h2>ネットワーク通信について</h2>
+<p>文字起こしはローカルで完結します。AI翻訳・AI吹き替え・文字起こしモデルのダウンロードを行う際にはインターネット接続が必要です。本アプリがネットワーク通信を行うのは、これらの機能をユーザーが利用するときに限られます。</p>
+
+<h2>使用しているオープンソースソフトウェア</h2>
+<p>本アプリは動画処理エンジンとして FFmpeg（GPL版）を使用しています。FFmpegのソースコードは <a href="https://ffmpeg.org/">https://ffmpeg.org/</a> で入手できます。</p>
+
+<h2>第三者への提供</h2>
+<p>開発元はユーザーのデータを収集しないため、開発元から第三者へのデータ提供はありません。AI翻訳・AI吹き替えでユーザーが利用する外部サービスについては、各サービスのプライバシーポリシーをご確認ください。</p>
+
+<h2>お子様のプライバシー</h2>
+<p>本アプリは個人情報を収集しません。</p>
+
+<h2>本ポリシーの変更</h2>
+<p>本ポリシーは、必要に応じて更新される場合があります。変更があった場合は、本ページにて更新日とともに公開します。</p>
+
+<h2>お問い合わせ</h2>
+<p>本ポリシーに関するご質問やお問い合わせは、以下までご連絡ください。</p>
+<ul>
+  <li>GitHub: <a href="https://github.com/mojosoftjp/sakutto-videotranslator/issues">Issues</a></li>
+  <li>Email: <a href="mailto:support@mojosoft.biz">support@mojosoft.biz</a></li>
+</ul>
+
+<p class="updated">最終更新日: 2026年5月22日</p>
+<p class="back"><a href="index.html">&larr; さくっと動画翻訳 トップページに戻る</a></p>
+</div>
+
+<!-- English -->
+<div class="en">
+<h2>Introduction</h2>
+<p>"Sakutto Video Translator" (hereinafter "the App") is designed with respect for user privacy. This policy explains how information is handled within the App.</p>
+
+<h2>Collection of Personal Information</h2>
+<p><strong>This App does not collect personal information.</strong></p>
+<ul>
+  <li>No personal data such as names, email addresses, or phone numbers is collected</li>
+  <li>No usage analytics or access logs are collected</li>
+  <li>No cookies or tracking technologies are used</li>
+  <li>The developer (Mojosoft) does not receive any user data</li>
+</ul>
+
+<h2>Transcription (Local Processing)</h2>
+<p>Transcription of video and audio is performed by OpenAI Whisper <strong>on the user's PC</strong>. Audio data is never sent to an external server.</p>
+
+<h2>AI Translation</h2>
+<p>When the AI translation feature is enabled, subtitle text is sent to the AI service chosen by the user.</p>
+<ul>
+  <li>If a cloud AI service (such as Gemini, OpenAI, or Claude) is selected, the subtitle text is sent to that service and handled under that service's own privacy policy.</li>
+  <li>If an OpenAI-compatible local LLM is selected, the data is processed within the user's own environment.</li>
+  <li>The AI service's API key is stored only on the user's PC (Windows registry) and used solely to connect to the selected service. It is never sent to the developer.</li>
+</ul>
+
+<h2>AI Dubbing</h2>
+<p>When the AI dubbing feature is used, the translated text is sent to Microsoft's online text-to-speech service (Edge TTS) in order to generate the voice audio.</p>
+
+<h2>Network Communication</h2>
+<p>Transcription is completed locally. An internet connection is required for AI translation, AI dubbing, and downloading transcription models. The App performs network communication only when the user uses these features.</p>
+
+<h2>Open Source Software Used</h2>
+<p>This App uses FFmpeg (GPL version) as its video processing engine. FFmpeg source code is available at <a href="https://ffmpeg.org/">https://ffmpeg.org/</a>.</p>
+
+<h2>Third-Party Sharing</h2>
+<p>Since the developer does not collect user data, there is no data sharing from the developer to third parties. For the external services used in AI translation and AI dubbing, please review each service's own privacy policy.</p>
+
+<h2>Children's Privacy</h2>
+<p>This App does not collect personal information.</p>
+
+<h2>Changes to This Policy</h2>
+<p>This policy may be updated as needed. Any changes will be published on this page with the updated date.</p>
+
+<h2>Contact</h2>
+<p>For questions or inquiries about this policy, please contact us at:</p>
+<ul>
+  <li>GitHub: <a href="https://github.com/mojosoftjp/sakutto-videotranslator/issues">Issues</a></li>
+  <li>Email: <a href="mailto:support@mojosoft.biz">support@mojosoft.biz</a></li>
+</ul>
+
+<p class="updated">Last updated: May 22, 2026</p>
+<p class="back"><a href="index.html">&larr; Back to Sakutto Video Translator Home</a></p>
+</div>
+
+</div>
+
+<footer>
+  <p>&copy; 2026 Mojosoft. All rights reserved.</p>
+</footer>
+
+<script>
+function setLang(lang) {
+  document.body.setAttribute('data-lang', lang);
+  document.documentElement.lang = lang === 'ja' ? 'ja' : 'en';
+  document.title = lang === 'ja'
+    ? 'プライバシーポリシー - さくっと動画翻訳'
+    : 'Privacy Policy - Sakutto Video Translator';
+  localStorage.setItem('sakutto-vt-lang', lang);
+}
+function toggleLang() {
+  var cur = document.body.getAttribute('data-lang');
+  setLang(cur === 'ja' ? 'en' : 'ja');
+}
+(function() {
+  var saved = localStorage.getItem('sakutto-vt-lang');
+  if (saved) { setLang(saved); return; }
+  var browserLang = (navigator.language || navigator.userLanguage || '').toLowerCase();
+  setLang(browserLang.startsWith('ja') ? 'ja' : 'en');
+})();
+</script>
+
+</body>
+</html>
