@@ -361,23 +361,38 @@ footer .copyright{opacity:.7;margin-top:8px}
 </footer>
 
 <script>
-function setLang(lang) {
+function setLang(lang, opts) {
+  opts = opts || {};
   document.body.setAttribute('data-lang', lang);
   document.documentElement.lang = lang === 'ja' ? 'ja' : 'en';
   document.title = lang === 'ja'
     ? 'さくっと動画翻訳 - 文字起こし・AI翻訳・字幕・吹き替え'
     : 'Snap Video Translator - Transcribe, Translate, Subtitle & Dub';
   localStorage.setItem('sakutto-vt-lang', lang);
+  if (opts.updateUrl !== false) {
+    try {
+      var url = new URL(window.location.href);
+      url.searchParams.set('lang', lang);
+      history.replaceState(null, '', url);
+    } catch (e) { /* older browsers */ }
+  }
 }
 function toggleLang() {
   var cur = document.body.getAttribute('data-lang');
   setLang(cur === 'ja' ? 'en' : 'ja');
 }
 (function() {
+  // Priority: URL ?lang= > localStorage > browser language
+  var params = new URLSearchParams(window.location.search);
+  var urlLang = (params.get('lang') || '').toLowerCase();
+  if (urlLang === 'ja' || urlLang === 'en') {
+    setLang(urlLang, { updateUrl: false });
+    return;
+  }
   var saved = localStorage.getItem('sakutto-vt-lang');
-  if (saved) { setLang(saved); return; }
+  if (saved) { setLang(saved, { updateUrl: false }); return; }
   var browserLang = (navigator.language || navigator.userLanguage || '').toLowerCase();
-  setLang(browserLang.startsWith('ja') ? 'ja' : 'en');
+  setLang(browserLang.startsWith('ja') ? 'ja' : 'en', { updateUrl: false });
 })();
 </script>
 
