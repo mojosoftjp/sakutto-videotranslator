@@ -65,7 +65,7 @@ a:hover{text-decoration:underline}
 /* Demo video */
 .video-section{background:#fff}
 .video-wrap{max-width:880px;margin:0 auto}
-.video-wrap video{width:100%;border-radius:var(--radius);box-shadow:0 12px 48px rgba(0,0,0,.2);border:1px solid var(--border);background:#000;display:block}
+.video-wrap video{width:100%;aspect-ratio:16/9;border-radius:var(--radius);box-shadow:0 12px 48px rgba(0,0,0,.2);border:1px solid var(--border);background:#000;display:block;object-fit:cover}
 .video-caption{text-align:center;color:var(--muted);font-size:.92rem;margin-top:20px;line-height:1.7}
 .video-caption strong{color:var(--text)}
 .video-timeline{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:14px;font-size:.82rem}
@@ -156,11 +156,11 @@ footer .copyright{opacity:.7;margin-top:8px}
       <span class="en">A 30-second look at what Snap Video Translator does.</span>
     </p>
     <div class="video-wrap">
-      <video class="ja" controls playsinline preload="metadata" poster="logo.png">
+      <video class="ja" controls playsinline preload="metadata" poster="poster_ja.jpg">
         <source src="combined_demo.mp4" type="video/mp4">
         お使いのブラウザは動画再生に対応していません。
       </video>
-      <video class="en" controls playsinline preload="metadata" poster="logo.png">
+      <video class="en" controls playsinline preload="metadata" poster="poster_en.jpg">
         <source src="snap_video_translator_promo.mp4" type="video/mp4">
         Your browser does not support the video tag.
       </video>
