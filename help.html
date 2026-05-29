@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>使い方・ヘルプ - さくっと動画翻訳</title>
+<meta name="description" content="さくっと動画翻訳の使い方ガイド。動画ファイルの選択から文字起こし・AI翻訳・字幕焼き付け・AI吹き替え・書き出しまで、操作手順とよくある質問をまとめています。">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--primary:#F97316;--primary-dark:#EA580C;--accent:#FB923C;--bg:#FFF7ED;--card:#FFFFFF;--text:#1E293B;--muted:#64748B;--border:#FED7AA;--radius:12px}
+body{font-family:"Segoe UI","Meiryo","Hiragino Sans",sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
+a{color:var(--primary);text-decoration:none}
+a:hover{text-decoration:underline}
+
+/* Language toggle */
+.lang-toggle{position:fixed;top:16px;right:16px;z-index:1000;background:rgba(255,255,255,.92);border:1px solid var(--border);border-radius:999px;padding:6px 16px;font-size:.85rem;font-weight:600;cursor:pointer;box-shadow:0 2px 12px rgba(0,0,0,.1);transition:background .2s}
+.lang-toggle:hover{background:#fff;box-shadow:0 4px 16px rgba(0,0,0,.15)}
+[data-lang="ja"] .en,[data-lang="en"] .ja{display:none!important}
+
+/* Hero */
+.hero{background:linear-gradient(135deg,#9A3412 0%,#EA580C 45%,#FB923C 100%);color:#fff;padding:80px 24px 64px;text-align:center;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;bottom:-2px;left:0;right:0;height:48px;background:var(--bg);clip-path:ellipse(55% 100% at 50% 100%)}
+.hero-title{display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:8px}
+.hero-title img{width:56px;height:56px;border-radius:14px;filter:drop-shadow(0 4px 12px rgba(0,0,0,.25))}
+.hero h1{font-size:2.3rem;font-weight:800;letter-spacing:-.02em;margin:0}
+.hero .subtitle{font-size:1.1rem;opacity:.92;margin-bottom:28px;font-weight:400}
+.hero .tagline{display:inline-block;background:rgba(255,255,255,.18);border-radius:999px;padding:6px 20px;font-size:.9rem;margin-bottom:24px;backdrop-filter:blur(4px)}
+.cta-group{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 28px;border-radius:999px;font-size:.95rem;font-weight:600;transition:transform .15s,box-shadow .15s;cursor:pointer;border:none}
+.btn-secondary{background:rgba(255,255,255,.92);color:var(--primary-dark)}
+.btn-secondary:hover{background:#fff;transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.18);text-decoration:none}
+.btn-outline{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.5)}
+.btn-outline:hover{background:rgba(255,255,255,.12);text-decoration:none}
+
+/* Container */
+.container{max-width:880px;margin:0 auto;padding:0 24px}
+
+/* Section */
+.section{padding:56px 0}
+.section-title{font-size:1.6rem;font-weight:700;text-align:center;margin-bottom:12px}
+.section-desc{text-align:center;color:var(--muted);margin-bottom:44px;font-size:1.02rem}
+
+/* In-page nav (table of contents) */
+.toc{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:20px 24px;margin:0 auto 8px;max-width:880px}
+.toc h2{font-size:1rem;font-weight:700;margin-bottom:12px;color:var(--text)}
+.toc ul{list-style:none;display:flex;flex-wrap:wrap;gap:8px 20px}
+.toc ul li{font-size:.92rem}
+.toc ul li::before{content:"›";color:var(--primary);font-weight:700;margin-right:6px}
+
+/* Steps */
+.steps-list{counter-reset:step;display:flex;flex-direction:column;gap:18px}
+.step-row{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px 24px 24px 72px;position:relative}
+.step-row::before{counter-increment:step;content:counter(step);position:absolute;top:24px;left:22px;width:34px;height:34px;border-radius:50%;background:var(--primary);color:#fff;font-weight:700;font-size:1rem;display:flex;align-items:center;justify-content:center}
+.step-row h3{font-size:1.1rem;margin-bottom:6px;font-weight:700}
+.step-row p{font-size:.94rem;color:var(--muted)}
+.step-row ul{margin-top:8px;padding-left:18px;font-size:.9rem;color:var(--muted)}
+.step-row ul li{margin-bottom:4px}
+
+/* Generic card */
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:28px 28px}
+.card + .card{margin-top:20px}
+.card h3{font-size:1.15rem;font-weight:700;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.card p{font-size:.94rem;color:var(--muted);margin-bottom:8px}
+.card ul{padding-left:20px;font-size:.92rem;color:var(--muted)}
+.card ul li{margin-bottom:6px}
+.card strong{color:var(--text)}
+
+/* Format badges */
+.formats{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
+.format-badge{background:#FFEDD5;color:#C2410C;border-radius:8px;padding:5px 14px;font-size:.85rem;font-weight:600}
+.format-label{font-size:.85rem;font-weight:700;color:var(--text);margin:14px 0 4px}
+
+/* FAQ */
+.faq details{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);margin-bottom:12px;overflow:hidden}
+.faq summary{padding:18px 22px;font-weight:600;font-size:.98rem;cursor:pointer;list-style:none;position:relative;padding-right:48px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";position:absolute;right:22px;top:50%;transform:translateY(-50%);font-size:1.4rem;color:var(--primary);font-weight:400;transition:transform .2s}
+.faq details[open] summary::after{content:"\2212"}
+.faq .faq-body{padding:0 22px 18px;font-size:.92rem;color:var(--muted);line-height:1.75}
+.faq .faq-body p{margin-bottom:8px}
+.faq .faq-body ol,.faq .faq-body ul{padding-left:20px;margin:8px 0}
+.faq .faq-body li{margin-bottom:5px}
+.faq .faq-body code{background:#FFF7ED;border:1px solid var(--border);border-radius:6px;padding:1px 7px;font-family:"Consolas","Fira Code",monospace;font-size:.86em;color:var(--primary-dark)}
+.faq .faq-body strong{color:var(--text)}
+
+/* Callout */
+.callout{background:#FFFBEB;border:1px solid #FDE68A;border-left:4px solid #F59E0B;border-radius:8px;padding:14px 18px;font-size:.9rem;color:#92400E;margin-top:14px}
+.callout strong{color:#78350F}
+
+/* Contact */
+.contact-box{max-width:560px;margin:0 auto;text-align:center}
+.contact-box p{margin-bottom:16px}
+
+/* Footer */
+footer{background:#1E293B;color:#CBD5E1;padding:40px 24px;text-align:center;font-size:.88rem}
+footer a{color:#FDBA74}
+footer .footer-links{margin-bottom:16px;display:flex;gap:24px;justify-content:center;flex-wrap:wrap}
+footer .copyright{opacity:.7;margin-top:8px}
+
+/* Responsive */
+@media(max-width:700px){
+  .hero h1{font-size:1.8rem}
+  .hero .subtitle{font-size:.95rem}
+  .section{padding:44px 0}
+  .step-row{padding:20px 18px 20px 60px}
+  .step-row::before{left:16px}
+}
+</style>
+</head>
+<body data-lang="ja">
+
+<!-- Mojosoft Header -->
+<nav style="position:fixed;top:0;left:0;right:0;z-index:9999;background:rgba(255,255,255,.85);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid rgba(0,0,0,.06);height:44px;display:flex;align-items:center;padding:0 24px;">
+  <a href="http://mojosoft.biz/index.html" style="font-size:18px;font-weight:700;color:#1D1D1F;text-decoration:none;font-family:'Noto Sans JP',sans-serif;">Mojosoft</a>
+  <span style="margin-left:auto;display:flex;gap:20px;align-items:center;">
+    <a href="index.html" style="font-size:14px;color:#1D1D1F;text-decoration:none;font-weight:500;"><span class="ja">トップ</span><span class="en">Home</span></a>
+    <a href="purchase.html" style="font-size:14px;color:#1D1D1F;text-decoration:none;font-weight:500;"><span class="ja">購入</span><span class="en">Purchase</span></a>
+  </span>
+</nav>
+<div style="height:44px;"></div>
+
+<!-- Language toggle -->
+<button class="lang-toggle" onclick="toggleLang()">
+  <span class="ja">EN</span>
+  <span class="en">日本語</span>
+</button>
+
+<!-- Hero -->
+<header class="hero">
+  <div class="ja"><div class="tagline">使い方・ヘルプ</div></div>
+  <div class="en"><div class="tagline">Help &amp; User Guide</div></div>
+  <div class="hero-title">
+    <img src="logo.png" alt="Snap Video Translator icon">
+    <h1><span class="ja">さくっと動画翻訳 ヘルプ</span><span class="en">Snap Video Translator Help</span></h1>
+  </div>
+  <p class="subtitle">
+    <span class="ja">動画の文字起こし・AI翻訳・字幕焼き付け・AI吹き替えの使い方ガイド。</span>
+    <span class="en">How to transcribe, translate, subtitle, and dub your videos.</span>
+  </p>
+  <div class="cta-group">
+    <a href="index.html" class="btn btn-secondary">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+      <span class="ja">トップへ戻る</span><span class="en">Back to Home</span>
+    </a>
+    <a href="purchase.html" class="btn btn-outline">
+      <span class="ja">購入ページ</span><span class="en">Purchase Page</span>
+    </a>
+  </div>
+</header>
+
+<!-- Table of contents -->
+<div class="container" style="padding-top:32px">
+  <nav class="toc">
+    <h2><span class="ja">目次</span><span class="en">Contents</span></h2>
+    <ul>
+      <li><a href="#overview"><span class="ja">概要・特徴</span><span class="en">Overview</span></a></li>
+      <li><a href="#usage"><span class="ja">使い方（6ステップ）</span><span class="en">How to Use</span></a></li>
+      <li><a href="#formats"><span class="ja">対応ファイル形式</span><span class="en">Supported Formats</span></a></li>
+      <li><a href="#faq"><span class="ja">よくある質問</span><span class="en">FAQ</span></a></li>
+      <li><a href="#trouble"><span class="ja">トラブルシューティング</span><span class="en">Troubleshooting</span></a></li>
+      <li><a href="#contact"><span class="ja">お問い合わせ</span><span class="en">Contact</span></a></li>
+    </ul>
+  </nav>
+</div>
+
+<!-- Overview -->
+<section id="overview" class="section">
+  <div class="container">
+    <h2 class="section-title"><span class="ja">概要・特徴</span><span class="en">Overview</span></h2>
+    <p class="section-desc"><span class="ja">「さくっと動画翻訳」でできることをまとめました。</span><span class="en">What Snap Video Translator can do.</span></p>
+    <div class="card">
+      <p>
+        <span class="ja"><strong>さくっと動画翻訳</strong>は、動画・音声ファイルから自動で字幕を作り、AIで翻訳して、字幕の焼き付けやAI吹き替えまで行えるWindows用アプリです。文字起こしはお使いのPC上の OpenAI Whisper で動作するため、音声をクラウドに送信しません。</span>
+        <span class="en"><strong>Snap Video Translator</strong> is a Windows app that auto-generates subtitles from video/audio, translates them with AI, and can burn the subtitles in or create an AI dub. Transcription runs locally with OpenAI Whisper, so your audio is never sent to the cloud.</span>
+      </p>
+      <ul>
+        <li><span class="ja"><strong>文字起こし</strong>：Whisper モデル（small / medium / large-v3-turbo / large-v3）から選択。SRT / VTT 字幕ファイルとして書き出し可能。</span>
+            <span class="en"><strong>Transcription:</strong> Choose a Whisper model (small / medium / large-v3-turbo / large-v3). Export subtitles as SRT / VTT.</span></li>
+        <li><span class="ja"><strong>AI翻訳</strong>：Gemini・OpenAI・Claude、または OpenAI 互換のローカルLLMで翻訳。焼き付け前に字幕を確認・編集できます。</span>
+            <span class="en"><strong>AI translation:</strong> Translate with Gemini, OpenAI, Claude, or an OpenAI-compatible local LLM. Review and edit before burn-in.</span></li>
+        <li><span class="ja"><strong>字幕焼き付け</strong>：フォントサイズ・文字色（白／黄）・表示位置（上／中央／下）を調整して動画に直接焼き込み。</span>
+            <span class="en"><strong>Subtitle burn-in:</strong> Adjust font size, color (white/yellow), and position (top/center/bottom), then burn directly into the video.</span></li>
+        <li><span class="ja"><strong>AI吹き替え</strong>：翻訳内容を音声化（7言語・男声／女声）。元音声とのミックス、または置き換えを選択可能。</span>
+            <span class="en"><strong>AI dubbing:</strong> Turn the translation into speech (7 languages, male/female). Mix with or replace the original audio.</span></li>
+        <li><span class="ja"><strong>バッチ処理</strong>：複数の動画をまとめて処理できます。</span>
+            <span class="en"><strong>Batch processing:</strong> Process multiple videos at once.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- How to use -->
+<section id="usage" class="section" style="background:#fff">
+  <div class="container">
+    <h2 class="section-title"><span class="ja">使い方（6ステップ）</span><span class="en">How to Use (6 Steps)</span></h2>
+    <p class="section-desc"><span class="ja">基本の流れに沿って操作するだけで、字幕付き・吹き替え動画が完成します。</span><span class="en">Follow the basic flow to produce a subtitled or dubbed video.</span></p>
+    <div class="steps-list">
+
+      <div class="step-row">
+        <h3><span class="ja">動画ファイルを選択</span><span class="en">Select Your Video File</span></h3>
+        <p>
+          <span class="ja">画面左のエリアに動画・音声ファイルを<strong>ドラッグ＆ドロップ</strong>するか、「<strong>ファイル追加</strong>」「<strong>フォルダ追加</strong>」ボタンから選びます。複数ファイルをまとめて追加できます。</span>
+          <span class="en">Drag &amp; drop video/audio files onto the left area, or use the <strong>Add Files</strong> / <strong>Add Folder</strong> buttons. You can add multiple files at once.</span>
+        </p>
+      </div>
+
+      <div class="step-row">
+        <h3><span class="ja">元言語・翻訳先言語を設定</span><span class="en">Set Source &amp; Target Languages</span></h3>
+        <p>
+          <span class="ja">右の設定パネルで音声の<strong>言語</strong>（日本語／英語／中国語／韓国語／自動検出）と、文字起こしに使う<strong>Whisperモデル</strong>を選びます。翻訳する場合は「AI翻訳を使用」をオンにし、AIプロバイダ・APIキー・<strong>翻訳先言語</strong>（日／英／中／韓／仏／独／西）を設定します。</span>
+          <span class="en">In the right-hand panel, pick the audio <strong>language</strong> (Japanese / English / Chinese / Korean / Auto-detect) and the <strong>Whisper model</strong>. To translate, enable "Use AI Translation" and set the AI provider, API key, and <strong>target language</strong> (JA / EN / ZH / KO / FR / DE / ES).</span>
+        </p>
+      </div>
+
+      <div class="step-row">
+        <h3><span class="ja">文字起こし</span><span class="en">Transcribe</span></h3>
+        <p>
+          <span class="ja">選んだモデルが未ダウンロードの場合は「<strong>モデルダウンロード</strong>」で取得します。準備ができたら、文字起こしが動画から自動で行われます（PC上でローカル処理）。</span>
+          <span class="en">If the selected model isn't downloaded yet, get it with "<strong>Download Model</strong>". Once ready, transcription runs automatically from the video (processed locally on your PC).</span>
+        </p>
+      </div>
+
+      <div class="step-row">
+        <h3><span class="ja">AI翻訳</span><span class="en">AI Translation</span></h3>
+        <p>
+          <span class="ja">「AI翻訳を使用」がオンのとき、文字起こし結果が指定の翻訳先言語へAIで翻訳されます。「<strong>接続テスト</strong>」でAPIキーの動作を事前に確認できます。「<strong>確認モード</strong>」をオンにすると、焼き付け前に字幕を確認・編集できます。</span>
+          <span class="en">When "Use AI Translation" is on, the transcript is translated into your target language by AI. Use "<strong>Test</strong>" to verify your API key beforehand. Enable "<strong>Review mode</strong>" to check and edit subtitles before burn-in.</span>
+        </p>
+      </div>
+
+      <div class="step-row">
+        <h3><span class="ja">字幕焼き付け または AI吹き替え</span><span class="en">Burn-in Subtitles or AI Dubbing</span></h3>
+        <p>
+          <span class="ja"><strong>出力モード</strong>で「字幕ファイルのみ／焼付け動画のみ／両方」を選びます。字幕スタイル（フォントサイズ・文字色・位置）も調整可能。<strong>AI吹き替え</strong>を使う場合は「吹替を使用」をオンにし、男声／女声、元音声のミックスor置き換え、吹替動画への字幕焼き付けなどを設定します。</span>
+          <span class="en">In <strong>Output Mode</strong>, choose "Subtitle file only / Burned video only / Both". Adjust subtitle style (font size, color, position). For <strong>AI dubbing</strong>, enable "Use Dubbing" and set male/female voice, mix-or-replace original audio, and whether to burn subtitles into the dubbed video.</span>
+        </p>
+      </div>
+
+      <div class="step-row">
+        <h3><span class="ja">書き出し</span><span class="en">Export</span></h3>
+        <p>
+          <span class="ja">出力先（入力と同じフォルダ／指定フォルダ）を選び、画面下の「<strong>変換開始</strong>」をクリック。進捗バーで状況を確認でき、完了すると字幕付き動画・吹き替え動画・字幕ファイルが書き出されます。</span>
+          <span class="en">Choose the output location (same folder as input / a selected folder) and click "<strong>Start</strong>" at the bottom. Watch the progress bar; when finished, the subtitled/dubbed video and subtitle files are exported.</span>
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Supported formats -->
+<section id="formats" class="section">
+  <div class="container">
+    <h2 class="section-title"><span class="ja">対応ファイル形式</span><span class="en">Supported File Formats</span></h2>
+    <p class="section-desc"><span class="ja">主要な動画・音声形式に対応しています。</span><span class="en">Works with common video and audio formats.</span></p>
+    <div class="card">
+      <div class="format-label"><span class="ja">入力 — 動画</span><span class="en">Input — Video</span></div>
+      <div class="formats">
+        <span class="format-badge">MP4</span><span class="format-badge">MKV</span><span class="format-badge">AVI</span>
+        <span class="format-badge">MOV</span><span class="format-badge">WebM</span><span class="format-badge">WMV</span>
+        <span class="format-badge">FLV</span>
+      </div>
+      <div class="format-label"><span class="ja">入力 — 音声</span><span class="en">Input — Audio</span></div>
+      <div class="formats">
+        <span class="format-badge">MP3</span><span class="format-badge">WAV</span><span class="format-badge">M4A</span>
+        <span class="format-badge">OGG</span><span class="format-badge">FLAC</span><span class="format-badge">WMA</span>
+      </div>
+      <div class="format-label"><span class="ja">出力 — 字幕ファイル</span><span class="en">Output — Subtitle Files</span></div>
+      <div class="formats">
+        <span class="format-badge">SRT</span><span class="format-badge">VTT</span>
+      </div>
+      <p style="margin-top:16px">
+        <span class="ja">字幕焼き付け・AI吹き替えの動画出力は MP4 形式です。</span>
+        <span class="en">Burned-in subtitle and AI-dubbed video output is in MP4 format.</span>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="section" style="background:#fff">
+  <div class="container">
+    <h2 class="section-title"><span class="ja">よくある質問（FAQ）</span><span class="en">Frequently Asked Questions</span></h2>
+    <p class="section-desc"><span class="ja">お問い合わせの多い項目をまとめました。</span><span class="en">Answers to common questions.</span></p>
+
+    <div class="faq">
+      <details>
+        <summary><span class="ja">起動時に Windows SmartScreen の警告が出ます</span><span class="en">Windows SmartScreen warns me on launch</span></summary>
+        <div class="faq-body">
+          <p><span class="ja">ダウンロード版のインストーラーは未署名のため、初回実行時に「WindowsによってPCが保護されました」という SmartScreen の画面が表示されることがあります。これは署名証明書がないことによる一般的な表示で、安全に起動できます。</span>
+             <span class="en">The download installer is unsigned, so Windows may show "Windows protected your PC" via SmartScreen on first run. This is a common notice when a signing certificate is absent — you can launch it safely.</span></p>
+          <ol>
+            <li><span class="ja">警告画面の「<strong>詳細情報</strong>」をクリックします。</span><span class="en">Click "<strong>More info</strong>" on the warning screen.</span></li>
+            <li><span class="ja">表示された「<strong>実行</strong>」ボタンをクリックします。</span><span class="en">Click the "<strong>Run anyway</strong>" button that appears.</span></li>
+          </ol>
+          <p><span class="ja">※ Microsoft Store 版ではこの警告は表示されません。</span><span class="en">Note: The Microsoft Store version does not show this warning.</span></p>
+        </div>
+      </details>
+
+      <details>
+        <summary><span class="ja">無料試用の「5分制限」とは？正式版との違いは？</span><span class="en">What is the 5-minute trial limit, and how does the full version differ?</span></summary>
+        <div class="faq-body">
+          <p><span class="ja">ダウンロード版は<strong>無料で試用</strong>できますが、変換できる動画の長さが<strong>5分まで</strong>に制限されています。時間制限（使用期限）はなく、5分以内の動画であれば何度でも無料でお使いいただけます。</span>
+             <span class="en">The download edition can be used <strong>free of charge</strong>, but videos are limited to <strong>5 minutes</strong> in length. There is no expiration — you can use it free indefinitely for videos under 5 minutes.</span></p>
+          <p><span class="ja">正式版（<strong>個人版 ¥2,950 買い切り</strong>）のライセンスを登録すると、この5分制限が解除され、すべての機能を制限なくご利用いただけます。Microsoft Store 版は購入時点で制限なくご利用いただけます。</span>
+             <span class="en">Activating the full version (<strong>Personal, ¥2,950 one-time</strong>) removes the 5-minute limit and unlocks all features without restriction. The Microsoft Store version is unrestricted from purchase.</span></p>
+          <p><a href="purchase.html"><span class="ja">→ 購入ページを見る</span><span class="en">→ See the purchase page</span></a></p>
+        </div>
+      </details>
+
+      <details>
+        <summary><span class="ja">ライセンスの購入方法とハードウェアIDについて</span><span class="en">How to purchase a license, and about the Hardware ID</span></summary>
+        <div class="faq-body">
+          <p><span class="ja">入手方法は2つあります。どちらも同じ価格 <strong>¥2,950（買い切り）</strong>です。</span>
+             <span class="en">There are two ways to get it, both at the same price — <strong>¥2,950 (one-time)</strong>.</span></p>
+          <ul>
+            <li><span class="ja"><strong>Microsoft Store 版</strong>：ワンクリックで購入・インストール。ライセンスキーの管理は不要です。</span>
+                <span class="en"><strong>Microsoft Store:</strong> One-click purchase and install. No license key to manage.</span></li>
+            <li><span class="ja"><strong>ダウンロード版</strong>：PayPal または銀行振込で購入。お支払い後、ライセンスキー（<code>SV-P-XXXX-XXXX-XXXX-XXXX</code> 形式）をメールでお届けします。</span>
+                <span class="en"><strong>Download edition:</strong> Pay via PayPal or bank transfer. After payment, your license key (<code>SV-P-XXXX-XXXX-XXXX-XXXX</code> format) is delivered by email.</span></li>
+          </ul>
+          <p><span class="ja">ダウンロード版（PayPal／銀行振込）の購入には、お使いのPC固有の<strong>ハードウェアID</strong>（<code>SV-HW-XXXXXXXXXXXXXXXX</code> 形式）が必要です。確認手順は次のとおりです。</span>
+             <span class="en">Purchasing the download edition (PayPal/bank transfer) requires your PC's unique <strong>Hardware ID</strong> (<code>SV-HW-XXXXXXXXXXXXXXXX</code> format). Find it as follows:</span></p>
+          <ol>
+            <li><span class="ja">アプリを起動します。</span><span class="en">Launch the app.</span></li>
+            <li><span class="ja">設定パネル下部の「<strong>バージョン情報</strong>」をクリックします。</span><span class="en">Click "<strong>About</strong>" at the bottom of the settings panel.</span></li>
+            <li><span class="ja">「<strong>ライセンス設定を開く</strong>」ボタンをクリックします。</span><span class="en">Click "<strong>Open License Settings</strong>".</span></li>
+            <li><span class="ja">ハードウェアIDの横の「<strong>コピー</strong>」ボタンでコピーし、購入ページに貼り付けます。同じ画面で受け取ったライセンスキーの登録も行えます。</span>
+                <span class="en">Use the "<strong>Copy</strong>" button next to the Hardware ID and paste it on the purchase page. You can also activate the license key you received from this same screen.</span></li>
+          </ol>
+          <p><span class="ja">PCを買い替えた場合は、新しいハードウェアIDを <a href="mailto:support@mojosoft.biz">support@mojosoft.biz</a> までお知らせいただければ、無料で再発行いたします。</span>
+             <span class="en">If you change PCs, email your new Hardware ID to <a href="mailto:support@mojosoft.biz">support@mojosoft.biz</a> for a free re-issue.</span></p>
+        </div>
+      </details>
+
+      <details>
+        <summary><span class="ja">対応している言語は？</span><span class="en">Which languages are supported?</span></summary>
+        <div class="faq-body">
+          <p><span class="ja"><strong>音声（文字起こし）の言語</strong>：日本語・英語・中国語・韓国語、および自動検出に対応しています。</span>
+             <span class="en"><strong>Audio (transcription) languages:</strong> Japanese, English, Chinese, Korean, plus auto-detect.</span></p>
+          <p><span class="ja"><strong>AI翻訳・AI吹き替えの対象言語（7言語）</strong>：日本語・英語・中国語・韓国語・フランス語・ドイツ語・スペイン語。</span>
+             <span class="en"><strong>AI translation &amp; dubbing target languages (7):</strong> Japanese, English, Chinese, Korean, French, German, and Spanish.</span></p>
+          <p><span class="ja">アプリのUIはOSの言語設定に合わせて日本語／英語が自動で切り替わります。</span>
+             <span class="en">The app UI switches automatically between Japanese and English based on your OS language.</span></p>
+        </div>
+      </details>
+
+      <details>
+        <summary><span class="ja">AI翻訳・吹き替えにAPIキーは必要ですか？</span><span class="en">Do AI translation and dubbing require an API key?</span></summary>
+        <div class="faq-body">
+          <p><span class="ja"><strong>AI翻訳</strong>には、お使いになるAIサービス（Gemini・OpenAI・Claude）のAPIキーが必要です。OpenAI互換のローカルLLMを利用する場合は、Base URL を指定してご利用いただけます（クラウドのAPIキー不要）。</span>
+             <span class="en"><strong>AI translation</strong> requires an API key for the AI service you use (Gemini, OpenAI, or Claude). If you use an OpenAI-compatible local LLM, specify its Base URL instead (no cloud API key needed).</span></p>
+          <p><span class="ja"><strong>文字起こし</strong>はPC上のWhisperで動作するため、APIキーやインターネット接続は不要です（モデルの初回ダウンロード時を除く）。</span>
+             <span class="en"><strong>Transcription</strong> runs locally with Whisper, so it needs no API key or internet connection (except for the initial model download).</span></p>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- Troubleshooting -->
+<section id="trouble" class="section">
+  <div class="container">
+    <h2 class="section-title"><span class="ja">トラブルシューティング</span><span class="en">Troubleshooting</span></h2>
+    <p class="section-desc"><span class="ja">うまくいかないときは、まず以下をご確認ください。</span><span class="en">If something isn't working, check the following first.</span></p>
+
+    <div class="card">
+      <h3><span class="ja">文字起こしが始まらない／モデルのエラーが出る</span><span class="en">Transcription won't start / model error</span></h3>
+      <p><span class="ja">選択したWhisperモデルがダウンロード済みかご確認ください。未ダウンロードの場合は、設定パネルの「モデルダウンロード」ボタンから取得できます。ダウンロードにはインターネット接続が必要です。</span>
+         <span class="en">Make sure the selected Whisper model is downloaded. If not, get it with the "Download Model" button in the settings panel. An internet connection is required for the download.</span></p>
+    </div>
+
+    <div class="card">
+      <h3><span class="ja">AI翻訳に失敗する／「接続失敗」と表示される</span><span class="en">AI translation fails / "Failed" shown</span></h3>
+      <p><span class="ja">APIキーが正しいか、AIプロバイダ・モデル名が合っているかをご確認ください。設定パネルの「<strong>接続テスト</strong>」で動作を事前に確認できます。ローカルLLMをお使いの場合は Base URL が正しいか、サーバーが起動しているかもご確認ください。</span>
+         <span class="en">Check that your API key is correct and that the AI provider and model name match. Use "<strong>Test</strong>" in the settings panel to verify. For a local LLM, confirm the Base URL is correct and the server is running.</span></p>
+    </div>
+
+    <div class="card">
+      <h3><span class="ja">音声が検出されない／出力に音が入らない</span><span class="en">No audio detected / no sound in output</span></h3>
+      <p><span class="ja">入力ファイルに音声トラックが含まれているかご確認ください。AI吹き替えで「TTS音声に置き換え」を選ぶと元音声は出力されません。元の音声を残したい場合は「音量を下げてミックス」を選択してください。</span>
+         <span class="en">Make sure the input file contains an audio track. With AI dubbing set to "Replace with TTS audio", the original audio is removed. To keep it, choose "Mix at reduced volume".</span></p>
+    </div>
+
+    <div class="card">
+      <h3><span class="ja">5分を超える動画が変換できない</span><span class="en">Can't convert videos longer than 5 minutes</span></h3>
+      <p><span class="ja">これは無料試用版の仕様です。正式版ライセンス（個人版 ¥2,950）を登録すると制限が解除されます。詳しくは<a href="purchase.html">購入ページ</a>をご覧ください。</span>
+         <span class="en">This is by design in the free trial. Activate a full license (Personal ¥2,950) to remove the limit. See the <a href="purchase.html">purchase page</a> for details.</span></p>
+    </div>
+
+    <div class="callout">
+      <span class="ja"><strong>解決しない場合は</strong>：お使いの環境（Windowsのバージョン、入力ファイルの形式、表示されたエラーメッセージ）を添えて、下記のお問い合わせ先までご連絡ください。</span>
+      <span class="en"><strong>Still stuck?</strong> Contact us below with your environment details (Windows version, input file format, and any error message shown).</span>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact" class="section" style="background:#fff">
+  <div class="container">
+    <h2 class="section-title"><span class="ja">お問い合わせ</span><span class="en">Contact</span></h2>
+    <p class="section-desc"><span class="ja">お困りの際はお気軽にご連絡ください。</span><span class="en">Feel free to reach out if you need help.</span></p>
+    <div class="contact-box">
+      <p>
+        <strong><span class="ja">サポート・お問い合わせ</span><span class="en">Support &amp; Inquiries</span></strong><br>
+        Email: <a href="mailto:support@mojosoft.biz">support@mojosoft.biz</a>
+      </p>
+      <p>
+        <strong><span class="ja">不具合の報告・機能のリクエスト</span><span class="en">Bug Reports &amp; Feature Requests</span></strong><br>
+        <span class="ja"><a href="https://github.com/mojosoftjp/sakutto-videotranslator/issues">GitHub Issues</a> からもご報告いただけます。</span>
+        <span class="en">You can also report via <a href="https://github.com/mojosoftjp/sakutto-videotranslator/issues">GitHub Issues</a>.</span>
+      </p>
+      <p style="color:var(--muted);font-size:.9rem;margin-top:28px">
+        <a href="index.html"><span class="ja">トップページ</span><span class="en">Home</span></a> ·
+        <a href="purchase.html"><span class="ja">購入</span><span class="en">Purchase</span></a> ·
+        <a href="privacy.html"><span class="ja">プライバシーポリシー</span><span class="en">Privacy Policy</span></a>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-links">
+    <a href="index.html"><span class="ja">トップ</span><span class="en">Home</span></a>
+    <a href="index.html#features"><span class="ja">機能</span><span class="en">Features</span></a>
+    <a href="purchase.html"><span class="ja">購入</span><span class="en">Purchase</span></a>
+    <a href="#faq">FAQ</a>
+    <a href="privacy.html"><span class="ja">プライバシーポリシー</span><span class="en">Privacy Policy</span></a>
+    <a href="https://github.com/mojosoftjp/sakutto-videotranslator">GitHub</a>
+  </div>
+  <div class="copyright">&copy; 2026 Mojosoft. All rights reserved.</div>
+</footer>
+
+<script>
+function setLang(lang, opts) {
+  opts = opts || {};
+  document.body.setAttribute('data-lang', lang);
+  document.documentElement.lang = lang === 'ja' ? 'ja' : 'en';
+  document.title = lang === 'ja'
+    ? '使い方・ヘルプ - さくっと動画翻訳'
+    : 'Help & User Guide - Snap Video Translator';
+  localStorage.setItem('sakutto-vt-lang', lang);
+  if (opts.updateUrl !== false) {
+    try {
+      var url = new URL(window.location.href);
+      url.searchParams.set('lang', lang);
+      history.replaceState(null, '', url);
+    } catch (e) { /* older browsers */ }
+  }
+}
+function toggleLang() {
+  var cur = document.body.getAttribute('data-lang');
+  setLang(cur === 'ja' ? 'en' : 'ja');
+}
+(function() {
+  // Priority: URL ?lang= > localStorage > browser language
+  var params = new URLSearchParams(window.location.search);
+  var urlLang = (params.get('lang') || '').toLowerCase();
+  if (urlLang === 'ja' || urlLang === 'en') {
+    setLang(urlLang, { updateUrl: false });
+    return;
+  }
+  var saved = localStorage.getItem('sakutto-vt-lang');
+  if (saved) { setLang(saved, { updateUrl: false }); return; }
+  var browserLang = (navigator.language || navigator.userLanguage || '').toLowerCase();
+  setLang(browserLang.startsWith('ja') ? 'ja' : 'en', { updateUrl: false });
+})();
+</script>
+
+</body>
+</html>
