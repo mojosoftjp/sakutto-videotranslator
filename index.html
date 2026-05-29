@@ -41,6 +41,36 @@ a:hover{text-decoration:underline}
 .trial-note{margin-top:16px;font-size:.85rem;opacity:.92;color:#FFEDD5;font-weight:500}
 .smartscreen-note{margin-top:6px;font-size:.72rem;opacity:.72;color:#FFEDD5;max-width:640px;margin-left:auto;margin-right:auto;line-height:1.55}
 
+/* Pricing */
+.pricing-section{background:#fff}
+.pricing-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;max-width:880px;margin:0 auto}
+.pricing-card-lp{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:32px 28px;position:relative;transition:transform .2s,box-shadow .2s}
+.pricing-card-lp:hover{transform:translateY(-4px);box-shadow:0 16px 48px rgba(249,115,22,.16)}
+.pricing-card-lp.featured{border:2px solid var(--primary);box-shadow:0 8px 32px rgba(249,115,22,.18)}
+.pricing-card-lp.featured::before{content:"おすすめ";position:absolute;top:-12px;right:20px;background:var(--primary);color:#fff;font-size:.75rem;font-weight:700;padding:4px 12px;border-radius:999px}
+[data-lang="en"] .pricing-card-lp.featured::before{content:"Recommended"}
+.pricing-card-lp h3{font-size:1.4rem;font-weight:800;margin-bottom:8px;display:flex;align-items:center;gap:10px}
+.pricing-card-lp .pricing-badge{font-size:.78rem;font-weight:600;padding:4px 10px;border-radius:999px;background:#FFEDD5;color:#C2410C}
+.pricing-card-lp.featured .pricing-badge{background:var(--primary);color:#fff}
+.pricing-card-lp .pricing-price-lp{font-size:2.4rem;font-weight:900;letter-spacing:-.03em;margin-bottom:4px;color:var(--text)}
+.pricing-card-lp .pricing-price-lp .currency{font-size:1rem;font-weight:600;vertical-align:super;margin-right:2px;color:var(--muted)}
+.pricing-card-lp .pricing-price-lp .unit{font-size:.85rem;font-weight:400;color:var(--muted)}
+.pricing-card-lp .pricing-tagline{color:var(--muted);font-size:.95rem;margin-bottom:20px;line-height:1.6}
+.pricing-card-lp ul{list-style:none;margin-bottom:24px;display:flex;flex-direction:column;gap:10px}
+.pricing-card-lp ul li{display:flex;gap:10px;align-items:flex-start;font-size:.92rem;color:var(--text);line-height:1.55}
+.pricing-card-lp ul li::before{content:'✓';color:#10B981;font-weight:700;flex-shrink:0;margin-top:1px}
+.pricing-card-lp ul li.con::before{content:'△';color:#F59E0B}
+.pricing-cta{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:14px 20px;border-radius:999px;font-size:.95rem;font-weight:700;text-decoration:none;transition:all .15s;border:none;cursor:pointer;box-sizing:border-box}
+.pricing-cta.cta-store{background:linear-gradient(135deg,#0078D4,#00BCF2);color:#fff}
+.pricing-cta.cta-store:hover{background:linear-gradient(135deg,#006CBD,#00A8D8);transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,120,212,.3);text-decoration:none;color:#fff}
+.pricing-cta.cta-dl{background:var(--primary);color:#fff}
+.pricing-cta.cta-dl:hover{background:var(--primary-dark);transform:translateY(-2px);box-shadow:0 8px 24px rgba(249,115,22,.3);text-decoration:none;color:#fff}
+.pricing-cta-secondary{display:block;text-align:center;margin-top:10px;font-size:.82rem;color:var(--muted)}
+.pricing-note{text-align:center;color:var(--muted);font-size:.85rem;margin-top:32px;max-width:640px;margin-left:auto;margin-right:auto;line-height:1.7}
+@media(max-width:700px){
+  .pricing-grid{grid-template-columns:1fr}
+}
+
 /* Container */
 .container{max-width:960px;margin:0 auto;padding:0 24px}
 
@@ -323,6 +353,75 @@ footer .copyright{opacity:.7;margin-top:8px}
   </div>
 </section>
 
+<!-- Pricing — Store vs Download comparison -->
+<section id="pricing" class="section pricing-section">
+  <div class="container">
+    <h2 class="section-title"><span class="ja">価格 — 2つの入手方法</span><span class="en">Pricing — Two Ways to Get It</span></h2>
+    <p class="section-desc"><span class="ja">Microsoft Store でかんたんに、またはダウンロード版を試してから購入。どちらも同じ価格 <strong>¥2,950</strong>（買い切り）。</span><span class="en">Get it easily from Microsoft Store, or try the download edition before buying. Same price either way — <strong>¥2,950</strong> (one-time).</span></p>
+
+    <div class="pricing-grid">
+      <!-- Microsoft Store -->
+      <div class="pricing-card-lp featured">
+        <h3>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="8" height="8" rx="1"/><rect x="13" y="3" width="8" height="8" rx="1"/><rect x="3" y="13" width="8" height="8" rx="1"/><rect x="13" y="13" width="8" height="8" rx="1"/></svg>
+          <span class="ja">Microsoft Store 版</span><span class="en">Microsoft Store</span>
+        </h3>
+        <span class="pricing-badge"><span class="ja">最もかんたん</span><span class="en">Easiest</span></span>
+        <div class="pricing-price-lp" style="margin-top:16px"><span class="currency">¥</span>2,950<span class="unit"> <span class="ja">買い切り</span><span class="en">one-time</span></span></div>
+        <p class="pricing-tagline">
+          <span class="ja">Microsoft 公式ストア経由。インストールも更新も自動。ライセンス管理は不要です。</span>
+          <span class="en">Official Microsoft Store. Auto install and update. No license management needed.</span>
+        </p>
+        <ul>
+          <li><span class="ja">ワンクリックで購入＆インストール</span><span class="en">One-click purchase &amp; install</span></li>
+          <li><span class="ja">自動アップデート対応</span><span class="en">Auto-updates</span></li>
+          <li><span class="ja">ライセンスキー不要</span><span class="en">No license key required</span></li>
+          <li><span class="ja">Microsoft Store の決済保護</span><span class="en">Microsoft Store buyer protection</span></li>
+          <li class="con"><span class="ja">試用版なし（直接購入）</span><span class="en">No free trial (direct purchase)</span></li>
+        </ul>
+        <a href="https://apps.microsoft.com/detail/9N66P79HM5LB" class="pricing-cta cta-store">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="8" height="8" rx="1"/><rect x="13" y="3" width="8" height="8" rx="1"/><rect x="3" y="13" width="8" height="8" rx="1"/><rect x="13" y="13" width="8" height="8" rx="1"/></svg>
+          <span class="ja">Microsoft Store で購入</span><span class="en">Buy on Microsoft Store</span>
+        </a>
+      </div>
+
+      <!-- Download Edition -->
+      <div class="pricing-card-lp">
+        <h3>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          <span class="ja">ダウンロード版</span><span class="en">Download Edition</span>
+        </h3>
+        <span class="pricing-badge"><span class="ja">試してから買える</span><span class="en">Try before you buy</span></span>
+        <div class="pricing-price-lp" style="margin-top:16px"><span class="currency">¥</span>2,950<span class="unit"> <span class="ja">買い切り</span><span class="en">one-time</span></span></div>
+        <p class="pricing-tagline">
+          <span class="ja">PayPalまたは銀行振込で購入。試用版（動画長5分まで）を先に試せます。</span>
+          <span class="en">Pay via PayPal or bank transfer. Try the trial first (5-min video limit).</span>
+        </p>
+        <ul>
+          <li><span class="ja"><strong>無料で試用可能（動画長5分まで）</strong></span><span class="en"><strong>Free trial (up to 5 min per video)</strong></span></li>
+          <li><span class="ja">PayPal / 銀行振込で購入</span><span class="en">Pay via PayPal or bank transfer</span></li>
+          <li><span class="ja">Microsoft Store の手数料を回避</span><span class="en">Avoids Microsoft Store fees</span></li>
+          <li><span class="ja">買い切り・永続ライセンス</span><span class="en">One-time purchase, permanent license</span></li>
+          <li class="con"><span class="ja">未署名のため SmartScreen 警告あり（「詳細情報」→「実行」で起動可）</span><span class="en">Unsigned — SmartScreen warns on first run (click "More info" → "Run anyway")</span></li>
+          <li class="con"><span class="ja">手動更新（メール通知でお知らせ）</span><span class="en">Manual updates (notified by email)</span></li>
+        </ul>
+        <a href="https://mojosoft.biz/SakuttoVideoTranslator_Setup_1.1.0.exe" class="pricing-cta cta-dl" download>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          <span class="ja">無料試用版をダウンロード</span><span class="en">Download Free Trial</span>
+        </a>
+        <a href="purchase.html" class="pricing-cta-secondary">
+          <span class="ja">→ ダウンロード版を購入（ライセンスキー発行）</span><span class="en">→ Buy Download Edition (license key)</span>
+        </a>
+      </div>
+    </div>
+
+    <p class="pricing-note">
+      <span class="ja">どちらの版も機能は<strong>完全に同じ</strong>です。Store版は自動更新で手軽、ダウンロード版は購入前に試せるのが特徴。<a href="purchase.html">ダウンロード版の詳細・購入ページ →</a></span>
+      <span class="en">Both editions have <strong>identical features</strong>. Store version is convenient with auto-updates. Download edition lets you try before you buy. <a href="purchase.html">See download edition details →</a></span>
+    </p>
+  </div>
+</section>
+
 <!-- How to use -->
 <section class="section" style="background:#fff">
   <div class="container">
@@ -371,6 +470,8 @@ footer .copyright{opacity:.7;margin-top:8px}
 <footer>
   <div class="footer-links">
     <a href="#features"><span class="ja">機能</span><span class="en">Features</span></a>
+    <a href="#pricing"><span class="ja">価格</span><span class="en">Pricing</span></a>
+    <a href="purchase.html"><span class="ja">購入</span><span class="en">Purchase</span></a>
     <a href="#support"><span class="ja">サポート</span><span class="en">Support</span></a>
     <a href="privacy.html"><span class="ja">プライバシーポリシー</span><span class="en">Privacy Policy</span></a>
     <a href="https://github.com/mojosoftjp/sakutto-videotranslator">GitHub</a>
