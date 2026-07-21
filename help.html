@@ -158,6 +158,7 @@ footer .copyright{opacity:.7;margin-top:8px}
     <ul>
       <li><a href="#overview"><span class="ja">概要・特徴</span><span class="en">Overview</span></a></li>
       <li><a href="#usage"><span class="ja">使い方（6ステップ）</span><span class="en">How to Use</span></a></li>
+      <li><a href="#apikey"><span class="ja">APIキーの取得方法</span><span class="en">Getting an API Key</span></a></li>
       <li><a href="#formats"><span class="ja">対応ファイル形式</span><span class="en">Supported Formats</span></a></li>
       <li><a href="#faq"><span class="ja">よくある質問</span><span class="en">FAQ</span></a></li>
       <li><a href="#trouble"><span class="ja">トラブルシューティング</span><span class="en">Troubleshooting</span></a></li>
@@ -248,6 +249,102 @@ footer .copyright{opacity:.7;margin-top:8px}
       </div>
 
     </div>
+  </div>
+</section>
+
+<!-- API key -->
+<section id="apikey" class="section" style="background:#fff;padding-top:0">
+  <div class="container">
+    <h2 class="section-title"><span class="ja">APIキーの取得方法（AI翻訳・吹き替え用）</span><span class="en">How to Get an API Key (for AI Translation &amp; Dubbing)</span></h2>
+    <p class="section-desc"><span class="ja">AI翻訳と吹き替えのご利用には、AIサービスのAPIキーが必要です。ここでは無料で始められる Google Gemini を例に、取得から設定までを順にご案内します。</span><span class="en">AI translation and dubbing require an API key from an AI service. Here we walk through Google Gemini — which you can start using for free — from getting the key to entering it in the app.</span></p>
+
+    <div class="callout" style="margin-top:0;margin-bottom:24px">
+      <span class="ja"><strong>費用について:</strong> Gemini には無料枠が用意されており、通常のご利用の範囲であれば費用はかかりません。クレジットカードの登録なしで始められます。所要時間は 3〜5 分程度です。</span>
+      <span class="en"><strong>About cost:</strong> Gemini offers a free tier, so typical personal use costs nothing, and you can start without registering a credit card. Setup takes about 3–5 minutes.</span>
+    </div>
+
+    <div class="steps-list">
+
+      <div class="step-row">
+        <h3><span class="ja">Google AI Studio を開く</span><span class="en">Open Google AI Studio</span></h3>
+        <p>
+          <span class="ja"><a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener">https://aistudio.google.com/apikey</a> をブラウザで開き、お持ちの <strong>Google アカウント</strong>（Gmail のアドレス）でログインします。アカウントをお持ちでない場合は無料で作成できます。</span>
+          <span class="en">Open <a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener">https://aistudio.google.com/apikey</a> in your browser and sign in with your <strong>Google account</strong> (your Gmail address). If you don't have one, you can create it for free.</span>
+        </p>
+      </div>
+
+      <div class="step-row">
+        <h3><span class="ja">利用規約に同意する</span><span class="en">Accept the Terms of Service</span></h3>
+        <p>
+          <span class="ja">初回のみ、利用規約への同意画面が表示されます。内容をご確認のうえ同意してください。</span>
+          <span class="en">The first time only, a Terms of Service screen appears. Review it and accept to continue.</span>
+        </p>
+      </div>
+
+      <div class="step-row">
+        <h3><span class="ja">APIキーを作成する</span><span class="en">Create the API Key</span></h3>
+        <p>
+          <span class="ja">画面上の「<strong>APIキーを作成</strong>」（英語表示の場合は "<strong>Create API key</strong>"）ボタンをクリックします。プロジェクトの選択を求められた場合は、<strong>自動で作成されるものをそのまま</strong>お使いいただけます。特別な設定は不要です。</span>
+          <span class="en">Click the "<strong>Create API key</strong>" button. If you're asked to choose a project, simply use the one <strong>created automatically for you</strong> — no special configuration is needed.</span>
+        </p>
+      </div>
+
+      <div class="step-row">
+        <h3><span class="ja">APIキーをコピーする</span><span class="en">Copy the API Key</span></h3>
+        <p>
+          <span class="ja"><code>AIza</code> で始まる文字列が表示されます。これが APIキーです。コピーボタンでコピーしてください。</span>
+          <span class="en">A string starting with <code>AIza</code> appears — this is your API key. Use the copy button to copy it.</span>
+        </p>
+      </div>
+
+      <div class="step-row">
+        <h3><span class="ja">さくっと動画翻訳に貼り付ける</span><span class="en">Paste It into Snap Video Translator</span></h3>
+        <p>
+          <span class="ja">アプリを起動し、画面右側の設定パネルで次のように設定します。</span>
+          <span class="en">Launch the app and configure the settings panel on the right as follows.</span>
+        </p>
+        <ul>
+          <li><span class="ja">「<strong>AI翻訳を使用</strong>」をオンにする</span><span class="en">Turn on "<strong>Use AI Translation</strong>"</span></li>
+          <li><span class="ja">「<strong>AIプロバイダ</strong>」で「<strong>Gemini</strong>」を選ぶ</span><span class="en">Select "<strong>Gemini</strong>" as the <strong>AI provider</strong></span></li>
+          <li><span class="ja">「<strong>APIキー</strong>」欄にコピーした文字列を貼り付ける（Ctrl+V）</span><span class="en">Paste the copied key into the <strong>API Key</strong> field (Ctrl+V)</span></li>
+          <li><span class="ja">「<strong>モデル</strong>」欄は初期設定のままで問題ありません</span><span class="en">Leave the <strong>Model</strong> field at its default</span></li>
+          <li><span class="ja">「<strong>翻訳先言語</strong>」を選ぶ</span><span class="en">Choose your <strong>target language</strong></span></li>
+        </ul>
+      </div>
+
+      <div class="step-row">
+        <h3><span class="ja">接続テストで確認する</span><span class="en">Verify with the Connection Test</span></h3>
+        <p>
+          <span class="ja">設定パネルの「<strong>接続テスト</strong>」ボタンをクリックします。「<strong>✓ 接続OK</strong>」と表示されれば設定完了です。そのまま動画を読み込んで AI翻訳をご利用いただけます。</span>
+          <span class="en">Click the "<strong>Test</strong>" button in the settings panel. If "<strong>✓ Connected</strong>" appears, you're all set — load a video and start using AI translation.</span>
+        </p>
+      </div>
+
+    </div>
+
+    <div class="card" style="margin-top:28px">
+      <h3><span class="ja">Gemini 以外のサービスをお使いの場合</span><span class="en">Using a Provider Other Than Gemini</span></h3>
+      <p><span class="ja">本アプリは以下のサービスにも対応しています。いずれの場合も、取得したキーを同じ「APIキー」欄に貼り付けてご利用ください。</span><span class="en">The app also supports the services below. In every case, paste the key you obtain into the same "API Key" field.</span></p>
+      <ul>
+        <li><span class="ja"><strong>OpenAI</strong>: <a href="https://platform.openai.com/api-keys" target="_blank" rel="noopener">platform.openai.com/api-keys</a> で発行できます</span><span class="en"><strong>OpenAI</strong>: create a key at <a href="https://platform.openai.com/api-keys" target="_blank" rel="noopener">platform.openai.com/api-keys</a></span></li>
+        <li><span class="ja"><strong>Claude（Anthropic）</strong>: <a href="https://console.anthropic.com/settings/keys" target="_blank" rel="noopener">console.anthropic.com/settings/keys</a> で発行できます</span><span class="en"><strong>Claude (Anthropic)</strong>: create a key at <a href="https://console.anthropic.com/settings/keys" target="_blank" rel="noopener">console.anthropic.com/settings/keys</a></span></li>
+        <li><span class="ja"><strong>ローカルLLM（OpenAI互換）</strong>: お使いのサーバーの Base URL を指定すれば、<strong>クラウドのAPIキーは不要</strong>です</span><span class="en"><strong>Local LLM (OpenAI-compatible)</strong>: specify your server's Base URL — <strong>no cloud API key required</strong></span></li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3><span class="ja">うまくいかないときは</span><span class="en">If Something Goes Wrong</span></h3>
+      <ul>
+        <li><span class="ja"><strong>「✗ 接続失敗」と表示される</strong>: APIキーの前後に余分な空白が入っていないか、キー全体が貼り付けられているかをご確認ください。</span><span class="en"><strong>"✗ Failed" is shown</strong>: check that there is no extra whitespace before or after the key, and that the entire key was pasted.</span></li>
+        <li><span class="ja"><strong>キーを確認し直したい</strong>: <a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener">Google AI Studio</a> からいつでも確認・再作成できます。</span><span class="en"><strong>Want to check your key again</strong>: you can view or recreate it any time at <a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener">Google AI Studio</a>.</span></li>
+        <li><span class="ja"><strong>文字起こしだけを使いたい</strong>: 文字起こし（字幕の作成）はお使いのPC内で動作するため、<strong>APIキーは不要</strong>です。APIキーが必要なのは AI翻訳と吹き替えの機能のみです。</span><span class="en"><strong>Only need transcription?</strong> Transcription runs locally on your PC, so <strong>no API key is required</strong>. Only AI translation and dubbing need one.</span></li>
+      </ul>
+      <div class="callout">
+        <span class="ja"><strong>取り扱いのご注意:</strong> APIキーは第三者に知られないよう管理してください。万一漏れた場合は、Google AI Studio でキーを削除して再作成できます。</span>
+        <span class="en"><strong>Keep it safe:</strong> treat your API key as a secret. If it is ever exposed, you can delete it and create a new one in Google AI Studio.</span>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -355,6 +452,8 @@ footer .copyright{opacity:.7;margin-top:8px}
              <span class="en"><strong>AI translation</strong> requires an API key for the AI service you use (Gemini, OpenAI, or Claude). If you use an OpenAI-compatible local LLM, specify its Base URL instead (no cloud API key needed).</span></p>
           <p><span class="ja"><strong>文字起こし</strong>はPC上のWhisperで動作するため、APIキーやインターネット接続は不要です（モデルの初回ダウンロード時を除く）。</span>
              <span class="en"><strong>Transcription</strong> runs locally with Whisper, so it needs no API key or internet connection (except for the initial model download).</span></p>
+          <p><span class="ja">APIキーの取り方が分からない場合は、<a href="#apikey">「APIキーの取得方法」</a>で手順を最初からご案内しています（Gemini なら無料枠があり、3〜5分で設定できます）。</span>
+             <span class="en">If you're not sure how to obtain one, see <a href="#apikey">"How to Get an API Key"</a> for step-by-step instructions (Gemini has a free tier and takes about 3–5 minutes to set up).</span></p>
         </div>
       </details>
     </div>
@@ -377,6 +476,8 @@ footer .copyright{opacity:.7;margin-top:8px}
       <h3><span class="ja">AI翻訳に失敗する／「接続失敗」と表示される</span><span class="en">AI translation fails / "Failed" shown</span></h3>
       <p><span class="ja">APIキーが正しいか、AIプロバイダ・モデル名が合っているかをご確認ください。設定パネルの「<strong>接続テスト</strong>」で動作を事前に確認できます。ローカルLLMをお使いの場合は Base URL が正しいか、サーバーが起動しているかもご確認ください。</span>
          <span class="en">Check that your API key is correct and that the AI provider and model name match. Use "<strong>Test</strong>" in the settings panel to verify. For a local LLM, confirm the Base URL is correct and the server is running.</span></p>
+      <p><span class="ja">APIキーをまだお持ちでない場合は、<a href="#apikey">「APIキーの取得方法」</a>をご覧ください。</span>
+         <span class="en">If you don't have an API key yet, see <a href="#apikey">"How to Get an API Key"</a>.</span></p>
     </div>
 
     <div class="card">
