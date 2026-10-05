@@ -81,7 +81,7 @@ footer a{color:#FDBA74}
 <ul>
   <li>クラウドのAIサービス（Gemini・OpenAI・Claude など）を選択した場合、字幕テキストは当該サービスに送信されます。送信内容は各サービスのプライバシーポリシーに従って扱われます。</li>
   <li>ローカルLLM（LM Studio・Ollama など）を選択した場合、データはユーザーの環境内で処理されます。</li>
-  <li>AIサービスのAPIキーは、ユーザーのPC内（Windowsレジストリ）にのみ保存され、選択したサービスへの接続にのみ使用されます。開発元に送信されることはありません。</li>
+  <li>AIサービスのAPIキーは、Windows の暗号化機能（DPAPI）で暗号化したうえでユーザーのPC内（Windowsレジストリ）にのみ保存され（バージョン 1.2.0 以降）、選択したサービスへの接続にのみ使用されます。開発元に送信されることはありません。</li>
 </ul>
 
 <h2>AI吹き替えについて</h2>
@@ -109,7 +109,7 @@ footer a{color:#FDBA74}
   <li>Email: <a href="mailto:support@mojosoft.biz">support@mojosoft.biz</a></li>
 </ul>
 
-<p class="updated">最終更新日: 2026年5月22日</p>
+<p class="updated">最終更新日: 2026年10月5日</p>
 <p class="back"><a href="index.html">&larr; さくっと動画翻訳 トップページに戻る</a></p>
 </div>
 
@@ -135,7 +135,7 @@ footer a{color:#FDBA74}
 <ul>
   <li>If a cloud AI service (such as Gemini, OpenAI, or Claude) is selected, the subtitle text is sent to that service and handled under that service's own privacy policy.</li>
   <li>If a local LLM (LM Studio, Ollama, etc.) is selected, the data is processed within the user's own environment.</li>
-  <li>The AI service's API key is stored only on the user's PC (Windows registry) and used solely to connect to the selected service. It is never sent to the developer.</li>
+  <li>The AI service's API key is stored only on the user's PC (Windows registry), encrypted with Windows data protection (DPAPI) from version 1.2.0, and used solely to connect to the selected service. It is never sent to the developer.</li>
 </ul>
 
 <h2>AI Dubbing</h2>
@@ -163,7 +163,7 @@ footer a{color:#FDBA74}
   <li>Email: <a href="mailto:support@mojosoft.biz">support@mojosoft.biz</a></li>
 </ul>
 
-<p class="updated">Last updated: May 22, 2026</p>
+<p class="updated">Last updated: October 5, 2026</p>
 <p class="back"><a href="index.html">&larr; Back to Snap Video Translator Home</a></p>
 </div>
 

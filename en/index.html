@@ -253,7 +253,7 @@ footer .copyright{opacity:.7;margin-top:8px}
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="8" height="8" rx="1"/><rect x="13" y="3" width="8" height="8" rx="1"/><rect x="3" y="13" width="8" height="8" rx="1"/><rect x="13" y="13" width="8" height="8" rx="1"/></svg>
       <span class="ja">Microsoft Store で入手</span><span class="en">Get on Microsoft Store</span>
     </a>
-    <a href="https://mojosoft.biz/SakuttoVideoTranslator_Setup_1.1.2.exe" class="btn btn-secondary" download>
+    <a href="https://mojosoft.biz/SakuttoVideoTranslator_Setup_1.2.0.exe" class="btn btn-secondary" download>
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
       <span class="ja">無料で試す（5分まで）</span><span class="en">Free Trial (up to 5 min)</span>
     </a>
@@ -481,7 +481,7 @@ footer .copyright{opacity:.7;margin-top:8px}
           <li class="con"><span class="ja">未署名のため SmartScreen 警告あり（「詳細情報」→「実行」で起動可）</span><span class="en">Unsigned — SmartScreen warns on first run (click "More info" → "Run anyway")</span></li>
           <li class="con"><span class="ja">手動更新（メール通知でお知らせ）</span><span class="en">Manual updates (notified by email)</span></li>
         </ul>
-        <a href="https://mojosoft.biz/SakuttoVideoTranslator_Setup_1.1.2.exe" class="pricing-cta cta-dl" download>
+        <a href="https://mojosoft.biz/SakuttoVideoTranslator_Setup_1.2.0.exe" class="pricing-cta cta-dl" download>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
           <span class="ja">無料試用版をダウンロード</span><span class="en">Download Free Trial</span>
         </a>
@@ -526,6 +526,20 @@ footer .copyright{opacity:.7;margin-top:8px}
     <h2 class="section-title"><span class="ja">更新履歴</span><span class="en">Changelog</span></h2>
     <p class="section-desc"><span class="ja">継続的に改善しています。最新版はストア版・ダウンロード版とも同じ内容です。</span><span class="en">We keep improving it. The Store and download editions share the same latest build.</span></p>
     <div style="max-width:720px;margin:0 auto">
+
+      <div class="step" style="margin-bottom:20px">
+        <h3 style="margin-bottom:4px">v1.2.0</h3>
+        <p style="color:var(--muted);font-size:.9rem;margin-bottom:12px"><span class="ja">2026年10月5日</span><span class="en">October 5, 2026</span></p>
+        <ul style="margin:0;padding-left:20px;line-height:1.9">
+          <li><span class="ja">AI翻訳のモデルを最新世代に更新しました（Gemini 3.8 Flash / GPT-6.1 / Claude Sonnet 5.5・Opus 5.5 など）。古いモデルを設定していた場合は、推奨モデルに自動で切り替わります</span><span class="en">Updated the AI translation models to the latest generation (Gemini 3.8 Flash, GPT-6.1, Claude Sonnet 5.5 / Opus 5.5, and more). If an older model was selected, the app switches to the recommended one automatically</span></li>
+          <li><span class="ja">APIキーを Windows の暗号化機能で保護して保存するようにしました（以前のバージョンで保存したキーも自動で暗号化されます）</span><span class="en">Your API key is now stored encrypted with Windows data protection (keys saved by earlier versions are encrypted automatically)</span></li>
+          <li><span class="ja">選んだAIモデルが、次に起動したときに初期設定へ戻ってしまう問題を修正しました</span><span class="en">Fixed the selected AI model resetting to the default on the next launch</span></li>
+          <li><span class="ja">AIが一部の行の翻訳を返さなかった場合は、その行だけを原文のまま残し、件数を表示するようにしました（字幕の行がずれる問題も修正しました）</span><span class="en">If the AI returns no translation for some lines, only those lines keep the original text and the app shows how many (subtitles no longer shift out of place)</span></li>
+          <li><span class="ja">Claude の一部モデル（Sonnet 5 / Opus 5）で翻訳に失敗することがある問題を修正しました</span><span class="en">Fixed translation failures with some Claude models (Sonnet 5 / Opus 5)</span></li>
+          <li><span class="ja">確認モードで開く「字幕の確認・編集」画面が白い画面のまま表示されない問題を修正しました</span><span class="en">Fixed the blank subtitle review/edit window in Review mode</span></li>
+          <li><span class="ja">AIの選択肢を「ローカルLLM（LM Studio・Ollama など）」と分かりやすい名前にし、ローカルLLMにはクラウド用のAPIキーを送信しないようにしました</span><span class="en">Renamed the AI option to "Local LLM (LM Studio, Ollama, etc.)" and stopped sending your cloud API key to a local LLM</span></li>
+        </ul>
+      </div>
 
       <div class="step" style="margin-bottom:20px">
         <h3 style="margin-bottom:4px">v1.1.2</h3>
