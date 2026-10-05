@@ -197,8 +197,8 @@ footer .copyright{opacity:.7;margin-top:8px}
       <ul>
         <li><span class="ja"><strong>文字起こし</strong>：Whisper モデル（small / medium / large-v3-turbo / large-v3）から選択。SRT / VTT 字幕ファイルとして書き出し可能。</span>
             <span class="en"><strong>Transcription:</strong> Choose a Whisper model (small / medium / large-v3-turbo / large-v3). Export subtitles as SRT / VTT.</span></li>
-        <li><span class="ja"><strong>AI翻訳</strong>：Gemini・OpenAI・Claude、または OpenAI 互換のローカルLLMで翻訳。焼き付け前に字幕を確認・編集できます。</span>
-            <span class="en"><strong>AI translation:</strong> Translate with Gemini, OpenAI, Claude, or an OpenAI-compatible local LLM. Review and edit before burn-in.</span></li>
+        <li><span class="ja"><strong>AI翻訳</strong>：Gemini・OpenAI・Claude、またはローカルLLM（LM Studio・Ollama など）で翻訳。焼き付け前に字幕を確認・編集できます。</span>
+            <span class="en"><strong>AI translation:</strong> Translate with Gemini, OpenAI, Claude, or a local LLM (LM Studio, Ollama, etc.). Review and edit before burn-in.</span></li>
         <li><span class="ja"><strong>字幕焼き付け</strong>：フォントサイズ・文字色（白／黄）・表示位置（上／中央／下）を調整して動画に直接焼き込み。</span>
             <span class="en"><strong>Subtitle burn-in:</strong> Adjust font size, color (white/yellow), and position (top/center/bottom), then burn directly into the video.</span></li>
         <li><span class="ja"><strong>AI吹き替え</strong>：翻訳内容を音声化（7言語・男声／女声）。元音声とのミックス、または置き換えを選択可能。</span>
@@ -345,7 +345,7 @@ footer .copyright{opacity:.7;margin-top:8px}
       <ul>
         <li><span class="ja"><strong>OpenAI</strong>: <a href="https://platform.openai.com/api-keys" target="_blank" rel="noopener">platform.openai.com/api-keys</a> で発行できます</span><span class="en"><strong>OpenAI</strong>: create a key at <a href="https://platform.openai.com/api-keys" target="_blank" rel="noopener">platform.openai.com/api-keys</a></span></li>
         <li><span class="ja"><strong>Claude（Anthropic）</strong>: <a href="https://console.anthropic.com/settings/keys" target="_blank" rel="noopener">console.anthropic.com/settings/keys</a> で発行できます</span><span class="en"><strong>Claude (Anthropic)</strong>: create a key at <a href="https://console.anthropic.com/settings/keys" target="_blank" rel="noopener">console.anthropic.com/settings/keys</a></span></li>
-        <li><span class="ja"><strong>ローカルLLM（OpenAI互換）</strong>: お使いのサーバーの Base URL を指定すれば、<strong>クラウドのAPIキーは不要</strong>です</span><span class="en"><strong>Local LLM (OpenAI-compatible)</strong>: specify your server's Base URL — <strong>no cloud API key required</strong></span></li>
+        <li><span class="ja"><strong>ローカルLLM（LM Studio・Ollama など）</strong>（v1.1.2 以前の表示は「カスタム (OpenAI互換)」）: お使いのサーバーの Base URL を指定すれば、<strong>クラウドのAPIキーは不要</strong>です</span><span class="en"><strong>Local LLM (LM Studio, Ollama, etc.)</strong> (shown as “Custom (OpenAI Compatible)” in v1.1.2 and earlier): specify your server's Base URL — <strong>no cloud API key required</strong></span></li>
       </ul>
     </div>
 
@@ -465,8 +465,8 @@ footer .copyright{opacity:.7;margin-top:8px}
       <details>
         <summary><span class="ja">AI翻訳・吹き替えにAPIキーは必要ですか？</span><span class="en">Do AI translation and dubbing require an API key?</span></summary>
         <div class="faq-body">
-          <p><span class="ja"><strong>AI翻訳</strong>には、お使いになるAIサービス（Gemini・OpenAI・Claude）のAPIキーが必要です。OpenAI互換のローカルLLMを利用する場合は、Base URL を指定してご利用いただけます（クラウドのAPIキー不要）。</span>
-             <span class="en"><strong>AI translation</strong> requires an API key for the AI service you use (Gemini, OpenAI, or Claude). If you use an OpenAI-compatible local LLM, specify its Base URL instead (no cloud API key needed).</span></p>
+          <p><span class="ja"><strong>AI翻訳</strong>には、お使いになるAIサービス（Gemini・OpenAI・Claude）のAPIキーが必要です。ローカルLLM（LM Studio・Ollama など）を利用する場合は、Base URL を指定してご利用いただけます（クラウドのAPIキー不要）。</span>
+             <span class="en"><strong>AI translation</strong> requires an API key for the AI service you use (Gemini, OpenAI, or Claude). If you use a local LLM (LM Studio, Ollama, etc.), specify its Base URL instead (no cloud API key needed).</span></p>
           <p><span class="ja"><strong>文字起こし</strong>はPC上のWhisperで動作するため、APIキーやインターネット接続は不要です（モデルの初回ダウンロード時を除く）。</span>
              <span class="en"><strong>Transcription</strong> runs locally with Whisper, so it needs no API key or internet connection (except for the initial model download).</span></p>
           <p><span class="ja">APIキーの取り方が分からない場合は、<a href="#apikey">「APIキーの取得方法」</a>で手順を最初からご案内しています（Gemini なら無料枠があり、3〜5分で設定できます）。</span>
