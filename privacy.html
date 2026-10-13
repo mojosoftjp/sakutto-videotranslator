@@ -187,10 +187,13 @@ function toggleLang() {
   setLang(cur === 'ja' ? 'en' : 'ja');
 }
 (function() {
+  // ?lang= (links from the English pages) > the visitor's own earlier choice.
+  // No automatic switch by browser language: the page stays Japanese by default
+  // so search engines index it as the Japanese page.
+  var p = (new URLSearchParams(window.location.search).get('lang') || '').toLowerCase();
+  if (p === 'ja' || p === 'en') { setLang(p); return; }
   var saved = localStorage.getItem('sakutto-vt-lang');
-  if (saved) { setLang(saved); return; }
-  var browserLang = (navigator.language || navigator.userLanguage || '').toLowerCase();
-  setLang(browserLang.startsWith('ja') ? 'ja' : 'en');
+  if (saved === 'ja' || saved === 'en') setLang(saved);
 })();
 </script>
 
