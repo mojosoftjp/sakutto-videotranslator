@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="lang-en">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,154 +8,30 @@
 <link rel="icon" type="image/x-icon" href="../favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
 <link rel="apple-touch-icon" href="../apple-touch-icon.png">
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-:root{--primary:#F97316;--primary-dark:#EA580C;--accent:#FB923C;--bg:#FFF7ED;--card:#FFFFFF;--text:#1E293B;--muted:#64748B;--border:#FED7AA;--radius:12px}
-body{font-family:"Segoe UI","Meiryo","Hiragino Sans",sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
-a{color:var(--primary);text-decoration:none}
-a:hover{text-decoration:underline}
-
-/* Language toggle */
-.lang-toggle{position:fixed;top:16px;right:16px;z-index:1000;background:rgba(255,255,255,.92);border:1px solid var(--border);border-radius:999px;padding:6px 16px;font-size:.85rem;font-weight:600;cursor:pointer;box-shadow:0 2px 12px rgba(0,0,0,.1);transition:background .2s}
-.lang-toggle:hover{background:#fff;box-shadow:0 4px 16px rgba(0,0,0,.15)}
-[data-lang="ja"] .en,[data-lang="en"] .ja{display:none!important}
-
-/* Hero */
-.hero{background:linear-gradient(135deg,#9A3412 0%,#EA580C 45%,#FB923C 100%);color:#fff;padding:80px 24px 64px;text-align:center;position:relative;overflow:hidden}
-.hero::after{content:"";position:absolute;bottom:-2px;left:0;right:0;height:48px;background:var(--bg);clip-path:ellipse(55% 100% at 50% 100%)}
-.hero-title{display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:8px}
-.hero-title img{width:64px;height:64px;border-radius:16px;filter:drop-shadow(0 4px 12px rgba(0,0,0,.25))}
-.hero h1{font-size:2.6rem;font-weight:800;letter-spacing:-.02em;margin:0}
-.hero .subtitle{font-size:1.15rem;opacity:.92;margin-bottom:32px;font-weight:400}
-.hero .tagline{display:inline-block;background:rgba(255,255,255,.18);border-radius:999px;padding:6px 20px;font-size:.9rem;margin-bottom:24px;backdrop-filter:blur(4px)}
-.hero .formats{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:32px}
-.hero .format-badge{background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.3);border-radius:8px;padding:4px 14px;font-size:.82rem;font-weight:600;backdrop-filter:blur(4px)}
-.cta-group{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
-.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;border-radius:999px;font-size:1rem;font-weight:600;transition:transform .15s,box-shadow .15s;cursor:pointer;border:none}
-.btn-primary{background:#fff;color:var(--primary-dark)}
-.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.18);text-decoration:none}
-.btn-secondary{background:rgba(255,255,255,.92);color:var(--primary-dark)}
-.btn-secondary:hover{background:#fff;transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.18);text-decoration:none}
-.btn-outline{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.5)}
-.btn-outline:hover{background:rgba(255,255,255,.12);text-decoration:none}
-.trial-note{margin-top:16px;font-size:.85rem;opacity:.92;color:#FFEDD5;font-weight:500}
-.smartscreen-note{margin-top:6px;font-size:.72rem;opacity:.72;color:#FFEDD5;max-width:640px;margin-left:auto;margin-right:auto;line-height:1.55}
-
-/* Pricing */
-.pricing-section{background:#fff}
-.pricing-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;max-width:880px;margin:0 auto}
-.pricing-card-lp{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:32px 28px;position:relative;transition:transform .2s,box-shadow .2s}
-.pricing-card-lp:hover{transform:translateY(-4px);box-shadow:0 16px 48px rgba(249,115,22,.16)}
-.pricing-card-lp.featured{border:2px solid var(--primary);box-shadow:0 8px 32px rgba(249,115,22,.18)}
-.pricing-card-lp.featured::before{content:"おすすめ";position:absolute;top:-12px;right:20px;background:var(--primary);color:#fff;font-size:.75rem;font-weight:700;padding:4px 12px;border-radius:999px}
-[data-lang="en"] .pricing-card-lp.featured::before{content:"Recommended"}
-.pricing-card-lp h3{font-size:1.4rem;font-weight:800;margin-bottom:8px;display:flex;align-items:center;gap:10px}
-.pricing-card-lp .pricing-badge{font-size:.78rem;font-weight:600;padding:4px 10px;border-radius:999px;background:#FFEDD5;color:#C2410C}
-.pricing-card-lp.featured .pricing-badge{background:var(--primary);color:#fff}
-.pricing-card-lp .pricing-price-lp{font-size:2.4rem;font-weight:900;letter-spacing:-.03em;margin-bottom:4px;color:var(--text)}
-.pricing-card-lp .pricing-price-lp .currency{font-size:1rem;font-weight:600;vertical-align:super;margin-right:2px;color:var(--muted)}
-.pricing-card-lp .pricing-price-lp .unit{font-size:.85rem;font-weight:400;color:var(--muted)}
-.pricing-card-lp .pricing-tagline{color:var(--muted);font-size:.95rem;margin-bottom:20px;line-height:1.6}
-.pricing-card-lp ul{list-style:none;margin-bottom:24px;display:flex;flex-direction:column;gap:10px}
-.pricing-card-lp ul li{display:flex;gap:10px;align-items:flex-start;font-size:.92rem;color:var(--text);line-height:1.55}
-.pricing-card-lp ul li::before{content:'✓';color:#10B981;font-weight:700;flex-shrink:0;margin-top:1px}
-.pricing-card-lp ul li.con::before{content:'△';color:#F59E0B}
-.pricing-cta{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:14px 20px;border-radius:999px;font-size:.95rem;font-weight:700;text-decoration:none;transition:all .15s;border:none;cursor:pointer;box-sizing:border-box}
-.pricing-cta.cta-store{background:linear-gradient(135deg,#0078D4,#00BCF2);color:#fff}
-.pricing-cta.cta-store:hover{background:linear-gradient(135deg,#006CBD,#00A8D8);transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,120,212,.3);text-decoration:none;color:#fff}
-.pricing-cta.cta-dl{background:var(--primary);color:#fff}
-.pricing-cta.cta-dl:hover{background:var(--primary-dark);transform:translateY(-2px);box-shadow:0 8px 24px rgba(249,115,22,.3);text-decoration:none;color:#fff}
-.pricing-cta-secondary{display:block;text-align:center;margin-top:10px;font-size:.82rem;color:var(--muted)}
-.pricing-note{text-align:center;color:var(--muted);font-size:.85rem;margin-top:32px;max-width:640px;margin-left:auto;margin-right:auto;line-height:1.7}
-@media(max-width:700px){
-  .pricing-grid{grid-template-columns:1fr}
-}
-
-/* Container */
-.container{max-width:960px;margin:0 auto;padding:0 24px}
-
-/* Section */
-.section{padding:64px 0}
-.section-title{font-size:1.6rem;font-weight:700;text-align:center;margin-bottom:12px}
-.section-desc{text-align:center;color:var(--muted);margin-bottom:48px;font-size:1.05rem}
-
-/* Feature cards */
-.feature-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:28px}
-.feature-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:32px 28px;transition:transform .2s,box-shadow .2s}
-.feature-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(249,115,22,.15)}
-.feature-card .feature-icon{font-size:2.4rem;margin-bottom:12px;display:block}
-.feature-card .feature-tag{display:inline-block;font-size:.75rem;font-weight:600;padding:3px 10px;border-radius:999px;margin-bottom:12px}
-.feature-tag.transcribe{background:#FFEDD5;color:#C2410C}
-.feature-tag.translate{background:#DBEAFE;color:#1D4ED8}
-.feature-tag.subtitle{background:#D1FAE5;color:#047857}
-.feature-tag.dub{background:#EDE9FE;color:#6D28D9}
-.feature-card h3{font-size:1.2rem;margin-bottom:8px;font-weight:700}
-.feature-card p{font-size:.92rem;color:var(--muted);line-height:1.7}
-.feature-card ul{margin-top:10px;padding-left:18px;font-size:.88rem;color:var(--muted)}
-.feature-card ul li{margin-bottom:4px}
-
-/* Screenshot */
-.shot{max-width:880px;margin:0 auto}
-.shot img{width:100%;border-radius:var(--radius);box-shadow:0 12px 48px rgba(0,0,0,.16);border:1px solid var(--border)}
-.shot .caption{text-align:center;color:var(--muted);font-size:.9rem;margin-top:16px}
-
-/* Demo video */
-.video-section{background:#fff}
-.video-wrap{max-width:880px;margin:0 auto}
-.video-wrap video{width:100%;aspect-ratio:16/9;border-radius:var(--radius);box-shadow:0 12px 48px rgba(0,0,0,.2);border:1px solid var(--border);background:#000;display:block;object-fit:cover}
-.video-caption{text-align:center;color:var(--muted);font-size:.92rem;margin-top:20px;line-height:1.7}
-.video-caption strong{color:var(--text)}
-.video-timeline{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:14px;font-size:.82rem}
-.video-timeline span{background:#FFF7ED;border:1px solid var(--border);border-radius:999px;padding:4px 14px;color:var(--primary-dark);font-weight:600}
-
-/* Points */
-.points{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px;margin-top:40px}
-.point{display:flex;gap:16px;align-items:flex-start}
-.point-icon{flex-shrink:0;width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,#FED7AA,#FFF7ED);display:flex;align-items:center;justify-content:center;font-size:1.4rem}
-.point h3{font-size:1rem;margin-bottom:4px}
-.point p{font-size:.9rem;color:var(--muted)}
-
-/* Steps */
-.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:28px;counter-reset:step}
-.step{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:28px 24px;position:relative}
-.step::before{counter-increment:step;content:counter(step);position:absolute;top:-14px;left:20px;width:32px;height:32px;border-radius:50%;background:var(--primary);color:#fff;font-weight:700;font-size:.9rem;display:flex;align-items:center;justify-content:center}
-.step h3{margin-top:8px;font-size:1rem;margin-bottom:6px}
-.step p{font-size:.9rem;color:var(--muted)}
-
-/* Footer */
-footer{background:#1E293B;color:#CBD5E1;padding:40px 24px;text-align:center;font-size:.88rem}
-footer a{color:#FDBA74}
-footer .footer-links{margin-bottom:16px;display:flex;gap:24px;justify-content:center;flex-wrap:wrap}
-footer .copyright{opacity:.7;margin-top:8px}
-
-/* Responsive */
-@media(max-width:700px){
-  .hero h1{font-size:2rem}
-  .hero .subtitle{font-size:1rem}
-  .feature-grid{grid-template-columns:1fr}
-  .section{padding:48px 0}
-}
-</style>
-  <link rel="canonical" href="https://mojosoftjp.github.io/sakutto-videotranslator/en/">
-  <link rel="alternate" href="https://mojosoftjp.github.io/sakutto-videotranslator/" hreflang="ja">
-  <link rel="alternate" href="https://mojosoftjp.github.io/sakutto-videotranslator/en/" hreflang="en">
-  <link rel="alternate" href="https://mojosoftjp.github.io/sakutto-videotranslator/" hreflang="x-default">
-  <meta name="robots" content="index, follow, max-image-preview:large">
-  <meta property="og:title" content="Snap Video Translator | AI Subtitles, Translation &amp; Dubbing">
-  <meta property="og:description" content="Add subtitles or AI dubbing in 7 languages to your video files on Windows. Transcription runs on your PC. One-time purchase; the download edition is free to try on videos up to 5 minutes.">
-  <meta property="og:url" content="https://mojosoftjp.github.io/sakutto-videotranslator/en/">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="Mojosoft">
-  <meta property="og:locale" content="en_US">
-  <meta name="twitter:title" content="Snap Video Translator | AI Subtitles, Translation &amp; Dubbing">
-  <meta name="twitter:description" content="Add subtitles or AI dubbing in 7 languages to your video files on Windows. Transcription runs on your PC. One-time purchase; the download edition is free to try on videos up to 5 minutes.">
-  <meta property="og:image" content="https://mojosoftjp.github.io/sakutto-videotranslator/en-main.png">
-  <meta name="twitter:image" content="https://mojosoftjp.github.io/sakutto-videotranslator/en-main.png">
-  <meta property="og:image:alt" content="Snap Video Translator | AI Subtitles, Translation &amp; Dubbing">
-  <meta name="twitter:image:alt" content="Snap Video Translator | AI Subtitles, Translation &amp; Dubbing">
-  <meta property="og:image:width" content="1800">
-  <meta property="og:image:height" content="1170">
-  <meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://mojosoftjp.github.io/sakutto-videotranslator/en/">
+<link rel="alternate" href="https://mojosoftjp.github.io/sakutto-videotranslator/" hreflang="ja">
+<link rel="alternate" href="https://mojosoftjp.github.io/sakutto-videotranslator/en/" hreflang="en">
+<link rel="alternate" href="https://mojosoftjp.github.io/sakutto-videotranslator/" hreflang="x-default">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta property="og:title" content="Snap Video Translator | AI Subtitles, Translation &amp; Dubbing">
+<meta property="og:description" content="Add subtitles or AI dubbing in 7 languages to your video files on Windows. Transcription runs on your PC. One-time purchase; the download edition is free to try on videos up to 5 minutes.">
+<meta property="og:url" content="https://mojosoftjp.github.io/sakutto-videotranslator/en/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Mojosoft">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:title" content="Snap Video Translator | AI Subtitles, Translation &amp; Dubbing">
+<meta name="twitter:description" content="Add subtitles or AI dubbing in 7 languages to your video files on Windows. Transcription runs on your PC. One-time purchase; the download edition is free to try on videos up to 5 minutes.">
+<meta property="og:image" content="https://mojosoftjp.github.io/sakutto-videotranslator/shot-done-en.jpg">
+<meta name="twitter:image" content="https://mojosoftjp.github.io/sakutto-videotranslator/shot-done-en.jpg">
+<meta property="og:image:alt" content="Snap Video Translator with four videos converted">
+<meta name="twitter:image:alt" content="Snap Video Translator with four videos converted">
+<meta property="og:image:width" content="1600">
+<meta property="og:image:height" content="900">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Zen+Maru+Gothic:wght@700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -167,7 +43,7 @@ footer .copyright{opacity:.7;margin-top:8px}
       "alternateName": "さくっと動画翻訳",
       "url": "https://mojosoftjp.github.io/sakutto-videotranslator/en/",
       "description": "Add subtitles or AI dubbing in 7 languages to your video files on Windows. Transcription runs on your PC. One-time purchase; the download edition is free to try on videos up to 5 minutes.",
-      "image": "https://mojosoftjp.github.io/sakutto-videotranslator/en-main.png",
+      "image": "https://mojosoftjp.github.io/sakutto-videotranslator/shot-done-en.jpg",
       "operatingSystem": "Windows",
       "applicationCategory": "MultimediaApplication",
       "inLanguage": "en",
@@ -223,533 +99,237 @@ footer .copyright{opacity:.7;margin-top:8px}
 }
 </script>
 </head>
-<body data-lang="en">
+<body>
 
-<!-- Mojosoft Header -->
-<nav style="position:fixed;top:0;left:0;right:0;z-index:9999;background:rgba(255,255,255,.85);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid rgba(0,0,0,.06);height:44px;display:flex;align-items:center;justify-content:space-between;padding:0 24px;">
-  <a href="https://mojosoft.biz/" style="font-size:18px;font-weight:700;color:#1D1D1F;text-decoration:none;font-family:'Noto Sans JP',sans-serif;">Mojosoft</a>
-  <a href="../help.html?lang=en" style="font-size:14px;font-weight:600;color:var(--primary-dark);text-decoration:none;font-family:'Noto Sans JP',sans-serif;margin-right:96px;"><span class="en">Guide</span></a>
-</nav>
-<div style="height:44px;"></div>
+<header class="site-header"><div class="wrap">
+  <a class="brand" href="./"><img src="../logo.png" alt="" width="30" height="30">Snap Video Translator</a>
+  <nav class="site-nav" aria-label="On this page">
+    <a href="#how">How it works</a><a href="#features">Features</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a><a href="../help.html?lang=en">Guide</a>
+  </nav>
+  <a class="lang" href="../" hreflang="ja" lang="ja">日本語</a>
+  <a class="btn btn-main btn-sm" href="https://mojosoft.biz/SakuttoVideoTranslator_Setup_1.2.0.exe" download>Try free</a>
+</div></header>
 
-<!-- Language toggle -->
-<button class="lang-toggle" onclick="toggleLang()">
-  <span class="en">日本語</span>
-</button>
+<main>
+<div class="hero"><div class="wrap">
+  <h1><span class="eyebrow">Snap Video Translator — for Windows</span>Give your videos <b>subtitles and a voice</b> in another language.</h1>
+  <p class="lede">Transcription, AI translation, burned-in subtitles and AI dubbing in one app. Add a video, pick the languages, and press Start. Transcription runs on your own PC.</p>
 
-<!-- Hero -->
-<header class="hero">
-  <div class="en"><div class="tagline">Video Translation Tool for Windows</div></div>
-  <div class="hero-title">
-    <img src="../logo.png" alt="Snap Video Translator icon">
-    <h1><span class="en">Snap Video Translator</span></h1>
+  <div class="screen">
+    <div class="compare" id="compare">
+      <img src="../compare-before.jpg" alt="The original English video" width="1600" height="900">
+      <img class="after" src="../compare-after.jpg" alt="The same video with Japanese subtitles added by Snap Video Translator" width="1600" height="900">
+      <span class="lbl l">Original</span><span class="lbl r">After Snap Video Translator</span>
+      <div class="handle"></div>
+      <input type="range" min="0" max="100" value="22" aria-label="Position of the before and after comparison">
+    </div>
+    <p class="hint">Drag the white handle to compare before and after. Hear the AI dubbing in the demo video below.</p>
   </div>
-  <p class="subtitle">
-    <span class="en">Transcribe → Translate → Burn-in Subtitles or AI Dub<br>Everything you need to localize a video, in one app.</span>
-  </p>
-  <div class="formats">
-    <span class="format-badge">日本語</span>
-    <span class="format-badge">English</span>
-    <span class="format-badge">中文</span>
-    <span class="format-badge">한국어</span>
-    <span class="format-badge">Français</span>
-    <span class="format-badge">Deutsch</span>
-    <span class="format-badge">Español</span>
-  </div>
-  <div class="cta-group">
-    <a href="https://apps.microsoft.com/detail/9N66P79HM5LB?cid=lp-index" class="btn btn-primary">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="8" height="8" rx="1"/><rect x="13" y="3" width="8" height="8" rx="1"/><rect x="3" y="13" width="8" height="8" rx="1"/><rect x="13" y="13" width="8" height="8" rx="1"/></svg>
-      <span class="en">Get on Microsoft Store</span>
-    </a>
-    <a href="https://mojosoft.biz/SakuttoVideoTranslator_Setup_1.2.0.exe" class="btn btn-secondary" download>
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-      <span class="en">Free Trial (up to 5 min)</span>
-    </a>
-    <a href="../purchase.html?lang=en" class="btn btn-outline">
-      <span class="en">Buy Download Edition</span>
-    </a>
-  </div>
-  <p class="trial-note">
-    <span class="en">Trial limited to 5 min per video. Buy the full edition for ¥2,950 (download) or via Microsoft Store.</span>
-  </p>
-  <p class="smartscreen-note">
-    <span class="en">Note: The download installer is code-signed (Mojosoft Co., Ltd.). Right after a release, Windows SmartScreen may still show a prompt on first run — click "More info" → "Run anyway" to launch.</span>
-  </p>
-</header>
 
-<!-- Demo video -->
-<section class="section video-section">
-  <div class="container">
-    <h2 class="section-title">Translate a Video with Subtitles and AI Dubbing</h2>
-    <p class="section-desc">
-      <span class="en">A 30-second look at what Snap Video Translator does.</span>
-    </p>
-    <div class="video-wrap">
-      <video class="en" controls playsinline preload="metadata" poster="../poster_en.jpg">
-        <source src="../snap_video_translator_promo.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-
-      <div class="en">
-        <p class="video-caption">
-          A 30-second product video showing the core flow — drop a video, transcribe the speech, translate with AI, and choose burn-in subtitles or AI dubbing in 7 languages.
-        </p>
-      </div>
+  <div class="ticket">
+    <div class="l"><b>Try it on your own video.</b><p>Free for videos up to 5 minutes, with no time limit. No account needed.</p></div>
+    <div class="r">
+      <a class="btn btn-main" href="https://mojosoft.biz/SakuttoVideoTranslator_Setup_1.2.0.exe" download>Try free<small>(videos up to 5 min)</small></a>
+      <a class="btn btn-line" href="https://apps.microsoft.com/detail/9N66P79HM5LB?cid=lp-index">Get it on Microsoft Store</a>
+      <a class="buy link" href="../purchase.html?lang=en">Buy the download edition →</a>
     </div>
   </div>
-</section>
+  <div class="assure">
+    <span><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-10"/></svg>One-time purchase, no subscription</span>
+    <span><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-10"/></svg>Transcription on your PC</span>
+    <span><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-10"/></svg>Code-signed installer</span>
+    <span><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-10"/></svg>Translation and dubbing in 7 languages</span>
+  </div>
+  <p class="smallnote">The download installer is code-signed (Mojosoft Co., Ltd.). Right after a release, Windows SmartScreen may still show a prompt on first run — click "More info" → "Run anyway" to launch.</p>
+</div></div>
 
-<!-- Feature overview cards -->
-<section id="features" class="section">
-  <div class="container">
-    <h2 class="section-title"><span class="en">Everything You Need to Localize Video</span></h2>
-    <p class="section-desc"><span class="en">From transcription to dubbing — one app covers it all.</span></p>
-    <div class="feature-grid">
-      <!-- 1: Transcribe -->
-      <div class="feature-card">
-        <span class="feature-icon">&#x1F4DD;</span>
-        <span class="feature-tag transcribe"><span class="en">Transcribe</span></span>
-        <h3><span class="en">Accurate Transcription</span></h3>
-        <p><span class="en">Runs OpenAI Whisper on your own PC. Builds the subtitle source without sending audio to the cloud.</span></p>
-        <ul>
-          <li><span class="en">Choose small / medium / large-v3-turbo / large-v3</span></li>
-          <li><span class="en">Export subtitles as SRT / VTT</span></li>
-        </ul>
-      </div>
-      <!-- 2: Translate -->
-      <div class="feature-card">
-        <span class="feature-icon">&#x1F310;</span>
-        <span class="feature-tag translate"><span class="en">AI Translation</span></span>
-        <h3><span class="en">Natural AI Translation</span></h3>
-        <p><span class="en">Translate with AI services like Gemini, OpenAI, and Claude, or a local LLM (LM Studio, Ollama, etc.).</span></p>
-        <ul>
-          <li>Choose from 7 target languages</li>
-          <li><span class="en">Review and edit subtitles before burn-in</span></li>
-        </ul>
-      </div>
-      <!-- 3: Subtitle burn-in -->
-      <div class="feature-card">
-        <span class="feature-icon">&#x1F3AC;</span>
-        <span class="feature-tag subtitle"><span class="en">Subtitle Burn-in</span></span>
-        <h3><span class="en">Burn Subtitles into Video</span></h3>
-        <p>Choose the font size, color (white or yellow) and position (top, center or bottom), then burn subtitles directly into the video.</p>
-        <ul>
-          <li>Choose size, color and position</li>
-          <li><span class="en">Batch-process multiple videos</span></li>
-        </ul>
-      </div>
-      <!-- 4: AI dubbing -->
-      <div class="feature-card">
-        <span class="feature-icon">&#x1F399;&#xFE0F;</span>
-        <span class="feature-tag dub"><span class="en">AI Dubbing</span></span>
-        <h3><span class="en">AI Dubbing in 7 Languages</span></h3>
-        <p><span class="en">Turns the translation into speech and generates a dubbed video. Mix with or replace the original audio.</span></p>
-        <ul>
-          <li><span class="en">JA / EN / ZH / KO / FR / DE / ES</span></li>
-          <li><span class="en">Male or female voice</span></li>
-        </ul>
-      </div>
+<section class="band on-dark" aria-labelledby="h-demo"><div class="wrap center">
+  <h2 class="h2" id="h-demo">Translate a Video with Subtitles and AI Dubbing</h2>
+  <p class="sub">A 30-second look at what Snap Video Translator does. Turn the sound on.</p>
+  <div class="video">
+    <video controls playsinline preload="metadata" poster="../poster_en.jpg">
+      <source src="../snap_video_translator_promo.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+  <p class="caption">The core flow in 30 seconds — drop a video, transcribe the speech, translate with AI, and choose burned-in subtitles or AI dubbing in 7 languages.</p>
+</div></section>
+
+<section id="how"><div class="wrap">
+  <h2 class="h2 center">Three steps, that's all.</h2>
+  <div class="row">
+    <div class="txt"><p class="verb"><small>First</small>Add your video</p><p>Drag and drop your files. Add several videos, or a whole folder, at once. Common formats such as MP4, MKV and MOV open as they are.</p></div>
+    <div class="frame"><img src="../shot-setup-en.jpg" alt="A video file added to the app" width="1600" height="900" loading="lazy"></div>
+  </div>
+  <div class="row">
+    <div class="txt"><p class="verb"><small>Next</small>Pick the languages</p><p>Choose the spoken language and the language you want, then press Start. Translation and dubbing cover Japanese, English, Chinese, Korean, French, German and Spanish.</p></div>
+    <div class="frame"><img src="../shot-processing-en.jpg" alt="Several videos being converted" width="1600" height="900" loading="lazy"></div>
+  </div>
+  <div class="row">
+    <div class="txt"><p class="verb"><small>Then</small>Collect the results</p><p>You get subtitle files (SRT, VTT), a video with burned-in subtitles, and a dubbed video. Turn on Review mode to fix the translation line by line before burn-in.</p></div>
+    <div class="frame"><img src="../shot-review-en.jpg" alt="The subtitle review and edit window" width="1600" height="900" loading="lazy"></div>
+  </div>
+</div></section>
+
+<section id="features" class="soft"><div class="wrap">
+  <div class="center"><h2 class="h2">Everything you need to localize a video.</h2><p class="sub">From transcription to dubbing — one app covers it all.</p></div>
+  <div class="features">
+    <div class="feature"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg><h3>Transcription</h3><p>Runs OpenAI Whisper on your own PC. Builds the subtitle text without sending audio to the cloud.</p><ul><li>Choose small / medium / large-v3-turbo / large-v3</li><li>Export subtitles as SRT and VTT</li></ul></div>
+    <div class="feature"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18"/></svg><h3>AI translation</h3><p>Translate with AI services such as Gemini, OpenAI and Claude, or a local LLM (LM Studio, Ollama, etc.).</p><ul><li>Choose from 7 target languages</li><li>Review and edit subtitles before burn-in</li></ul></div>
+    <div class="feature"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 15h6M15 15h2"/></svg><h3>Burned-in subtitles</h3><p>Choose the font size, color (white or yellow) and position (top, center or bottom), then burn subtitles directly into the video.</p><ul><li>Choose size, color and position</li><li>Batch-process multiple videos</li></ul></div>
+    <div class="feature"><svg viewBox="0 0 24 24"><path d="M12 3a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V6a3 3 0 0 0-3-3z"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg><h3>AI dubbing</h3><p>Turns the translation into speech and makes a dubbed video. Mix it with the original audio, or replace the original.</p><ul><li>JA / EN / ZH / KO / FR / DE / ES</li><li>Male or female voice</li></ul></div>
+  </div>
+</div></section>
+
+<section id="use-cases"><div class="wrap">
+  <div class="center"><h2 class="h2">Use Cases</h2><p class="sub">Add subtitles or dubbing to the video and audio files you already have.</p></div>
+  <div class="cases">
+    <div class="case"><div class="ic"><svg viewBox="0 0 24 24"><path d="M3 9l9-5 9 5-9 5-9-5z"/><path d="M7 11v5c3 2 7 2 10 0v-5"/></svg></div><div><h3>Talks and training videos</h3><p>Add subtitles in one of the 7 supported languages to recorded talks, webinars and in-house training, then share them with your team.</p></div></div>
+    <div class="case"><div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18"/></svg></div><div><h3>Your own videos, for a global audience</h3><p>Add English, Japanese, Spanish, Chinese and other subtitles or dubbing to your YouTube videos or product videos.</p></div></div>
+    <div class="case"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V6a3 3 0 0 0-3-3z"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></div><div><h3>Recordings to text</h3><p>Transcribe interviews and lectures (MP3, WAV and more) into timed subtitle files (SRT, VTT).</p></div></div>
+    <div class="case"><div class="ic"><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div><div><h3>Videos that must stay in-house</h3><p>Transcription runs on your PC. Choose a local LLM and translation stays in-house too (dubbing uses an online voice service).</p></div></div>
+  </div>
+</div></section>
+
+<section id="data-flow" class="soft"><div class="wrap">
+  <div class="center"><h2 class="h2">Where Your Data Goes</h2><p class="sub">What stays on your PC, and what is sent over the internet.</p></div>
+  <div class="flow">
+    <div class="pc"><h3>Stays on your PC</h3><ul><li>Extracting audio from the video</li><li>Transcription (OpenAI Whisper)</li><li>Creating subtitle files, burning in subtitles and writing the video</li><li>Translation with a local LLM (LM Studio, Ollama, etc.) running in your own environment</li></ul></div>
+    <div class="net"><h3>Sent over the internet</h3><ul><li>Translating with a cloud AI: only the subtitle text is sent to the AI service you choose (Google Gemini, OpenAI or Anthropic Claude). Audio and video are not sent</li><li>Dubbing: the subtitle text to be spoken (the translation, when AI translation is on) is sent to Microsoft's online text-to-speech service (Edge TTS)</li><li>Downloading a transcription model the first time (from Hugging Face)</li></ul></div>
+  </div>
+  <p class="flow-note center">Your videos, audio and text are never sent to the developer (Mojosoft). No account signup and no usage tracking. See the <a href="../privacy.html?lang=en">Privacy Policy</a> for details.</p>
+</div></section>
+
+<section id="formats"><div class="wrap">
+  <div class="center"><h2 class="h2">Supported Formats</h2><p class="sub">Open common video and audio formats as they are.</p></div>
+  <table class="spec">
+    <tr><th scope="row">Video input</th><td><span>MP4</span><span>MKV</span><span>AVI</span><span>MOV</span><span>WebM</span><span>WMV</span><span>FLV</span><br>Add several files, or a whole folder, at once</td></tr>
+    <tr><th scope="row">Audio input</th><td><span>MP3</span><span>WAV</span><span>M4A</span><span>OGG</span><span>FLAC</span><span>WMA</span><br>Used for transcription and subtitle files (dubbing needs a video)</td></tr>
+    <tr><th scope="row">Output files</th><td>Subtitle files: SRT and VTT<br>Video with burned-in subtitles: same format as the source (MP4 in, MP4 out)<br>Dubbed video: same format as the source</td></tr>
+    <tr><th scope="row">Languages</th><td>Transcription (spoken language): Japanese, English, Chinese, Korean, or auto-detect<br>Translation and dubbing: Japanese, English, Chinese, Korean, French, German, Spanish<br>App interface: English or Japanese (follows your Windows language)</td></tr>
+    <tr><th scope="row">Requirements</th><td>Windows (64-bit)</td></tr>
+  </table>
+</div></section>
+
+<section id="pricing" class="soft"><div class="wrap">
+  <div class="center"><h2 class="h2">Pricing — One-Time Purchase, No Subscription</h2><p class="sub">Get it easily from Microsoft Store, or try the download edition before buying. Same price either way — ¥2,950, one-time — with identical features.</p></div>
+  <div class="plans">
+    <div class="plan pick">
+      <span class="tag">Try before you buy</span>
+      <h3>Download Edition</h3>
+      <p class="price">¥2,950<small>one-time</small></p>
+      <ul>
+        <li><b>Free trial (videos up to 5 min, no time limit)</b></li>
+        <li>Pay via PayPal or bank transfer</li>
+        <li>One-time purchase, permanent license</li>
+        <li class="note">Manual updates (notified by email)</li>
+      </ul>
+      <a class="btn btn-main" href="https://mojosoft.biz/SakuttoVideoTranslator_Setup_1.2.0.exe" download>Download Free Trial</a>
+      <a class="buy link" href="../purchase.html?lang=en">Buy the download edition (license key) →</a>
+    </div>
+    <div class="plan store">
+      <span class="tag">Easiest</span>
+      <h3>Microsoft Store</h3>
+      <p class="price">¥2,950<small>one-time</small></p>
+      <ul>
+        <li>One-click purchase and install</li>
+        <li>Automatic updates</li>
+        <li>No license key required</li>
+        <li>Buy with your Microsoft account</li>
+      </ul>
+      <a class="btn btn-line" href="https://apps.microsoft.com/detail/9N66P79HM5LB?cid=lp-index">Buy on Microsoft Store</a>
     </div>
   </div>
-</section>
+  <p class="price-note">You choose the translation AI. A local LLM costs nothing extra. With a cloud AI (Gemini, OpenAI or Claude), that provider bills you for API usage through your own API key. Transcription and dubbing cost nothing beyond the app.</p>
+</div></section>
 
-<!-- Use cases (W4) -->
-<section id="use-cases" class="section" style="background:#fff">
-  <div class="container">
-    <h2 class="section-title">Use Cases</h2>
-    <p class="section-desc">Add subtitles or dubbing to the video and audio files you already have.</p>
-    <div class="points" style="margin-top:0;grid-template-columns:repeat(auto-fit,minmax(min(360px,100%),1fr))">
-      <div class="point">
-        <div class="point-icon">&#x1F393;</div>
-        <div>
-          <h3>Talks and training videos</h3>
-          <p>Add subtitles in one of the 7 supported languages to recorded talks, webinars and in-house training, then share them with your team.</p>
-        </div>
-      </div>
-      <div class="point">
-        <div class="point-icon">&#x1F30F;</div>
-        <div>
-          <h3>Your own videos, for a global audience</h3>
-          <p>Add English, Japanese, Spanish, Chinese and other subtitles or dubbing to your YouTube videos or product videos.</p>
-        </div>
-      </div>
-      <div class="point">
-        <div class="point-icon">&#x1F399;&#xFE0F;</div>
-        <div>
-          <h3>Recordings to text</h3>
-          <p>Transcribe interviews and lectures (MP3, WAV and more) into timed subtitle files (SRT, VTT).</p>
-        </div>
-      </div>
-      <div class="point">
-        <div class="point-icon">&#x1F512;</div>
-        <div>
-          <h3>Videos that must stay in-house</h3>
-          <p>Transcription runs on your PC. Choose a local LLM and translation stays in-house too (dubbing uses an online voice service).</p>
-        </div>
-      </div>
-    </div>
+<section id="faq"><div class="wrap">
+  <h2 class="h2 center">FAQ</h2>
+  <div class="faq">
+    <details open><summary>Can I add English or other subtitles to my own YouTube videos?</summary><p>Yes. Download your video from YouTube Studio, open it in the app, and you get subtitle files (SRT, VTT). Add the file in YouTube Studio to publish your video with subtitles.</p></details>
+    <details><summary>Does it work on a PC with no internet connection?</summary><p>Yes. Transcription runs on your PC, and with a local LLM (LM Studio, Ollama, etc.) translation does too, so you can make subtitles offline. You only need the internet to download the models the first time (dubbing uses an online text-to-speech service).</p></details>
+    <details><summary>Can I use it for confidential videos?</summary><p>Yes. Audio and video never leave your PC. With a local LLM, the subtitle text stays in-house too. Nothing is sent to the developer.</p></details>
+    <details><summary>Can it handle long videos and many files at once?</summary><p>Yes. The Microsoft Store edition and the purchased download edition have no length limit. Add several files or a whole folder, and they are processed one after another.</p></details>
+    <details><summary>Can I fix the translation before finishing?</summary><p>Yes. Turn on Review mode to edit the subtitles line by line before burn-in. Review mode opens when the file list contains a single video.</p></details>
+    <details><summary>Can I try it before buying?</summary><p>Yes. The download edition is free for videos up to 5 minutes, with no time limit and no account.</p></details>
+    <details><summary>Is it a one-time purchase?</summary><p>Yes. Pay ¥2,950 once and keep using it. You choose the translation AI: a local LLM costs nothing extra, and a cloud AI (Gemini, OpenAI or Claude) is billed by that provider.</p></details>
+    <details><summary>Can I use the subtitles in other software?</summary><p>Yes. SRT and VTT are standard subtitle formats that YouTube and most video editors can import.</p></details>
   </div>
-</section>
+  <p class="more">For more questions, see the <a href="../help.html?lang=en">user guide</a>.</p>
+</div></section>
 
-<!-- Formats (W4) -->
-<section id="formats" class="section">
-  <div class="container">
-    <h2 class="section-title">Supported Formats</h2>
-    <p class="section-desc">Open common video and audio formats as they are.</p>
-    <div class="feature-grid">
-      <div class="feature-card">
-        <span class="feature-icon">&#x1F39E;&#xFE0F;</span>
-        <h3>Video input</h3>
-        <p>MP4, MKV, AVI, MOV, WebM, WMV, FLV</p>
-        <ul>
-          <li>Add several files, or a whole folder, at once</li>
-        </ul>
-      </div>
-      <div class="feature-card">
-        <span class="feature-icon">&#x1F3B5;</span>
-        <h3>Audio input</h3>
-        <p>MP3, WAV, M4A, OGG, FLAC, WMA</p>
-        <ul>
-          <li>Used for transcription and subtitle files (dubbing needs a video)</li>
-        </ul>
-      </div>
-      <div class="feature-card">
-        <span class="feature-icon">&#x1F4C4;</span>
-        <h3>Output files</h3>
-        <ul>
-          <li>Subtitle files: SRT and VTT</li>
-          <li>Video with burned-in subtitles: same format as the source (MP4 in, MP4 out)</li>
-          <li>Dubbed video: same format as the source</li>
-        </ul>
-      </div>
-      <div class="feature-card">
-        <span class="feature-icon">&#x1F5E3;&#xFE0F;</span>
-        <h3>Languages</h3>
-        <ul>
-          <li>Transcription (spoken language): Japanese, English, Chinese, Korean, or auto-detect</li>
-          <li>Translation and dubbing: Japanese, English, Chinese, Korean, French, German, Spanish</li>
-          <li>App interface: English or Japanese (follows your Windows language)</li>
-        </ul>
-      </div>
-    </div>
+<section id="changelog" class="soft"><div class="wrap">
+  <div class="center"><h2 class="h2">Changelog</h2><p class="sub">We keep improving it. The Store and download editions share the same latest build.</p></div>
+  <div class="log">
+    <article>
+      <h3>v1.2.0</h3><time datetime="2026-10-05">October 5, 2026</time>
+      <ul>
+        <li>Updated the AI translation models to the latest generation (Gemini 3.8 Flash, GPT-6.1, Claude Sonnet 5.5 / Opus 5.5, and more). If an older model was selected, the app switches to the recommended one automatically</li>
+        <li>Your API key is now stored encrypted with Windows data protection (keys saved by earlier versions are encrypted automatically)</li>
+        <li>Fixed the selected AI model resetting to the default on the next launch</li>
+        <li>If the AI returns no translation for some lines, only those lines keep the original text and the app shows how many (subtitles no longer shift out of place)</li>
+        <li>Fixed translation failures with some Claude models (Sonnet 5 / Opus 5)</li>
+        <li>Fixed the blank subtitle review/edit window in Review mode</li>
+        <li>Renamed the AI option to "Local LLM (LM Studio, Ollama, etc.)" and stopped sending your cloud API key to a local LLM</li>
+      </ul>
+    </article>
+    <article>
+      <h3>v1.1.2</h3><time datetime="2026-08-31">August 31, 2026</time>
+      <ul>
+        <li>Updated the AI translation models to the latest generation (Gemini 3.7 Flash, GPT-5.6, Claude Sonnet 5 / Opus 5, and more)</li>
+        <li>Fixed translation failures with the latest OpenAI models</li>
+        <li>Added protection against crashes while loading the speech model on some systems (it falls back to CPU mode automatically; you can also switch manually in settings)</li>
+        <li>The model status now shows which runtime is in use (GPU / CPU)</li>
+      </ul>
+    </article>
+    <article>
+      <h3>v1.1.1</h3><time datetime="2026-05-30">May 30, 2026</time>
+      <ul><li>Added an in-app Help button that opens the user guide right away</li></ul>
+    </article>
   </div>
-</section>
+  <p class="more"><a href="changelog.html">See the full changelog →</a></p>
+</div></section>
 
-<!-- Screenshot -->
-<section class="section" style="background:#fff">
-  <div class="container">
-    <h2 class="section-title"><span class="en">Screenshot</span></h2>
-    <p class="section-desc"><span class="en">A simple screen — just add a video and configure.</span></p>
-    <div class="shot">
-      <img class="en" src="../en-main.png" alt="Snap Video Translator screen" loading="lazy">
-      <p class="caption"><span class="en">Main window — transcription, AI translation, and dubbing settings all in one place.</span></p>
-    </div>
+<section id="support"><div class="wrap">
+  <h2 class="h2 center">Support</h2>
+  <div class="support">
+    <p><b>Bug reports and feature requests</b><br>Report via <a href="https://github.com/mojosoftjp/sakutto-videotranslator/issues">GitHub Issues</a>.</p>
+    <p><b>Contact</b><br>Email: <a href="mailto:support@mojosoft.biz">support@mojosoft.biz</a></p>
+    <p><a href="../privacy.html?lang=en">Privacy Policy</a></p>
   </div>
-</section>
+</div></section>
+</main>
 
-<!-- Why choose -->
-<section class="section">
-  <div class="container">
-    <h2 class="section-title"><span class="en">Why Choose It</span></h2>
-    <p class="section-desc"><span class="en">Localizing video, made simpler.</span></p>
-    <div class="points">
-      <div class="point">
-        <div class="point-icon">&#x26A1;</div>
-        <div>
-          <h3><span class="en">Ready to Use</span></h3>
-          <p><span class="en">Launch right after install. No account signup required.</span></p>
-        </div>
-      </div>
-      <div class="point">
-        <div class="point-icon">&#x1F5E3;&#xFE0F;</div>
-        <div>
-          <h3><span class="en">Dubbing in 7 Languages</span></h3>
-          <p><span class="en">Japanese, English, Chinese, Korean, French, German, and Spanish.</span></p>
-        </div>
-      </div>
-      <div class="point">
-        <div class="point-icon">&#x1F30D;</div>
-        <div>
-          <h3><span class="en">Japanese / English UI</span></h3>
-          <p><span class="en">Switches automatically based on your OS language.</span></p>
-        </div>
-      </div>
-      <div class="point">
-        <div class="point-icon">&#x1F512;</div>
-        <div>
-          <h3><span class="en">Local Transcription</span></h3>
-          <p><span class="en">Transcription runs locally with Whisper — your audio is not sent anywhere.</span></p>
-        </div>
-      </div>
-      <div class="point">
-        <div class="point-icon">&#x1F4B0;</div>
-        <div>
-          <h3><span class="en">One-Time Purchase</span></h3>
-          <p><span class="en">No subscription. Buy once, use forever.</span></p>
-        </div>
-      </div>
-      <div class="point">
-        <div class="point-icon">&#x1F916;</div>
-        <div>
-          <h3><span class="en">Choose Your AI</span></h3>
-          <p><span class="en">Pick Gemini, OpenAI, Claude, or a local LLM (LM Studio, Ollama, etc.).</span></p>
-        </div>
-      </div>
-    </div>
+<div class="band final on-dark"><div class="wrap">
+  <h2 class="h2">Now try it on your own video.</h2>
+  <p>Free for videos up to 5 minutes. No account needed.</p>
+  <div class="btns">
+    <a class="btn btn-main" href="https://mojosoft.biz/SakuttoVideoTranslator_Setup_1.2.0.exe" download>Try free<small>(videos up to 5 min)</small></a>
+    <a class="btn btn-line" href="https://apps.microsoft.com/detail/9N66P79HM5LB?cid=lp-index">Get it on Microsoft Store</a>
   </div>
-</section>
+</div></div>
 
-<!-- Data flow (W4) -->
-<section id="data-flow" class="section" style="background:#fff">
-  <div class="container">
-    <h2 class="section-title">Where Your Data Goes</h2>
-    <p class="section-desc">What stays on your PC, and what is sent over the internet.</p>
-    <div class="feature-grid">
-      <div class="feature-card">
-        <span class="feature-icon">&#x1F4BB;</span>
-        <h3>Stays on your PC</h3>
-        <ul>
-          <li>Extracting audio from the video</li>
-          <li>Transcription (OpenAI Whisper)</li>
-          <li>Creating subtitle files, burning in subtitles and writing the video</li>
-          <li>Translation with a local LLM (LM Studio, Ollama, etc.) running in your own environment</li>
-        </ul>
-      </div>
-      <div class="feature-card">
-        <span class="feature-icon">&#x1F310;</span>
-        <h3>Sent over the internet</h3>
-        <ul>
-          <li>Translating with a cloud AI: only the subtitle text is sent to the AI service you choose (Google Gemini, OpenAI or Anthropic Claude). Audio and video are not sent</li>
-          <li>Dubbing: the subtitle text to be spoken (the translation, when AI translation is on) is sent to Microsoft's online text-to-speech service (Edge TTS)</li>
-          <li>Downloading a transcription model the first time (from Hugging Face)</li>
-        </ul>
-      </div>
-    </div>
-    <p class="pricing-note">Your videos, audio and text are never sent to the developer (Mojosoft). No account signup and no usage tracking. See the <a href="../privacy.html?lang=en">Privacy Policy</a> for details.</p>
+<footer class="site-footer"><div class="wrap">
+  <div class="foot-grid">
+    <div><h4>Snap Video Translator</h4><div class="foot-links"><a href="#features">Features</a><a href="#pricing">Pricing</a><a href="../purchase.html?lang=en">Purchase</a><a href="../help.html?lang=en">Guide</a><a href="#faq">FAQ</a><a href="changelog.html">Changelog</a><a href="#support">Support</a><a href="../privacy.html?lang=en">Privacy Policy</a><a href="https://github.com/mojosoftjp/sakutto-videotranslator">GitHub</a></div></div>
+    <div><h4>More Sakutto apps</h4><div class="foot-links"><a href="https://mojosoftjp.github.io/sakutto-pdf/en/">Sakutto PDF</a><a href="https://mojosoftjp.github.io/sakutto-imageconverter/en/">Sakutto Image Converter</a><a href="https://mojosoftjp.github.io/sakutto-videoconverter/en/">SakuttoVideo</a><a href="https://mojosoftjp.github.io/sakutto-audioconverter/en/">SakuttoAudio</a><a href="https://mojosoftjp.github.io/en/">All Mojosoft apps</a></div></div>
   </div>
-</section>
+  <p class="copyright">&copy; 2026 Mojosoft. All rights reserved.</p>
+</div></footer>
 
-<!-- Pricing — Store vs Download comparison -->
-<section id="pricing" class="section pricing-section">
-  <div class="container">
-    <h2 class="section-title">Pricing — One-Time Purchase, No Subscription</h2>
-    <p class="section-desc"><span class="en">Get it easily from Microsoft Store, or try the download edition before buying. Same price either way — <strong>¥2,950</strong> (one-time).</span></p>
-
-    <div class="pricing-grid">
-      <!-- Microsoft Store -->
-      <div class="pricing-card-lp featured">
-        <h3>
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="8" height="8" rx="1"/><rect x="13" y="3" width="8" height="8" rx="1"/><rect x="3" y="13" width="8" height="8" rx="1"/><rect x="13" y="13" width="8" height="8" rx="1"/></svg>
-          <span class="en">Microsoft Store</span>
-        </h3>
-        <span class="pricing-badge"><span class="en">Easiest</span></span>
-        <div class="pricing-price-lp" style="margin-top:16px"><span class="currency">¥</span>2,950<span class="unit"> <span class="en">one-time</span></span></div>
-        <p class="pricing-tagline">
-          <span class="en">Official Microsoft Store. Auto install and update. No license management needed.</span>
-        </p>
-        <ul>
-          <li><span class="en">One-click purchase &amp; install</span></li>
-          <li><span class="en">Auto-updates</span></li>
-          <li><span class="en">No license key required</span></li>
-          <li><span class="en">Microsoft Store buyer protection</span></li>
-          <li class="con"><span class="en">No free trial (direct purchase)</span></li>
-        </ul>
-        <a href="https://apps.microsoft.com/detail/9N66P79HM5LB?cid=lp-index" class="pricing-cta cta-store">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="8" height="8" rx="1"/><rect x="13" y="3" width="8" height="8" rx="1"/><rect x="3" y="13" width="8" height="8" rx="1"/><rect x="13" y="13" width="8" height="8" rx="1"/></svg>
-          <span class="en">Buy on Microsoft Store</span>
-        </a>
-      </div>
-
-      <!-- Download Edition -->
-      <div class="pricing-card-lp">
-        <h3>
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-          <span class="en">Download Edition</span>
-        </h3>
-        <span class="pricing-badge"><span class="en">Try before you buy</span></span>
-        <div class="pricing-price-lp" style="margin-top:16px"><span class="currency">¥</span>2,950<span class="unit"> <span class="en">one-time</span></span></div>
-        <p class="pricing-tagline">
-          <span class="en">Pay via PayPal or bank transfer. Try the trial first (5-min video limit).</span>
-        </p>
-        <ul>
-          <li><span class="en"><strong>Free trial (up to 5 min per video)</strong></span></li>
-          <li><span class="en">Pay via PayPal or bank transfer</span></li>
-          <li><span class="en">Avoids Microsoft Store fees</span></li>
-          <li><span class="en">One-time purchase, permanent license</span></li>
-          <li class="con"><span class="en">SmartScreen may prompt right after a release (code-signed; click "More info" → "Run anyway")</span></li>
-          <li class="con"><span class="en">Manual updates (notified by email)</span></li>
-        </ul>
-        <a href="https://mojosoft.biz/SakuttoVideoTranslator_Setup_1.2.0.exe" class="pricing-cta cta-dl" download>
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-          <span class="en">Download Free Trial</span>
-        </a>
-        <a href="../purchase.html?lang=en" class="pricing-cta-secondary">
-          <span class="en">→ Buy Download Edition (license key)</span>
-        </a>
-      </div>
-    </div>
-
-    <p class="pricing-note">
-      <span class="en">Both editions have <strong>identical features</strong>. Store version is convenient with auto-updates. Download edition lets you try before you buy. <a href="../purchase.html?lang=en">See download edition details →</a></span>
-    </p>
-    <p class="pricing-note" style="margin-top:12px">No monthly fee. If you translate with a cloud AI (Gemini, OpenAI or Claude), that provider may bill you for API usage through your own API key. Translation with a local LLM, transcription and dubbing cost nothing beyond the app.</p>
-  </div>
-</section>
-
-<!-- How to use -->
-<section class="section" style="background:#fff">
-  <div class="container">
-    <h2 class="section-title"><span class="en">Easy 3-Step Workflow</span></h2>
-    <p class="section-desc"><span class="en">Translating a video has never been this easy.</span></p>
-    <div class="steps">
-      <div class="step">
-        <h3><span class="en">Add Your Video</span></h3>
-        <p><span class="en">Drag &amp; drop video/audio files, or select them with the button.</span></p>
-      </div>
-      <div class="step">
-        <h3><span class="en">Configure</span></h3>
-        <p><span class="en">Choose the transcription model, AI translation, and dubbing options.</span></p>
-      </div>
-      <div class="step">
-        <h3><span class="en">Run!</span></h3>
-        <p><span class="en">Just click the button. Out comes your subtitled or dubbed video.</span></p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FAQ (W4) -->
-<section id="faq" class="section">
-  <div class="container">
-    <h2 class="section-title">FAQ</h2>
-    <p class="section-desc">Straight answers, including what the app cannot do.</p>
-    <div style="max-width:760px;margin:0 auto;display:grid;gap:16px">
-      <div class="feature-card">
-        <h3>Q. Can I translate a YouTube video from its URL?</h3>
-        <p>No. The app does not take URLs. It works with video and audio files on your PC, such as videos you made yourself or videos you have permission to use. If you only want to watch a YouTube video, try YouTube's auto-translated captions.</p>
-      </div>
-      <div class="feature-card">
-        <h3>Q. Does it work offline?</h3>
-        <p>Transcription works offline once you have downloaded a transcription model. Translation can stay in your own environment with a local LLM (LM Studio, Ollama, etc.). Translating with a cloud AI and dubbing (Microsoft's online text-to-speech) need an internet connection.</p>
-      </div>
-      <div class="feature-card">
-        <h3>Q. Is there a subscription?</h3>
-        <p>No. The app is a one-time purchase. If you translate with a cloud AI (Gemini, OpenAI or Claude), that provider may bill you for API usage through your own API key.</p>
-      </div>
-      <div class="feature-card">
-        <h3>Q. Do I need an API key?</h3>
-        <p>Not for transcription, and not for translation with a local LLM. Translating with Gemini, OpenAI or Claude needs an API key from that service. The text-to-speech for dubbing needs no API key, but dubbing into another language uses AI translation.</p>
-      </div>
-      <div class="feature-card">
-        <h3>Q. Can I make bilingual subtitles (original and translation together)?</h3>
-        <p>No. Subtitles come out in one language: the translated language when AI translation is on, otherwise the spoken language.</p>
-      </div>
-      <div class="feature-card">
-        <h3>Q. Can I fix the translation before it becomes subtitles?</h3>
-        <p>Yes. Turn on Review mode to check and edit the subtitle text before burn-in. Review mode only opens when the file list contains a single file (it is skipped when you process two or more files together). You can edit the text, but not the timings.</p>
-      </div>
-      <div class="feature-card">
-        <h3>Q. Can it handle long videos?</h3>
-        <p>The Microsoft Store edition and the purchased download edition have no length limit. The free trial of the download edition handles videos up to 5 minutes each. Processing time depends on the video length and your PC.</p>
-      </div>
-      <div class="feature-card">
-        <h3>Q. Does it run on Mac?</h3>
-        <p>No. It is for Windows (64-bit) only.</p>
-      </div>
-    </div>
-    <p class="pricing-note">For more questions, see the <a href="../help.html?lang=en">user guide</a>.</p>
-  </div>
-</section>
-
-<!-- Changelog -->
-<section id="changelog" class="section" style="background:#fff">
-  <div class="container">
-    <h2 class="section-title"><span class="en">Changelog</span></h2>
-    <p class="section-desc"><span class="en">We keep improving it. The Store and download editions share the same latest build.</span></p>
-    <div style="max-width:720px;margin:0 auto">
-
-      <div class="step" style="margin-bottom:20px">
-        <h3 style="margin-bottom:4px">v1.2.0</h3>
-        <p style="color:var(--muted);font-size:.9rem;margin-bottom:12px"><span class="en">October 5, 2026</span></p>
-        <ul style="margin:0;padding-left:20px;line-height:1.9">
-          <li><span class="en">Updated the AI translation models to the latest generation (Gemini 3.8 Flash, GPT-6.1, Claude Sonnet 5.5 / Opus 5.5, and more). If an older model was selected, the app switches to the recommended one automatically</span></li>
-          <li><span class="en">Your API key is now stored encrypted with Windows data protection (keys saved by earlier versions are encrypted automatically)</span></li>
-          <li><span class="en">Fixed the selected AI model resetting to the default on the next launch</span></li>
-          <li><span class="en">If the AI returns no translation for some lines, only those lines keep the original text and the app shows how many (subtitles no longer shift out of place)</span></li>
-          <li><span class="en">Fixed translation failures with some Claude models (Sonnet 5 / Opus 5)</span></li>
-          <li><span class="en">Fixed the blank subtitle review/edit window in Review mode</span></li>
-          <li><span class="en">Renamed the AI option to "Local LLM (LM Studio, Ollama, etc.)" and stopped sending your cloud API key to a local LLM</span></li>
-        </ul>
-      </div>
-
-      <div class="step" style="margin-bottom:20px">
-        <h3 style="margin-bottom:4px">v1.1.2</h3>
-        <p style="color:var(--muted);font-size:.9rem;margin-bottom:12px"><span class="en">August 31, 2026</span></p>
-        <ul style="margin:0;padding-left:20px;line-height:1.9">
-          <li><span class="en">Updated the AI translation models to the latest generation (Gemini 3.7 Flash, GPT-5.6, Claude Sonnet 5 / Opus 5, and more)</span></li>
-          <li><span class="en">Fixed translation failures with the latest OpenAI models</span></li>
-          <li><span class="en">Added protection against crashes while loading the speech model on some systems (it falls back to CPU mode automatically; you can also switch manually in settings)</span></li>
-          <li><span class="en">The model status now shows which runtime is in use (GPU / CPU)</span></li>
-        </ul>
-      </div>
-
-      <div class="step">
-        <h3 style="margin-bottom:4px">v1.1.1</h3>
-        <p style="color:var(--muted);font-size:.9rem;margin-bottom:12px"><span class="en">May 30, 2026</span></p>
-        <ul style="margin:0;padding-left:20px;line-height:1.9">
-          <li><span class="en">Added an in-app Help button that opens the user guide right away</span></li>
-        </ul>
-      </div>
-
-
-      <p class="pricing-note"><a href="changelog.html">See the full changelog →</a></p>
-    </div>
-  </div>
-</section>
-
-<!-- Support -->
-<section id="support" class="section">
-  <div class="container">
-    <h2 class="section-title"><span class="en">Support</span></h2>
-    <p class="section-desc"><span class="en">Feel free to contact us if you need help.</span></p>
-    <div style="max-width:560px;margin:0 auto;text-align:center">
-      <p style="margin-bottom:16px">
-        <strong><span class="en">Bug Reports &amp; Feature Requests</span></strong><br>
-        <span class="en">Report via <a href="https://github.com/mojosoftjp/sakutto-videotranslator/issues">GitHub Issues</a>.</span>
-      </p>
-      <p style="margin-bottom:16px">
-        <strong><span class="en">Contact</span></strong><br>
-        Email: <a href="mailto:support@mojosoft.biz">support@mojosoft.biz</a>
-      </p>
-      <p style="color:var(--muted);font-size:.9rem;margin-top:32px">
-        <a href="../privacy.html?lang=en"><span class="en">Privacy Policy</span></a>
-      </p>
-    </div>
-  </div>
-</section>
-
-<!-- Footer -->
-<footer>
-  <div class="footer-links">
-    <a href="#features"><span class="en">Features</span></a>
-    <a href="#pricing"><span class="en">Pricing</span></a>
-    <a href="../purchase.html?lang=en"><span class="en">Purchase</span></a>
-    <a href="../help.html?lang=en"><span class="en">Guide</span></a>
-    <a href="#faq">FAQ</a>
-    <a href="changelog.html">Changelog</a>
-    <a href="#support"><span class="en">Support</span></a>
-    <a href="../privacy.html?lang=en"><span class="en">Privacy Policy</span></a>
-    <a href="https://github.com/mojosoftjp/sakutto-videotranslator">GitHub</a>
-  </div>
-  <div class="copyright">&copy; 2026 Mojosoft. All rights reserved.</div>
-</footer>
+<div class="sticky-cta">
+  <a class="btn btn-main" href="https://mojosoft.biz/SakuttoVideoTranslator_Setup_1.2.0.exe" download>Try free</a>
+  <a class="btn btn-line" href="https://apps.microsoft.com/detail/9N66P79HM5LB?cid=lp-index">Store</a>
+</div>
 
 <script>
-function setLang(lang) {
-  if (lang !== "en") window.location.assign("https://mojosoftjp.github.io/sakutto-videotranslator/" + window.location.hash);
-}
-function toggleLang() { setLang("ja"); }
+(function () {
+  var c = document.getElementById('compare'); if (!c) return;
+  var r = c.querySelector('input');
+  function set(v) { c.style.setProperty('--pos', v + '%'); }
+  r.addEventListener('input', function () { set(r.value); });
+  set(r.value);
+})();
 </script>
-
 </body>
 </html>
