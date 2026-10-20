@@ -8,106 +8,61 @@
 <link rel="icon" type="image/x-icon" href="favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Zen+Maru+Gothic:wght@700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-:root{--primary:#F97316;--primary-dark:#EA580C;--accent:#FB923C;--bg:#FFF7ED;--card:#FFFFFF;--text:#1E293B;--muted:#64748B;--border:#FED7AA;--radius:12px}
-body{font-family:"Segoe UI","Meiryo","Hiragino Sans",sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
-a{color:var(--primary);text-decoration:none}
-a:hover{text-decoration:underline}
-
-/* Language toggle */
-.lang-toggle{position:fixed;top:16px;right:16px;z-index:1000;background:rgba(255,255,255,.92);border:1px solid var(--border);border-radius:999px;padding:6px 16px;font-size:.85rem;font-weight:600;cursor:pointer;box-shadow:0 2px 12px rgba(0,0,0,.1);transition:background .2s}
-.lang-toggle:hover{background:#fff;box-shadow:0 4px 16px rgba(0,0,0,.15)}
+/* bilingual page: the language switch hides the other language (needed by toggleLang) */
 [data-lang="ja"] .en,[data-lang="en"] .ja{display:none!important}
+.site-header .lang{background:none;font:inherit;font-size:.82rem;cursor:pointer}
+.page-head .lead{max-width:40em;margin:10px auto 0;color:var(--sub)}
+.page-head .actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:22px}
 
-/* Hero */
-.hero{background:linear-gradient(135deg,#9A3412 0%,#EA580C 45%,#FB923C 100%);color:#fff;padding:80px 24px 64px;text-align:center;position:relative;overflow:hidden}
-.hero::after{content:"";position:absolute;bottom:-2px;left:0;right:0;height:48px;background:var(--bg);clip-path:ellipse(55% 100% at 50% 100%)}
-.hero-title{display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:8px}
-.hero-title img{width:56px;height:56px;border-radius:14px;filter:drop-shadow(0 4px 12px rgba(0,0,0,.25))}
-.hero h1{font-size:2.3rem;font-weight:800;letter-spacing:-.02em;margin:0}
-.hero .subtitle{font-size:1.1rem;opacity:.92;margin-bottom:28px;font-weight:400}
-.hero .tagline{display:inline-block;background:rgba(255,255,255,.18);border-radius:999px;padding:6px 20px;font-size:.9rem;margin-bottom:24px;backdrop-filter:blur(4px)}
-.cta-group{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
-.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 28px;border-radius:999px;font-size:.95rem;font-weight:600;transition:transform .15s,box-shadow .15s;cursor:pointer;border:none}
-.btn-secondary{background:rgba(255,255,255,.92);color:var(--primary-dark)}
-.btn-secondary:hover{background:#fff;transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.18);text-decoration:none}
-.btn-outline{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.5)}
-.btn-outline:hover{background:rgba(255,255,255,.12);text-decoration:none}
-
-/* Container */
 .container{max-width:880px;margin:0 auto;padding:0 24px}
-
-/* Section */
-.section{padding:56px 0}
-.section-title{font-size:1.6rem;font-weight:700;text-align:center;margin-bottom:12px}
-.section-desc{text-align:center;color:var(--muted);margin-bottom:44px;font-size:1.02rem}
-
-/* In-page nav (table of contents) */
-.toc{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:20px 24px;margin:0 auto 8px;max-width:880px}
-.toc h2{font-size:1rem;font-weight:700;margin-bottom:12px;color:var(--text)}
-.toc ul{list-style:none;display:flex;flex-wrap:wrap;gap:8px 20px}
+.section{padding:72px 0;background:var(--panel)}
+.section-title{font-family:var(--round);font-weight:900;font-size:clamp(1.5rem,3vw,2.1rem);line-height:1.42;text-align:center}
+.section-desc{text-align:center;color:var(--sub);margin:12px 0 36px}
+.toc{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:20px 24px;margin:8px auto 0}
+.toc h2{font-family:var(--round);font-size:1rem;margin-bottom:10px}
+.toc ul{list-style:none;display:flex;flex-wrap:wrap;gap:8px 22px}
 .toc ul li{font-size:.92rem}
-.toc ul li::before{content:"›";color:var(--primary);font-weight:700;margin-right:6px}
-
-/* Steps */
-.steps-list{counter-reset:step;display:flex;flex-direction:column;gap:18px}
-.step-row{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px 24px 24px 72px;position:relative}
-.step-row::before{counter-increment:step;content:counter(step);position:absolute;top:24px;left:22px;width:34px;height:34px;border-radius:50%;background:var(--primary);color:#fff;font-weight:700;font-size:1rem;display:flex;align-items:center;justify-content:center}
-.step-row h3{font-size:1.1rem;margin-bottom:6px;font-weight:700}
-.step-row p{font-size:.94rem;color:var(--muted)}
-.step-row ul{margin-top:8px;padding-left:18px;font-size:.9rem;color:var(--muted)}
+.toc ul li::before{content:"›";color:var(--accent);font-weight:700;margin-right:6px}
+.toc a{color:var(--ink);font-weight:500;text-decoration:none}
+.toc a:hover{color:var(--accent-dark)}
+.steps-list{counter-reset:step;display:flex;flex-direction:column;gap:16px}
+.step-row{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:24px 24px 24px 74px;position:relative}
+.step-row::before{counter-increment:step;content:counter(step);position:absolute;top:22px;left:22px;width:34px;height:34px;border-radius:50%;background:var(--accent);color:#fff;font-family:var(--round);font-weight:900;display:flex;align-items:center;justify-content:center}
+.step-row h3{font-family:var(--round);font-size:1.1rem;margin-bottom:6px}
+.step-row p{font-size:.94rem;color:var(--sub)}
+.step-row ul{margin-top:8px;padding-left:18px;font-size:.9rem;color:var(--sub)}
 .step-row ul li{margin-bottom:4px}
-
-/* Generic card */
-.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:28px 28px}
+.card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:28px}
 .card + .card{margin-top:20px}
-.card h3{font-size:1.15rem;font-weight:700;margin-bottom:10px;display:flex;align-items:center;gap:8px}
-.card p{font-size:.94rem;color:var(--muted);margin-bottom:8px}
-.card ul{padding-left:20px;font-size:.92rem;color:var(--muted)}
+.card h3{font-family:var(--round);font-size:1.15rem;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.card p{font-size:.94rem;color:var(--sub);margin-bottom:8px}
+.card ul{padding-left:20px;font-size:.92rem;color:var(--sub)}
 .card ul li{margin-bottom:6px}
-.card strong{color:var(--text)}
-
-/* Format badges */
+.card strong,.step-row strong{color:var(--ink)}
 .formats{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
-.format-badge{background:#FFEDD5;color:#C2410C;border-radius:8px;padding:5px 14px;font-size:.85rem;font-weight:600}
-.format-label{font-size:.85rem;font-weight:700;color:var(--text);margin:14px 0 4px}
-
-/* FAQ */
-.faq details{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);margin-bottom:12px;overflow:hidden}
-.faq summary{padding:18px 22px;font-weight:600;font-size:.98rem;cursor:pointer;list-style:none;position:relative;padding-right:48px}
-.faq summary::-webkit-details-marker{display:none}
-.faq summary::after{content:"+";position:absolute;right:22px;top:50%;transform:translateY(-50%);font-size:1.4rem;color:var(--primary);font-weight:400;transition:transform .2s}
-.faq details[open] summary::after{content:"\2212"}
-.faq .faq-body{padding:0 22px 18px;font-size:.92rem;color:var(--muted);line-height:1.75}
-.faq .faq-body p{margin-bottom:8px}
+.format-badge{background:var(--panel);color:var(--ink);border-radius:6px;padding:3px 12px;font-size:.85rem;font-weight:700}
+.format-label{font-size:.88rem;font-weight:700;margin:14px 0 4px}
+.faq{max-width:none;margin:0}
+.faq details{padding:0}
+.faq summary{padding:18px 22px}
+.faq .faq-body{padding:0 22px 18px 22px;font-size:.93rem;color:var(--sub);line-height:1.8}
+.faq .faq-body p{margin:0 0 8px;padding-left:0}
 .faq .faq-body ol,.faq .faq-body ul{padding-left:20px;margin:8px 0}
 .faq .faq-body li{margin-bottom:5px}
-.faq .faq-body code{background:#FFF7ED;border:1px solid var(--border);border-radius:6px;padding:1px 7px;font-family:"Consolas","Fira Code",monospace;font-size:.86em;color:var(--primary-dark)}
-.faq .faq-body strong{color:var(--text)}
-
-/* Callout */
-.callout{background:#FFFBEB;border:1px solid #FDE68A;border-left:4px solid #F59E0B;border-radius:8px;padding:14px 18px;font-size:.9rem;color:#92400E;margin-top:14px}
-.callout strong{color:#78350F}
-
-/* Contact */
-.contact-box{max-width:560px;margin:0 auto;text-align:center}
+.faq .faq-body code{background:var(--panel);border-radius:6px;padding:1px 7px;font-size:.88em;color:var(--accent-dark)}
+.faq .faq-body strong{color:var(--ink)}
+.callout{background:#fff4ee;border-left:4px solid var(--accent);border-radius:10px;padding:14px 18px;font-size:.92rem;color:#5a3a28;margin-top:14px}
+.callout strong{color:var(--ink)}
+.contact-box{max-width:560px;margin:0 auto;text-align:center;color:var(--sub)}
 .contact-box p{margin-bottom:16px}
-
-/* Footer */
-footer{background:#1E293B;color:#CBD5E1;padding:40px 24px;text-align:center;font-size:.88rem}
-footer a{color:#FDBA74}
-footer .footer-links{margin-bottom:16px;display:flex;gap:24px;justify-content:center;flex-wrap:wrap}
-footer .copyright{opacity:.7;margin-top:8px}
-
-/* Responsive */
-@media(max-width:700px){
-  .hero h1{font-size:1.8rem}
-  .hero .subtitle{font-size:.95rem}
-  .section{padding:44px 0}
-  .step-row{padding:20px 18px 20px 60px}
-  .step-row::before{left:16px}
-}
+.contact-box strong{color:var(--ink)}
+.section a{overflow-wrap:anywhere}
+@media(max-width:700px){.section{padding:52px 0}.step-row{padding:20px 18px 20px 62px}.step-row::before{left:16px}}
 </style>
   <link rel="canonical" href="https://mojosoftjp.github.io/sakutto-videotranslator/help.html">
   <meta name="robots" content="index, follow, max-image-preview:large">
@@ -129,44 +84,27 @@ footer .copyright{opacity:.7;margin-top:8px}
 </head>
 <body data-lang="ja">
 
-<!-- Mojosoft Header -->
-<nav style="position:fixed;top:0;left:0;right:0;z-index:9999;background:rgba(255,255,255,.85);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid rgba(0,0,0,.06);height:44px;display:flex;align-items:center;padding:0 24px;">
-  <a href="https://mojosoft.biz/" style="font-size:18px;font-weight:700;color:#1D1D1F;text-decoration:none;font-family:'Noto Sans JP',sans-serif;">Mojosoft</a>
-  <span style="margin-left:auto;display:flex;gap:20px;align-items:center;">
-    <a href="index.html" style="font-size:14px;color:#1D1D1F;text-decoration:none;font-weight:500;"><span class="ja">トップ</span><span class="en">Home</span></a>
-    <a href="purchase.html" style="font-size:14px;color:#1D1D1F;text-decoration:none;font-weight:500;"><span class="ja">購入</span><span class="en">Purchase</span></a>
-  </span>
-</nav>
-<div style="height:44px;"></div>
+<header class="site-header"><div class="wrap">
+  <a class="brand ja" href="index.html"><img src="logo.png" alt="" width="30" height="30">さくっと動画翻訳</a>
+  <a class="brand en" href="en/"><img src="logo.png" alt="" width="30" height="30">Snap Video Translator</a>
+  <nav class="site-nav ja" aria-label="サイト内">
+    <a href="index.html#how">使い方</a><a href="index.html#features">できること</a><a href="index.html#pricing">価格</a><a href="index.html#faq">よくある質問</a><a href="help.html">ヘルプ</a>
+  </nav>
+  <nav class="site-nav en" aria-label="Site">
+    <a href="en/#how">How it works</a><a href="en/#features">Features</a><a href="en/#pricing">Pricing</a><a href="en/#faq">FAQ</a><a href="help.html?lang=en">Guide</a>
+  </nav>
+  <button type="button" class="lang" onclick="toggleLang()"><span class="ja" lang="en">EN</span><span class="en" lang="ja">日本語</span></button>
+  <a class="btn btn-main btn-sm" href="https://mojosoft.biz/SakuttoVideoTranslator_Setup_1.2.0.exe" download><span class="ja">無料で試す</span><span class="en">Try free</span></a>
+</div></header>
 
-<!-- Language toggle -->
-<button class="lang-toggle" onclick="toggleLang()">
-  <span class="ja">EN</span>
-  <span class="en">日本語</span>
-</button>
-
-<!-- Hero -->
-<header class="hero">
-  <div class="ja"><div class="tagline">使い方・ヘルプ</div></div>
-  <div class="en"><div class="tagline">Help &amp; User Guide</div></div>
-  <div class="hero-title">
-    <img src="logo.png" alt="Snap Video Translator icon">
-    <h1><span class="ja">さくっと動画翻訳 ヘルプ</span><span class="en">Snap Video Translator Help</span></h1>
+<div class="page-head"><div class="wrap">
+  <h1><span class="ja">さくっと動画翻訳 ヘルプ</span><span class="en">Snap Video Translator Help</span></h1>
+  <p class="lead"><span class="ja">動画の文字起こし・AI翻訳・字幕焼き付け・AI吹き替えの使い方ガイド。</span><span class="en">How to transcribe, translate, subtitle, and dub your videos.</span></p>
+  <div class="actions">
+    <a class="btn btn-line ja" href="index.html">← トップへ戻る</a><a class="btn btn-line en" href="en/">← Back to Home</a>
+    <a class="btn btn-main ja" href="purchase.html">購入ページ</a><a class="btn btn-main en" href="purchase.html?lang=en">Purchase Page</a>
   </div>
-  <p class="subtitle">
-    <span class="ja">動画の文字起こし・AI翻訳・字幕焼き付け・AI吹き替えの使い方ガイド。</span>
-    <span class="en">How to transcribe, translate, subtitle, and dub your videos.</span>
-  </p>
-  <div class="cta-group">
-    <a href="index.html" class="btn btn-secondary">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
-      <span class="ja">トップへ戻る</span><span class="en">Back to Home</span>
-    </a>
-    <a href="purchase.html" class="btn btn-outline">
-      <span class="ja">購入ページ</span><span class="en">Purchase Page</span>
-    </a>
-  </div>
-</header>
+</div></div>
 
 <!-- Table of contents -->
 <div class="container" style="padding-top:32px">
@@ -540,18 +478,19 @@ footer .copyright{opacity:.7;margin-top:8px}
   </div>
 </section>
 
-<!-- Footer -->
-<footer>
-  <div class="footer-links">
-    <a href="index.html"><span class="ja">トップ</span><span class="en">Home</span></a>
-    <a href="index.html#features"><span class="ja">機能</span><span class="en">Features</span></a>
-    <a href="purchase.html"><span class="ja">購入</span><span class="en">Purchase</span></a>
-    <a href="#faq">FAQ</a>
-    <a href="privacy.html"><span class="ja">プライバシーポリシー</span><span class="en">Privacy Policy</span></a>
-    <a href="https://github.com/mojosoftjp/sakutto-videotranslator">GitHub</a>
+<footer class="site-footer"><div class="wrap">
+  <div class="foot-grid">
+    <div><h4><span class="ja">さくっと動画翻訳</span><span class="en">Snap Video Translator</span></h4>
+      <div class="foot-links ja"><a href="index.html#features">機能</a><a href="index.html#pricing">価格</a><a href="purchase.html">購入</a><a href="help.html">使い方</a><a href="index.html#faq">よくある質問</a><a href="changelog.html">更新履歴</a><a href="index.html#support">サポート</a><a href="privacy.html">プライバシーポリシー</a><a href="https://github.com/mojosoftjp/sakutto-videotranslator">GitHub</a></div>
+      <div class="foot-links en"><a href="en/#features">Features</a><a href="en/#pricing">Pricing</a><a href="purchase.html?lang=en">Purchase</a><a href="help.html?lang=en">Guide</a><a href="en/#faq">FAQ</a><a href="en/changelog.html">Changelog</a><a href="en/#support">Support</a><a href="privacy.html?lang=en">Privacy Policy</a><a href="https://github.com/mojosoftjp/sakutto-videotranslator">GitHub</a></div>
+    </div>
+    <div><h4><span class="ja">さくっとシリーズ</span><span class="en">More Sakutto apps</span></h4>
+      <div class="foot-links ja"><a href="https://mojosoftjp.github.io/sakutto-pdf/">さくっとPDF</a><a href="https://mojosoftjp.github.io/sakutto-imageconverter/">さくっと画像変換</a><a href="https://mojosoftjp.github.io/sakutto-videoconverter/">さくっと動画変換</a><a href="https://mojosoftjp.github.io/sakutto-audioconverter/">さくっと音声変換</a><a href="https://mojosoftjp.github.io/">Mojosoft のアプリ一覧</a></div>
+      <div class="foot-links en"><a href="https://mojosoftjp.github.io/sakutto-pdf/en/">Sakutto PDF</a><a href="https://mojosoftjp.github.io/sakutto-imageconverter/en/">Sakutto Image Converter</a><a href="https://mojosoftjp.github.io/sakutto-videoconverter/en/">SakuttoVideo</a><a href="https://mojosoftjp.github.io/sakutto-audioconverter/en/">SakuttoAudio</a><a href="https://mojosoftjp.github.io/en/">All Mojosoft apps</a></div>
+    </div>
   </div>
-  <div class="copyright">&copy; 2026 Mojosoft. All rights reserved.</div>
-</footer>
+  <p class="copyright">&copy; 2026 Mojosoft. All rights reserved.</p>
+</div></footer>
 
 <script>
 function setLang(lang, opts) {

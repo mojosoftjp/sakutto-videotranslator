@@ -11,118 +11,75 @@
 <meta name="theme-color" content="#1E293B">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Zen+Maru+Gothic:wght@700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-:root{
-  --bg-deep:#0F172A;--bg-dark:#1E293B;--bg-card:rgba(255,255,255,.04);--bg-card-hover:rgba(255,255,255,.08);
-  --border:rgba(255,255,255,.08);--border-hover:rgba(255,255,255,.18);
-  --text-white:#F8FAFC;--text-muted:rgba(248,250,252,.6);--text-dim:rgba(248,250,252,.38);
-  --accent-orange:#F97316;--accent-amber:#FB923C;--accent-orange-dark:#EA580C;
-  --glow-orange:rgba(249,115,22,.25);
-  --gradient-main:linear-gradient(135deg,#FB923C,#F97316,#EA580C);
-  --gradient-text:linear-gradient(135deg,#FDBA74,#FB923C,#F97316);
-  --radius:16px;--radius-sm:10px;
-}
-html{scroll-behavior:smooth}
-body{font-family:"Segoe UI","Meiryo","Hiragino Sans",system-ui,sans-serif;background:var(--bg-deep);color:var(--text-white);line-height:1.6;-webkit-font-smoothing:antialiased}
-a{color:var(--accent-amber);text-decoration:none;transition:color .2s}a:hover{color:#FDBA74}
-::selection{background:rgba(249,115,22,.35);color:#fff}
-
-/* Language toggle */
-.lang-nav-btn{background:rgba(255,255,255,.08)!important;border:1px solid var(--border);border-radius:999px!important;padding:4px 14px!important;font-size:.78rem!important;font-weight:600!important;letter-spacing:.03em;cursor:pointer;transition:all .25s;color:var(--text-white)}
-.lang-nav-btn:hover{background:rgba(255,255,255,.15)!important;color:var(--text-white)!important;border-color:var(--border-hover)}
+/* bilingual page: the language switch hides the other language (needed by toggleLang) */
 [data-lang="ja"] .en,[data-lang="en"] .ja{display:none!important}
+.site-header .lang{background:none;font:inherit;font-size:.82rem;cursor:pointer}
+.page-head .lead{max-width:40em;margin:10px auto 0;color:var(--sub)}
+.page-head .actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:22px}
 
-/* Nav */
-.nav{position:fixed;top:0;left:0;right:0;z-index:9998;padding:0 32px;height:56px;display:flex;align-items:center;justify-content:space-between;background:rgba(15,23,42,.85);backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid var(--border)}
-.nav-brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:1.05rem;color:var(--text-white)}
-.nav-brand img{width:28px;height:28px;border-radius:6px}
-.nav-links{display:flex;gap:28px;align-items:center}
-.nav-links a{color:var(--text-muted);font-size:.88rem;font-weight:500;transition:color .2s}
-.nav-links a:hover,.nav-links a.active{color:var(--text-white)}
-
-/* Hero */
-.purchase-hero{padding:120px 24px 60px;text-align:center;position:relative}
-.purchase-hero h1{font-size:clamp(2rem,5vw,2.8rem);font-weight:800;background:var(--gradient-text);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:12px}
-.purchase-hero p{color:var(--text-muted);font-size:1.05rem;max-width:640px;margin:0 auto}
-
-/* Pricing */
-.pricing-section{padding:0 24px 60px;max-width:560px;margin:0 auto}
-.pricing-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:36px 32px;position:relative;transition:transform .3s,box-shadow .3s}
-.pricing-card:hover{transform:translateY(-4px);box-shadow:0 20px 40px rgba(249,115,22,.15)}
-.pricing-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--gradient-main);border-radius:var(--radius) var(--radius) 0 0}
-.pricing-card h3{font-size:1.3rem;font-weight:700;margin-bottom:8px}
-.pricing-price{font-size:2.6rem;font-weight:900;letter-spacing:-.03em;margin-bottom:4px}
-.pricing-price .currency{font-size:1rem;font-weight:600;vertical-align:super;margin-right:2px}
-.pricing-price .unit{font-size:.85rem;font-weight:400;color:var(--text-muted)}
-.pricing-desc{color:var(--text-muted);font-size:.92rem;margin-bottom:20px}
-.pricing-features{list-style:none;margin-bottom:24px;display:flex;flex-direction:column;gap:10px}
-.pricing-features li{display:flex;gap:10px;align-items:center;font-size:.88rem;color:var(--text-muted)}
-.pricing-features li::before{content:'✓';color:var(--accent-amber);font-weight:700}
-
-/* Hardware ID */
+/* colour names used by inline styles inside the page content */
+:root{--accent-orange:#ff6a2b;--accent-orange-dark:#e2531a;--accent-amber:#e2531a;--text-white:#14213d;--text-muted:#55607a;--text-dim:#7a849a;--border:#dfe5ee}
+.purchase-hero{padding:56px 24px 28px;text-align:center}
+.purchase-hero h1{font-family:var(--round);font-weight:900;font-size:clamp(1.9rem,4.4vw,2.7rem);line-height:1.35;margin-bottom:10px}
+.purchase-hero p{color:var(--sub);font-size:1.02rem;max-width:640px;margin:0 auto}
+.pricing-section{padding:0 24px 80px;max-width:620px;margin:0 auto}
+.pricing-card{background:#fff;border:2px solid var(--accent);border-radius:18px;padding:34px 32px;box-shadow:0 18px 44px rgba(255,106,43,.12)}
+.pricing-card h3{font-family:var(--round);font-size:1.3rem;margin-bottom:6px}
+.pricing-price{font-family:var(--round);font-weight:900;font-size:2.6rem;line-height:1.2;margin-bottom:4px}
+.pricing-price .currency{font-size:1rem;vertical-align:super;margin-right:2px}
+.pricing-price .unit{font-size:.85rem;font-weight:700;color:var(--sub)}
+.pricing-desc{color:var(--sub);font-size:.92rem;margin-bottom:18px}
+.pricing-features{list-style:none;margin-bottom:24px;display:flex;flex-direction:column;gap:8px}
+.pricing-features li{display:flex;gap:10px;align-items:center;font-size:.9rem;color:var(--ink)}
+.pricing-features li::before{content:"✓";color:var(--accent);font-weight:700}
 .hwid-section{margin-bottom:20px}
-.hwid-section label{display:block;font-size:.85rem;font-weight:600;margin-bottom:6px;color:var(--text-muted)}
-.hwid-section input{width:100%;padding:10px 14px;background:rgba(255,255,255,.06);border:1px solid var(--border);border-radius:8px;color:var(--text-white);font-family:'Consolas','Fira Code',monospace;font-size:.9rem;outline:none;transition:border-color .2s}
-.hwid-section input:focus{border-color:var(--accent-orange)}
-.hwid-section input::placeholder{color:var(--text-dim)}
-.hwid-help{font-size:.78rem;color:var(--text-dim);margin-top:6px}
-.hwid-help a{color:var(--accent-amber)}
-.hwid-error{font-size:.8rem;color:#F87171;margin-top:4px;display:none}
-
-/* Store button */
-.btn-store{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:12px 20px;background:linear-gradient(135deg,#0078D4,#00BCF2);color:#fff;border-radius:8px;font-size:.95rem;font-weight:600;transition:all .2s;text-decoration:none;margin-bottom:12px;border:none;cursor:pointer}
-.btn-store:hover{background:linear-gradient(135deg,#006CBD,#00A8D8);color:#fff;transform:translateY(-1px)}
+.hwid-section label{display:block;font-size:.88rem;font-weight:700;margin-bottom:6px}
+.hwid-section input{width:100%;padding:12px 14px;background:#fff;border:2px solid var(--line);border-radius:10px;color:var(--ink);font-family:Consolas,"Cascadia Mono",monospace;font-size:.95rem;outline:none;transition:border-color .2s}
+.hwid-section input:focus{border-color:var(--accent)}
+.hwid-section input::placeholder{color:#9aa4b8}
+.hwid-help{font-size:.8rem;color:var(--sub);margin-top:6px}
+.hwid-error{font-size:.82rem;color:#d93025;margin-top:4px;display:none}
+.btn-store{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:13px 20px;background:var(--ink);color:#fff;border-radius:10px;font-size:.95rem;font-weight:700;text-decoration:none;margin-bottom:12px;transition:background .15s}
+.btn-store:hover{background:#0a1120;color:#fff}
 .btn-store svg{width:18px;height:18px;flex-shrink:0}
-.or-divider{text-align:center;color:var(--text-dim);font-size:.8rem;margin:12px 0;position:relative}
-.or-divider::before,.or-divider::after{content:'';position:absolute;top:50%;width:calc(50% - 24px);height:1px;background:var(--border)}
-.or-divider::before{left:0}
-.or-divider::after{right:0}
-
-/* PayPal */
-.paypal-container{margin:16px 0 8px;min-height:55px;background:#fff;border-radius:8px;padding:4px}
-.payment-note{display:flex;align-items:center;gap:6px;font-size:.78rem;color:var(--text-dim);margin-top:8px}
+.or-divider{text-align:center;color:var(--sub);font-size:.82rem;margin:12px 0;position:relative}
+.or-divider::before,.or-divider::after{content:"";position:absolute;top:50%;width:calc(50% - 26px);height:1px;background:var(--line)}
+.or-divider::before{left:0}.or-divider::after{right:0}
+.paypal-container{margin:16px 0 8px;min-height:55px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:6px}
+.payment-note{display:flex;align-items:center;gap:6px;font-size:.8rem;color:var(--sub);margin-top:8px}
 .payment-note svg{width:14px;height:14px;flex-shrink:0}
-
-/* Info boxes */
-.info-box{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:28px;margin-top:24px}
-.info-box h4{font-size:1rem;font-weight:700;margin-bottom:12px;color:var(--text-white)}
-.info-box p,.info-box li{font-size:.88rem;color:var(--text-muted);line-height:1.7}
+.info-box{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:26px;margin-top:20px}
+.info-box h4{font-family:var(--round);font-size:1.05rem;margin-bottom:10px}
+.info-box p,.info-box li{font-size:.9rem;color:var(--sub);line-height:1.8}
 .info-box ol,.info-box ul{padding-left:20px;margin-top:8px}
 .info-box li{margin-bottom:6px}
-
-/* Bank transfer */
-.bank-section h3{font-size:1.15rem;font-weight:700;margin-bottom:8px;display:flex;align-items:center;gap:8px}
-.bank-section h3 svg{width:22px;height:22px;fill:var(--accent-amber)}
-.bank-desc{color:var(--text-muted);font-size:.9rem;margin-bottom:16px}
+.info-box strong{color:var(--ink)}
+.bank-section h3{font-family:var(--round);font-size:1.15rem;margin-bottom:8px;display:flex;align-items:center;gap:8px}
+.bank-section h3 svg{width:22px;height:22px;fill:var(--accent)}
+.bank-desc{color:var(--sub);font-size:.9rem;margin-bottom:14px}
 .bank-table{width:100%;border-collapse:collapse}
-.bank-table th,.bank-table td{padding:10px 14px;text-align:left;border-bottom:1px solid var(--border);font-size:.9rem}
-.bank-table th{color:var(--text-dim);font-weight:500;width:120px}
-.bank-table td{color:var(--text-white)}
-.bank-note{font-size:.8rem;color:var(--text-dim);margin-top:12px;line-height:1.6}
-.bank-note a{color:var(--accent-amber)}
-
-/* Success Modal */
-.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.78);backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;z-index:20000}
+.bank-table th,.bank-table td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--line);font-size:.92rem}
+.bank-table th{color:var(--sub);font-weight:500;width:120px}
+.bank-table td{color:var(--ink);font-weight:500}
+.bank-note{font-size:.82rem;color:var(--sub);margin-top:12px;line-height:1.7}
+.modal-overlay{position:fixed;inset:0;background:rgba(13,21,38,.62);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;z-index:20000}
 .modal-overlay.active{display:flex}
-.modal{background:linear-gradient(145deg,#1E293B,#0F172A);border:1px solid rgba(249,115,22,.35);border-radius:20px;padding:40px;max-width:480px;width:90%;text-align:center;box-shadow:0 24px 60px rgba(0,0,0,.5)}
-.modal h2{font-size:1.5rem;margin-bottom:8px;background:var(--gradient-text);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.modal .checkmark{font-size:3rem;margin-bottom:16px}
-.modal-info{text-align:left;margin:20px 0;background:rgba(255,255,255,.04);border-radius:12px;padding:16px}
-.modal-row{display:flex;justify-content:space-between;padding:6px 0;font-size:.88rem}
-.modal-row .label{color:var(--text-dim)}
-.modal-row .value{color:var(--text-white);font-weight:500}
-.modal p.note{font-size:.82rem;color:var(--text-muted);margin-top:16px}
-.modal .btn-close{margin-top:20px;padding:10px 32px;background:var(--accent-orange);color:#fff;border:none;border-radius:8px;font-size:.95rem;font-weight:600;cursor:pointer;transition:background .2s}
-.modal .btn-close:hover{background:var(--accent-orange-dark)}
-
-/* Footer */
-footer{text-align:center;padding:40px 24px;border-top:1px solid var(--border);font-size:.82rem;color:var(--text-dim)}
-footer a{color:var(--text-muted);margin:0 12px}
-
-@media(max-width:700px){
-  .nav-links a:not(.lang-nav-btn):not(.active){display:none}
-}
+.modal{background:#fff;border-radius:20px;padding:40px;max-width:480px;width:90%;text-align:center;box-shadow:0 24px 60px rgba(0,0,0,.3)}
+.modal h2{font-family:var(--round);font-size:1.5rem;margin-bottom:8px;color:var(--accent-dark)}
+.modal .checkmark{font-size:3rem;margin-bottom:12px}
+.modal-info{text-align:left;margin:20px 0;background:var(--panel);border-radius:12px;padding:16px}
+.modal-row{display:flex;justify-content:space-between;gap:12px;padding:6px 0;font-size:.88rem}
+.modal-row .label{color:var(--sub)}
+.modal-row .value{color:var(--ink);font-weight:700;word-break:break-all}
+.modal p.note{font-size:.82rem;color:var(--sub);margin-top:16px}
+.modal .btn-close{margin-top:20px;padding:12px 34px;background:var(--accent);color:#fff;border:0;border-radius:10px;font-size:.95rem;font-weight:700;cursor:pointer}
+.modal .btn-close:hover{background:var(--accent-dark)}
+.info-box a[href$=".exe"]{overflow-wrap:anywhere}
 </style>
   <link rel="canonical" href="https://mojosoftjp.github.io/sakutto-videotranslator/purchase.html">
   <meta name="robots" content="index, follow, max-image-preview:large">
@@ -144,19 +101,18 @@ footer a{color:var(--text-muted);margin:0 12px}
 </head>
 <body data-lang="ja">
 
-<!-- Nav -->
-<nav class="nav">
-  <a href="index.html" class="nav-brand" style="text-decoration:none">
-    <img src="favicon-32.png" alt="さくっと動画翻訳">
-    <span><span class="ja">さくっと動画翻訳</span><span class="en">Snap Video Translator</span></span>
-  </a>
-  <div class="nav-links">
-    <a href="index.html#features"><span class="ja">機能</span><span class="en">Features</span></a>
-    <a href="purchase.html" class="active"><span class="ja">購入</span><span class="en">Purchase</span></a>
-    <a href="help.html"><span class="ja">使い方</span><span class="en">Guide</span></a>
-    <a href="javascript:void(0)" onclick="toggleLang()" class="lang-nav-btn"><span class="ja">EN</span><span class="en">JA</span></a>
-  </div>
-</nav>
+<header class="site-header"><div class="wrap">
+  <a class="brand ja" href="index.html"><img src="logo.png" alt="" width="30" height="30">さくっと動画翻訳</a>
+  <a class="brand en" href="en/"><img src="logo.png" alt="" width="30" height="30">Snap Video Translator</a>
+  <nav class="site-nav ja" aria-label="サイト内">
+    <a href="index.html#how">使い方</a><a href="index.html#features">できること</a><a href="index.html#pricing">価格</a><a href="index.html#faq">よくある質問</a><a href="help.html">ヘルプ</a>
+  </nav>
+  <nav class="site-nav en" aria-label="Site">
+    <a href="en/#how">How it works</a><a href="en/#features">Features</a><a href="en/#pricing">Pricing</a><a href="en/#faq">FAQ</a><a href="help.html?lang=en">Guide</a>
+  </nav>
+  <button type="button" class="lang" onclick="toggleLang()"><span class="ja" lang="en">EN</span><span class="en" lang="ja">日本語</span></button>
+  <a class="btn btn-main btn-sm" href="https://mojosoft.biz/SakuttoVideoTranslator_Setup_1.2.0.exe" download><span class="ja">無料で試す</span><span class="en">Try free</span></a>
+</div></header>
 
 <!-- Hero -->
 <section class="purchase-hero">
@@ -316,16 +272,19 @@ footer a{color:var(--text-muted);margin:0 12px}
   </div>
 </div>
 
-<!-- Footer -->
-<footer>
-  <div>
-    <a href="index.html"><span class="ja">さくっと動画翻訳</span><span class="en">Snap Video Translator</span></a>
-    <a href="purchase.html"><span class="ja">購入</span><span class="en">Purchase</span></a>
-    <a href="help.html"><span class="ja">使い方</span><span class="en">Guide</span></a>
-    <a href="privacy.html"><span class="ja">プライバシー</span><span class="en">Privacy</span></a>
+<footer class="site-footer"><div class="wrap">
+  <div class="foot-grid">
+    <div><h4><span class="ja">さくっと動画翻訳</span><span class="en">Snap Video Translator</span></h4>
+      <div class="foot-links ja"><a href="index.html#features">機能</a><a href="index.html#pricing">価格</a><a href="purchase.html">購入</a><a href="help.html">使い方</a><a href="index.html#faq">よくある質問</a><a href="changelog.html">更新履歴</a><a href="index.html#support">サポート</a><a href="privacy.html">プライバシーポリシー</a><a href="https://github.com/mojosoftjp/sakutto-videotranslator">GitHub</a></div>
+      <div class="foot-links en"><a href="en/#features">Features</a><a href="en/#pricing">Pricing</a><a href="purchase.html?lang=en">Purchase</a><a href="help.html?lang=en">Guide</a><a href="en/#faq">FAQ</a><a href="en/changelog.html">Changelog</a><a href="en/#support">Support</a><a href="privacy.html?lang=en">Privacy Policy</a><a href="https://github.com/mojosoftjp/sakutto-videotranslator">GitHub</a></div>
+    </div>
+    <div><h4><span class="ja">さくっとシリーズ</span><span class="en">More Sakutto apps</span></h4>
+      <div class="foot-links ja"><a href="https://mojosoftjp.github.io/sakutto-pdf/">さくっとPDF</a><a href="https://mojosoftjp.github.io/sakutto-imageconverter/">さくっと画像変換</a><a href="https://mojosoftjp.github.io/sakutto-videoconverter/">さくっと動画変換</a><a href="https://mojosoftjp.github.io/sakutto-audioconverter/">さくっと音声変換</a><a href="https://mojosoftjp.github.io/">Mojosoft のアプリ一覧</a></div>
+      <div class="foot-links en"><a href="https://mojosoftjp.github.io/sakutto-pdf/en/">Sakutto PDF</a><a href="https://mojosoftjp.github.io/sakutto-imageconverter/en/">Sakutto Image Converter</a><a href="https://mojosoftjp.github.io/sakutto-videoconverter/en/">SakuttoVideo</a><a href="https://mojosoftjp.github.io/sakutto-audioconverter/en/">SakuttoAudio</a><a href="https://mojosoftjp.github.io/en/">All Mojosoft apps</a></div>
+    </div>
   </div>
-  <p style="margin-top:16px">&copy; 2026 Mojosoft Co., Ltd. All rights reserved.</p>
-</footer>
+  <p class="copyright">&copy; 2026 Mojosoft. All rights reserved.</p>
+</div></footer>
 
 <!-- PayPal SDK (client-id will be replaced in Phase 7 with a new one issued specifically for this product) -->
 <script src="https://www.paypal.com/sdk/js?client-id=AQW_pNfSyvlWxHshLEfmnSzEq85x3im5k-2Khrpns2wh7XV2yp5oYYkwb1_8-8fT2U6fnVIX4xlrTvgO&currency=JPY&locale=ja_JP"></script>
