@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>更新履歴 - さくっと動画翻訳</title>
+<meta name="description" content="さくっと動画翻訳（Windows 用の動画の文字起こし・AI 翻訳・字幕・吹き替えソフト）のバージョンごとの変更内容です。">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="canonical" href="https://mojosoftjp.github.io/sakutto-videotranslator/changelog.html">
+<link rel="alternate" href="https://mojosoftjp.github.io/sakutto-videotranslator/changelog.html" hreflang="ja">
+<link rel="alternate" href="https://mojosoftjp.github.io/sakutto-videotranslator/en/changelog.html" hreflang="en">
+<link rel="alternate" href="https://mojosoftjp.github.io/sakutto-videotranslator/changelog.html" hreflang="x-default">
+<meta name="robots" content="index, follow">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--primary:#F97316;--primary-dark:#EA580C;--accent:#FB923C;--bg:#FFF7ED;--card:#FFFFFF;--text:#1E293B;--muted:#64748B;--border:#FED7AA;--radius:12px}
+body{font-family:"Segoe UI","Meiryo","Hiragino Sans",sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
+a{color:var(--primary);text-decoration:none}
+a:hover{text-decoration:underline}
+
+/* Language toggle */
+.lang-toggle{position:fixed;top:16px;right:16px;z-index:1000;background:rgba(255,255,255,.92);border:1px solid var(--border);border-radius:999px;padding:6px 16px;font-size:.85rem;font-weight:600;cursor:pointer;box-shadow:0 2px 12px rgba(0,0,0,.1);transition:background .2s}
+.lang-toggle:hover{background:#fff;box-shadow:0 4px 16px rgba(0,0,0,.15)}
+[data-lang="ja"] .en,[data-lang="en"] .ja{display:none!important}
+
+/* Hero */
+.hero{background:linear-gradient(135deg,#9A3412 0%,#EA580C 45%,#FB923C 100%);color:#fff;padding:80px 24px 64px;text-align:center;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;bottom:-2px;left:0;right:0;height:48px;background:var(--bg);clip-path:ellipse(55% 100% at 50% 100%)}
+.hero-title{display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:8px}
+.hero-title img{width:64px;height:64px;border-radius:16px;filter:drop-shadow(0 4px 12px rgba(0,0,0,.25))}
+.hero h1{font-size:2.6rem;font-weight:800;letter-spacing:-.02em;margin:0}
+.hero .subtitle{font-size:1.15rem;opacity:.92;margin-bottom:32px;font-weight:400}
+.hero .tagline{display:inline-block;background:rgba(255,255,255,.18);border-radius:999px;padding:6px 20px;font-size:.9rem;margin-bottom:24px;backdrop-filter:blur(4px)}
+.hero .formats{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:32px}
+.hero .format-badge{background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.3);border-radius:8px;padding:4px 14px;font-size:.82rem;font-weight:600;backdrop-filter:blur(4px)}
+.cta-group{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;border-radius:999px;font-size:1rem;font-weight:600;transition:transform .15s,box-shadow .15s;cursor:pointer;border:none}
+.btn-primary{background:#fff;color:var(--primary-dark)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.18);text-decoration:none}
+.btn-secondary{background:rgba(255,255,255,.92);color:var(--primary-dark)}
+.btn-secondary:hover{background:#fff;transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.18);text-decoration:none}
+.btn-outline{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.5)}
+.btn-outline:hover{background:rgba(255,255,255,.12);text-decoration:none}
+.trial-note{margin-top:16px;font-size:.85rem;opacity:.92;color:#FFEDD5;font-weight:500}
+.smartscreen-note{margin-top:6px;font-size:.72rem;opacity:.72;color:#FFEDD5;max-width:640px;margin-left:auto;margin-right:auto;line-height:1.55}
+
+/* Pricing */
+.pricing-section{background:#fff}
+.pricing-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;max-width:880px;margin:0 auto}
+.pricing-card-lp{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:32px 28px;position:relative;transition:transform .2s,box-shadow .2s}
+.pricing-card-lp:hover{transform:translateY(-4px);box-shadow:0 16px 48px rgba(249,115,22,.16)}
+.pricing-card-lp.featured{border:2px solid var(--primary);box-shadow:0 8px 32px rgba(249,115,22,.18)}
+.pricing-card-lp.featured::before{content:"おすすめ";position:absolute;top:-12px;right:20px;background:var(--primary);color:#fff;font-size:.75rem;font-weight:700;padding:4px 12px;border-radius:999px}
+[data-lang="en"] .pricing-card-lp.featured::before{content:"Recommended"}
+.pricing-card-lp h3{font-size:1.4rem;font-weight:800;margin-bottom:8px;display:flex;align-items:center;gap:10px}
+.pricing-card-lp .pricing-badge{font-size:.78rem;font-weight:600;padding:4px 10px;border-radius:999px;background:#FFEDD5;color:#C2410C}
+.pricing-card-lp.featured .pricing-badge{background:var(--primary);color:#fff}
+.pricing-card-lp .pricing-price-lp{font-size:2.4rem;font-weight:900;letter-spacing:-.03em;margin-bottom:4px;color:var(--text)}
+.pricing-card-lp .pricing-price-lp .currency{font-size:1rem;font-weight:600;vertical-align:super;margin-right:2px;color:var(--muted)}
+.pricing-card-lp .pricing-price-lp .unit{font-size:.85rem;font-weight:400;color:var(--muted)}
+.pricing-card-lp .pricing-tagline{color:var(--muted);font-size:.95rem;margin-bottom:20px;line-height:1.6}
+.pricing-card-lp ul{list-style:none;margin-bottom:24px;display:flex;flex-direction:column;gap:10px}
+.pricing-card-lp ul li{display:flex;gap:10px;align-items:flex-start;font-size:.92rem;color:var(--text);line-height:1.55}
+.pricing-card-lp ul li::before{content:'✓';color:#10B981;font-weight:700;flex-shrink:0;margin-top:1px}
+.pricing-card-lp ul li.con::before{content:'△';color:#F59E0B}
+.pricing-cta{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:14px 20px;border-radius:999px;font-size:.95rem;font-weight:700;text-decoration:none;transition:all .15s;border:none;cursor:pointer;box-sizing:border-box}
+.pricing-cta.cta-store{background:linear-gradient(135deg,#0078D4,#00BCF2);color:#fff}
+.pricing-cta.cta-store:hover{background:linear-gradient(135deg,#006CBD,#00A8D8);transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,120,212,.3);text-decoration:none;color:#fff}
+.pricing-cta.cta-dl{background:var(--primary);color:#fff}
+.pricing-cta.cta-dl:hover{background:var(--primary-dark);transform:translateY(-2px);box-shadow:0 8px 24px rgba(249,115,22,.3);text-decoration:none;color:#fff}
+.pricing-cta-secondary{display:block;text-align:center;margin-top:10px;font-size:.82rem;color:var(--muted)}
+.pricing-note{text-align:center;color:var(--muted);font-size:.85rem;margin-top:32px;max-width:640px;margin-left:auto;margin-right:auto;line-height:1.7}
+@media(max-width:700px){
+  .pricing-grid{grid-template-columns:1fr}
+}
+
+/* Container */
+.container{max-width:960px;margin:0 auto;padding:0 24px}
+
+/* Section */
+.section{padding:64px 0}
+.section-title{font-size:1.6rem;font-weight:700;text-align:center;margin-bottom:12px}
+.section-desc{text-align:center;color:var(--muted);margin-bottom:48px;font-size:1.05rem}
+
+/* Feature cards */
+.feature-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:28px}
+.feature-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:32px 28px;transition:transform .2s,box-shadow .2s}
+.feature-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(249,115,22,.15)}
+.feature-card .feature-icon{font-size:2.4rem;margin-bottom:12px;display:block}
+.feature-card .feature-tag{display:inline-block;font-size:.75rem;font-weight:600;padding:3px 10px;border-radius:999px;margin-bottom:12px}
+.feature-tag.transcribe{background:#FFEDD5;color:#C2410C}
+.feature-tag.translate{background:#DBEAFE;color:#1D4ED8}
+.feature-tag.subtitle{background:#D1FAE5;color:#047857}
+.feature-tag.dub{background:#EDE9FE;color:#6D28D9}
+.feature-card h3{font-size:1.2rem;margin-bottom:8px;font-weight:700}
+.feature-card p{font-size:.92rem;color:var(--muted);line-height:1.7}
+.feature-card ul{margin-top:10px;padding-left:18px;font-size:.88rem;color:var(--muted)}
+.feature-card ul li{margin-bottom:4px}
+
+/* Screenshot */
+.shot{max-width:880px;margin:0 auto}
+.shot img{width:100%;border-radius:var(--radius);box-shadow:0 12px 48px rgba(0,0,0,.16);border:1px solid var(--border)}
+.shot .caption{text-align:center;color:var(--muted);font-size:.9rem;margin-top:16px}
+
+/* Demo video */
+.video-section{background:#fff}
+.video-wrap{max-width:880px;margin:0 auto}
+.video-wrap video{width:100%;aspect-ratio:16/9;border-radius:var(--radius);box-shadow:0 12px 48px rgba(0,0,0,.2);border:1px solid var(--border);background:#000;display:block;object-fit:cover}
+.video-caption{text-align:center;color:var(--muted);font-size:.92rem;margin-top:20px;line-height:1.7}
+.video-caption strong{color:var(--text)}
+.video-timeline{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:14px;font-size:.82rem}
+.video-timeline span{background:#FFF7ED;border:1px solid var(--border);border-radius:999px;padding:4px 14px;color:var(--primary-dark);font-weight:600}
+
+/* Points */
+.points{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px;margin-top:40px}
+.point{display:flex;gap:16px;align-items:flex-start}
+.point-icon{flex-shrink:0;width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,#FED7AA,#FFF7ED);display:flex;align-items:center;justify-content:center;font-size:1.4rem}
+.point h3{font-size:1rem;margin-bottom:4px}
+.point p{font-size:.9rem;color:var(--muted)}
+
+/* Steps */
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:28px;counter-reset:step}
+.step{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:28px 24px;position:relative}
+.step::before{counter-increment:step;content:counter(step);position:absolute;top:-14px;left:20px;width:32px;height:32px;border-radius:50%;background:var(--primary);color:#fff;font-weight:700;font-size:.9rem;display:flex;align-items:center;justify-content:center}
+.step h3{margin-top:8px;font-size:1rem;margin-bottom:6px}
+.step p{font-size:.9rem;color:var(--muted)}
+
+/* Footer */
+footer{background:#1E293B;color:#CBD5E1;padding:40px 24px;text-align:center;font-size:.88rem}
+footer a{color:#FDBA74}
+footer .footer-links{margin-bottom:16px;display:flex;gap:24px;justify-content:center;flex-wrap:wrap}
+footer .copyright{opacity:.7;margin-top:8px}
+
+/* Responsive */
+@media(max-width:700px){
+  .hero h1{font-size:2rem}
+  .hero .subtitle{font-size:1rem}
+  .feature-grid{grid-template-columns:1fr}
+  .section{padding:48px 0}
+}
+</style>
+</head>
+<body data-lang="ja">
+
+<!-- Mojosoft Header -->
+<nav style="position:fixed;top:0;left:0;right:0;z-index:9999;background:rgba(255,255,255,.85);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid rgba(0,0,0,.06);height:44px;display:flex;align-items:center;justify-content:space-between;padding:0 24px;">
+  <a href="https://mojosoft.biz/" style="font-size:18px;font-weight:700;color:#1D1D1F;text-decoration:none;font-family:'Noto Sans JP',sans-serif;">Mojosoft</a>
+  <a href="help.html" style="font-size:14px;font-weight:600;color:var(--primary-dark);text-decoration:none;font-family:'Noto Sans JP',sans-serif;margin-right:96px;"><span class="ja">使い方</span></a>
+</nav>
+<div style="height:44px;"></div>
+
+<a class="lang-toggle" href="en/changelog.html" hreflang="en" lang="en" style="text-decoration:none;color:var(--text);top:6px;z-index:10000;line-height:normal">EN</a>
+
+<section class="section" style="background:#fff">
+  <div class="container">
+    <h1 class="section-title">更新履歴</h1>
+    <div style="max-width:720px;margin:32px auto 0">
+
+      <div class="step" style="margin-bottom:20px">
+        <h3 style="margin-bottom:4px">v1.2.0</h3>
+        <p style="color:var(--muted);font-size:.9rem;margin-bottom:12px"><span class="ja">2026年10月5日</span></p>
+        <ul style="margin:0;padding-left:20px;line-height:1.9">
+          <li><span class="ja">AI翻訳のモデルを最新世代に更新しました（Gemini 3.8 Flash / GPT-6.1 / Claude Sonnet 5.5・Opus 5.5 など）。古いモデルを設定していた場合は、推奨モデルに自動で切り替わります</span></li>
+          <li><span class="ja">APIキーを Windows の暗号化機能で保護して保存するようにしました（以前のバージョンで保存したキーも自動で暗号化されます）</span></li>
+          <li><span class="ja">選んだAIモデルが、次に起動したときに初期設定へ戻ってしまう問題を修正しました</span></li>
+          <li><span class="ja">AIが一部の行の翻訳を返さなかった場合は、その行だけを原文のまま残し、件数を表示するようにしました（字幕の行がずれる問題も修正しました）</span></li>
+          <li><span class="ja">Claude の一部モデル（Sonnet 5 / Opus 5）で翻訳に失敗することがある問題を修正しました</span></li>
+          <li><span class="ja">確認モードで開く「字幕の確認・編集」画面が白い画面のまま表示されない問題を修正しました</span></li>
+          <li><span class="ja">AIの選択肢を「ローカルLLM（LM Studio・Ollama など）」と分かりやすい名前にし、ローカルLLMにはクラウド用のAPIキーを送信しないようにしました</span></li>
+        </ul>
+      </div>
+
+      <div class="step" style="margin-bottom:20px">
+        <h3 style="margin-bottom:4px">v1.1.2</h3>
+        <p style="color:var(--muted);font-size:.9rem;margin-bottom:12px"><span class="ja">2026年8月31日</span></p>
+        <ul style="margin:0;padding-left:20px;line-height:1.9">
+          <li><span class="ja">AI翻訳のモデルを最新世代に更新しました（Gemini 3.7 Flash / GPT-5.6 / Claude Sonnet 5・Opus 5 など）</span></li>
+          <li><span class="ja">最新のOpenAIモデルで翻訳に失敗する問題を修正しました</span></li>
+          <li><span class="ja">一部の環境でモデル読み込み中に強制終了する問題への対策を追加しました（GPUで問題が起きた場合は自動的にCPUモードに切り替わります。設定から手動で切り替えることもできます）</span></li>
+          <li><span class="ja">モデル読み込み完了時に、使用中のランタイム（GPU / CPU）を表示するようにしました</span></li>
+        </ul>
+      </div>
+
+      <div class="step" style="margin-bottom:20px">
+        <h3 style="margin-bottom:4px">v1.1.1</h3>
+        <p style="color:var(--muted);font-size:.9rem;margin-bottom:12px"><span class="ja">2026年5月30日</span></p>
+        <ul style="margin:0;padding-left:20px;line-height:1.9">
+          <li><span class="ja">アプリ内にヘルプボタンを追加し、使い方ガイドをすぐ開けるようにしました</span></li>
+        </ul>
+      </div>
+
+      <div class="step">
+        <h3 style="margin-bottom:4px">v1.1.0</h3>
+        <p style="color:var(--muted);font-size:.9rem;margin-bottom:12px"><span class="ja">2026年5月29日</span></p>
+        <ul style="margin:0;padding-left:20px;line-height:1.9">
+          <li><span class="ja">WMV形式で出力した動画が正しく再生されない問題を修正しました</span></li>
+          <li><span class="ja">処理中にエラーが起きた際、内容が分かるように表示を改善しました</span></li>
+        </ul>
+      </div>
+    </div>
+    <p class="pricing-note"><a href="./">&larr; さくっと動画翻訳 トップページに戻る</a></p>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-links">
+    <a href="./#features"><span class="ja">機能</span></a>
+    <a href="./#pricing"><span class="ja">価格</span></a>
+    <a href="purchase.html"><span class="ja">購入</span></a>
+    <a href="help.html"><span class="ja">使い方</span></a>
+    <a href="./#support"><span class="ja">サポート</span></a>
+    <a href="privacy.html"><span class="ja">プライバシーポリシー</span></a>
+    <a href="https://github.com/mojosoftjp/sakutto-videotranslator">GitHub</a>
+  </div>
+  <div class="copyright">&copy; 2026 Mojosoft. All rights reserved.</div>
+</footer>
+
+</body>
+</html>

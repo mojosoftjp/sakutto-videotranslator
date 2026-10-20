@@ -272,8 +272,8 @@ footer .copyright{opacity:.7;margin-top:8px}
 <!-- API key -->
 <section id="apikey" class="section" style="background:#fff;padding-top:0">
   <div class="container">
-    <h2 class="section-title"><span class="ja">APIキーの取得方法（AI翻訳・吹き替え用）</span><span class="en">How to Get an API Key (for AI Translation &amp; Dubbing)</span></h2>
-    <p class="section-desc"><span class="ja">AI翻訳と吹き替えのご利用には、AIサービスのAPIキーが必要です。ここでは無料で始められる Google Gemini を例に、取得から設定までを順にご案内します。</span><span class="en">AI translation and dubbing require an API key from an AI service. Here we walk through Google Gemini — which you can start using for free — from getting the key to entering it in the app.</span></p>
+    <h2 class="section-title"><span class="ja">APIキーの取得方法（クラウドのAI翻訳用）</span><span class="en">How to Get an API Key (for Cloud AI Translation)</span></h2>
+    <p class="section-desc"><span class="ja">クラウドのAI（Gemini・OpenAI・Claude）で翻訳するには、そのAIサービスのAPIキーが必要です。ここでは無料で始められる Google Gemini を例に、取得から設定までを順にご案内します。</span><span class="en">Translating with a cloud AI (Gemini, OpenAI or Claude) requires an API key from that service. Here we walk through Google Gemini — which you can start using for free — from getting the key to entering it in the app.</span></p>
 
     <div class="callout" style="margin-top:0;margin-bottom:24px">
       <span class="ja"><strong>費用について:</strong> Gemini には無料枠が用意されており、通常のご利用の範囲であれば費用はかかりません。クレジットカードの登録なしで始められます。所要時間は 3〜5 分程度です。</span>
@@ -354,7 +354,7 @@ footer .copyright{opacity:.7;margin-top:8px}
       <ul>
         <li><span class="ja"><strong>「✗ 接続失敗」と表示される</strong>: APIキーの前後に余分な空白が入っていないか、キー全体が貼り付けられているかをご確認ください。</span><span class="en"><strong>"✗ Failed" is shown</strong>: check that there is no extra whitespace before or after the key, and that the entire key was pasted.</span></li>
         <li><span class="ja"><strong>キーを確認し直したい</strong>: <a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener">Google AI Studio</a> からいつでも確認・再作成できます。</span><span class="en"><strong>Want to check your key again</strong>: you can view or recreate it any time at <a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener">Google AI Studio</a>.</span></li>
-        <li><span class="ja"><strong>文字起こしだけを使いたい</strong>: 文字起こし（字幕の作成）はお使いのPC内で動作するため、<strong>APIキーは不要</strong>です。APIキーが必要なのは AI翻訳と吹き替えの機能のみです。</span><span class="en"><strong>Only need transcription?</strong> Transcription runs locally on your PC, so <strong>no API key is required</strong>. Only AI translation and dubbing need one.</span></li>
+        <li><span class="ja"><strong>文字起こしだけを使いたい</strong>: 文字起こし（字幕の作成）はお使いのPC内で動作するため、<strong>APIキーは不要</strong>です。APIキーが必要なのは、クラウドのAIで翻訳するときだけです（吹き替えの音声合成にAPIキーは要りません）。</span><span class="en"><strong>Only need transcription?</strong> Transcription runs locally on your PC, so <strong>no API key is required</strong>. Only translating with a cloud AI needs one (the text-to-speech for dubbing needs no key).</span></li>
       </ul>
       <div class="callout">
         <span class="ja"><strong>取り扱いのご注意:</strong> APIキーは第三者に知られないよう管理してください。万一漏れた場合は、Google AI Studio でキーを削除して再作成できます。</span>
@@ -387,8 +387,8 @@ footer .copyright{opacity:.7;margin-top:8px}
         <span class="format-badge">SRT</span><span class="format-badge">VTT</span>
       </div>
       <p style="margin-top:16px">
-        <span class="ja">字幕焼き付け・AI吹き替えの動画出力は MP4 形式です。</span>
-        <span class="en">Burned-in subtitle and AI-dubbed video output is in MP4 format.</span>
+        <span class="ja">字幕を焼き付けた動画と吹き替え動画は、元の動画と同じ形式で出力されます（MP4 を入れると MP4）。ファイル名は「元の名前_subtitled」「元の名前_dubbed」です。</span>
+        <span class="en">Videos with burned-in subtitles and dubbed videos are written in the same format as the source (MP4 in, MP4 out), named "&lt;name&gt;_subtitled" and "&lt;name&gt;_dubbed".</span>
       </p>
     </div>
   </div>
@@ -465,8 +465,8 @@ footer .copyright{opacity:.7;margin-top:8px}
       <details>
         <summary><span class="ja">AI翻訳・吹き替えにAPIキーは必要ですか？</span><span class="en">Do AI translation and dubbing require an API key?</span></summary>
         <div class="faq-body">
-          <p><span class="ja"><strong>AI翻訳</strong>には、お使いになるAIサービス（Gemini・OpenAI・Claude）のAPIキーが必要です。ローカルLLM（LM Studio・Ollama など）を利用する場合は、Base URL を指定してご利用いただけます（クラウドのAPIキー不要）。</span>
-             <span class="en"><strong>AI translation</strong> requires an API key for the AI service you use (Gemini, OpenAI, or Claude). If you use a local LLM (LM Studio, Ollama, etc.), specify its Base URL instead (no cloud API key needed).</span></p>
+          <p><span class="ja"><strong>AI翻訳</strong>には、お使いになるAIサービス（Gemini・OpenAI・Claude）のAPIキーが必要です。ローカルLLM（LM Studio・Ollama など）を利用する場合は、Base URL を指定してご利用いただけます（クラウドのAPIキー不要）。吹き替えの音声合成（Microsoft のオンライン音声合成）には、APIキーは要りません（インターネット接続は必要です）。</span>
+             <span class="en"><strong>AI translation</strong> requires an API key for the AI service you use (Gemini, OpenAI, or Claude). If you use a local LLM (LM Studio, Ollama, etc.), specify its Base URL instead (no cloud API key needed). The text-to-speech used for dubbing (Microsoft's online service) needs no API key, but needs an internet connection.</span></p>
           <p><span class="ja"><strong>文字起こし</strong>はPC上のWhisperで動作するため、APIキーやインターネット接続は不要です（モデルの初回ダウンロード時を除く）。</span>
              <span class="en"><strong>Transcription</strong> runs locally with Whisper, so it needs no API key or internet connection (except for the initial model download).</span></p>
           <p><span class="ja">APIキーの取り方が分からない場合は、<a href="#apikey">「APIキーの取得方法」</a>で手順を最初からご案内しています（Gemini なら無料枠があり、3〜5分で設定できます）。</span>
