@@ -115,15 +115,20 @@
   <h1><span class="eyebrow">さくっと動画翻訳 ― Windows 用</span>英語の動画を、<b>日本語</b>の字幕と吹き替えに。</h1>
   <p class="lede">文字起こし・AI 翻訳・字幕の焼き付け・AI 吹き替えを、アプリひとつで。動画を入れて、言語を選ぶだけです。文字起こしは PC の中で行います。</p>
 
-  <div class="screen">
-    <div class="compare" id="compare">
-      <img src="compare-before.jpg" alt="翻訳前の英語の動画" width="1600" height="900">
-      <img class="after" src="compare-after.jpg" alt="さくっと動画翻訳で日本語の字幕を付けた同じ動画" width="1600" height="900">
-      <span class="lbl l">元の動画</span><span class="lbl r">さくっと動画翻訳のあと</span>
-      <div class="handle"></div>
-      <input type="range" min="0" max="100" value="22" aria-label="翻訳の前と後を比べる位置">
+  <div class="player">
+    <div class="player-top">
+      <h2 id="h-demo">英語の動画（MP4）に日本語字幕・吹き替えをつける</h2>
+      <div class="seg" role="group" aria-label="切り替えて比べる">
+        <button type="button" data-mode="en" aria-pressed="true">元の動画（英語）</button>
+        <button type="button" data-mode="ja" aria-pressed="false">翻訳後（日本語の字幕＋吹き替え）</button>
+      </div>
     </div>
-    <p class="hint">白いつまみを左右に動かして、翻訳の前と後を比べてください。吹き替えの声は、下のデモ動画で聞けます。</p>
+    <video id="demo" controls playsinline preload="metadata" poster="compare-before.jpg" data-poster-en="compare-before.jpg" data-poster-ja="compare-after.jpg">
+      <source src="combined_demo.mp4" type="video/mp4">
+      お使いのブラウザは動画再生に対応していません。
+    </video>
+    <p class="hint">▶ で再生して、上のボタンで「翻訳後」に切り替えてください。同じ場面の日本語版（字幕と吹き替えの声）になります。音声つきでどうぞ。</p>
+    <p class="hint">このデモは、英語ナレーションの 30 秒の宣伝動画を、さくっと動画翻訳で日本語にしたものです。</p>
   </div>
 
   <div class="ticket">
@@ -142,19 +147,6 @@
   </div>
   <p class="smallnote">ダウンロード版のインストーラーは Mojosoft Co., Ltd. のコード署名済みです。公開直後などは、初回実行時に Windows SmartScreen の確認画面が出ることがあります。その場合は「詳細情報」→「実行」で起動できます。</p>
 </div></div>
-
-<section class="band on-dark" aria-labelledby="h-demo"><div class="wrap center">
-  <h2 class="h2" id="h-demo">英語の動画（MP4）に日本語字幕・吹き替えをつける</h2>
-  <p class="sub">英語ナレーションの 30 秒のプロモ動画を、さくっと動画翻訳で日本語にしたデモです。音声つきでご覧ください。</p>
-  <div class="video">
-    <video controls playsinline preload="metadata" poster="poster_ja.jpg">
-      <source src="combined_demo.mp4" type="video/mp4">
-      お使いのブラウザは動画再生に対応していません。
-    </video>
-  </div>
-  <div class="chips"><span>0:00 — 英語原版</span><span>0:30 — 区切り</span><span>0:33 — 日本語吹替＋字幕</span></div>
-  <p class="caption"><strong>前半（0:00〜0:30）</strong>は英語ナレーション付きのプロモ動画。<strong>後半（0:33〜1:04）</strong>は同じ動画を「さくっと動画翻訳」で日本語化したものです。AI 吹き替えで音声を差し替え、翻訳した字幕を動画に焼き付けています。</p>
-</div></section>
 
 <section id="how"><div class="wrap">
   <h2 class="h2 center">使い方は、3 つの操作だけ。</h2>
@@ -325,11 +317,35 @@
 
 <script>
 (function () {
-  var c = document.getElementById('compare'); if (!c) return;
-  var r = c.querySelector('input');
-  function set(v) { c.style.setProperty('--pos', v + '%'); }
-  r.addEventListener('input', function () { set(r.value); });
-  set(r.value);
+  var v = document.getElementById('demo'); if (!v) return;
+  var btns = document.querySelectorAll('[data-mode]');
+  var OFFSET = 33.5, EN_END = 30.1, JA_START = 33.5, mode = 'en', pending = null;
+  var posters = { en: v.getAttribute('data-poster-en'), ja: v.getAttribute('data-poster-ja') };
+  function paint() {
+    btns.forEach(function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-mode') === mode ? 'true' : 'false'); });
+    if (v.currentTime === 0 || v.paused) v.poster = posters[mode];
+  }
+  function seek(t) { if (v.readyState > 0) v.currentTime = t; else pending = t; }
+  function setMode(m) {
+    if (m === mode) return;
+    var t = v.currentTime;
+    t = (m === 'ja') ? ((t < EN_END ? t : 0) + OFFSET) : (t >= JA_START ? t - OFFSET : 0);
+    var playing = !v.paused;
+    mode = m; paint(); seek(t);
+    if (playing) v.play();
+  }
+  btns.forEach(function (b) { b.addEventListener('click', function () { setMode(b.getAttribute('data-mode')); }); });
+  v.addEventListener('loadedmetadata', function () { if (pending !== null) { v.currentTime = pending; pending = null; } });
+  v.addEventListener('play', function () { if (mode === 'ja' && v.currentTime < JA_START) v.currentTime = JA_START; });
+  v.addEventListener('timeupdate', function () { if (mode === 'en' && !v.seeking && v.currentTime >= EN_END && v.currentTime < JA_START) { v.pause(); v.currentTime = 0; } });
+  v.addEventListener('ended', function () { if (mode === 'ja') v.currentTime = JA_START; });
+  v.addEventListener('seeked', function () {
+    var t = v.currentTime;
+    if (t >= JA_START && mode !== 'ja') { mode = 'ja'; paint(); }
+    else if (t < EN_END && mode !== 'en') { mode = 'en'; paint(); }
+    else if (t >= EN_END && t < JA_START) { v.currentTime = (mode === 'ja') ? JA_START : 0; }
+  });
+  paint();
 })();
 </script>
 </body>

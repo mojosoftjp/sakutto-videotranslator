@@ -115,15 +115,20 @@
   <h1><span class="eyebrow">Snap Video Translator — for Windows</span>Give your videos <b>subtitles and a voice</b> in another language.</h1>
   <p class="lede">Transcription, AI translation, burned-in subtitles and AI dubbing in one app. Add a video, pick the languages, and press Start. Transcription runs on your own PC.</p>
 
-  <div class="screen">
-    <div class="compare" id="compare">
-      <img src="../compare-before.jpg" alt="The original English video" width="1600" height="900">
-      <img class="after" src="../compare-after.jpg" alt="The same video with Japanese subtitles added by Snap Video Translator" width="1600" height="900">
-      <span class="lbl l">Original</span><span class="lbl r">After Snap Video Translator</span>
-      <div class="handle"></div>
-      <input type="range" min="0" max="100" value="22" aria-label="Position of the before and after comparison">
+  <div class="player">
+    <div class="player-top">
+      <h2 id="h-demo">Translate a Video with Subtitles and AI Dubbing</h2>
+      <div class="seg" role="group" aria-label="Switch to compare">
+        <button type="button" data-mode="en" aria-pressed="true">Original (English)</button>
+        <button type="button" data-mode="ja" aria-pressed="false">Translated (Japanese subtitles + dubbing)</button>
+      </div>
     </div>
-    <p class="hint">Drag the white handle to compare before and after. Hear the AI dubbing in the demo video below.</p>
+    <video id="demo" controls playsinline preload="metadata" poster="../compare-before.jpg" data-poster-en="../compare-before.jpg" data-poster-ja="../compare-after.jpg">
+      <source src="../combined_demo.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <p class="hint">Press ▶ to play, then switch to “Translated” above. The same scene plays in Japanese, with subtitles and a dubbed voice. Turn the sound on.</p>
+    <p class="hint">This demo is our 30-second English promo video, translated into Japanese with Snap Video Translator.</p>
   </div>
 
   <div class="ticket">
@@ -142,18 +147,6 @@
   </div>
   <p class="smallnote">The download installer is code-signed (Mojosoft Co., Ltd.). Right after a release, Windows SmartScreen may still show a prompt on first run — click "More info" → "Run anyway" to launch.</p>
 </div></div>
-
-<section class="band on-dark" aria-labelledby="h-demo"><div class="wrap center">
-  <h2 class="h2" id="h-demo">Translate a Video with Subtitles and AI Dubbing</h2>
-  <p class="sub">A 30-second look at what Snap Video Translator does. Turn the sound on.</p>
-  <div class="video">
-    <video controls playsinline preload="metadata" poster="../poster_en.jpg">
-      <source src="../snap_video_translator_promo.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-  </div>
-  <p class="caption">The core flow in 30 seconds — drop a video, transcribe the speech, translate with AI, and choose burned-in subtitles or AI dubbing in 7 languages.</p>
-</div></section>
 
 <section id="how"><div class="wrap">
   <h2 class="h2 center">Three steps, that's all.</h2>
@@ -324,11 +317,35 @@
 
 <script>
 (function () {
-  var c = document.getElementById('compare'); if (!c) return;
-  var r = c.querySelector('input');
-  function set(v) { c.style.setProperty('--pos', v + '%'); }
-  r.addEventListener('input', function () { set(r.value); });
-  set(r.value);
+  var v = document.getElementById('demo'); if (!v) return;
+  var btns = document.querySelectorAll('[data-mode]');
+  var OFFSET = 33.5, EN_END = 30.1, JA_START = 33.5, mode = 'en', pending = null;
+  var posters = { en: v.getAttribute('data-poster-en'), ja: v.getAttribute('data-poster-ja') };
+  function paint() {
+    btns.forEach(function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-mode') === mode ? 'true' : 'false'); });
+    if (v.currentTime === 0 || v.paused) v.poster = posters[mode];
+  }
+  function seek(t) { if (v.readyState > 0) v.currentTime = t; else pending = t; }
+  function setMode(m) {
+    if (m === mode) return;
+    var t = v.currentTime;
+    t = (m === 'ja') ? ((t < EN_END ? t : 0) + OFFSET) : (t >= JA_START ? t - OFFSET : 0);
+    var playing = !v.paused;
+    mode = m; paint(); seek(t);
+    if (playing) v.play();
+  }
+  btns.forEach(function (b) { b.addEventListener('click', function () { setMode(b.getAttribute('data-mode')); }); });
+  v.addEventListener('loadedmetadata', function () { if (pending !== null) { v.currentTime = pending; pending = null; } });
+  v.addEventListener('play', function () { if (mode === 'ja' && v.currentTime < JA_START) v.currentTime = JA_START; });
+  v.addEventListener('timeupdate', function () { if (mode === 'en' && !v.seeking && v.currentTime >= EN_END && v.currentTime < JA_START) { v.pause(); v.currentTime = 0; } });
+  v.addEventListener('ended', function () { if (mode === 'ja') v.currentTime = JA_START; });
+  v.addEventListener('seeked', function () {
+    var t = v.currentTime;
+    if (t >= JA_START && mode !== 'ja') { mode = 'ja'; paint(); }
+    else if (t < EN_END && mode !== 'en') { mode = 'en'; paint(); }
+    else if (t >= EN_END && t < JA_START) { v.currentTime = (mode === 'ja') ? JA_START : 0; }
+  });
+  paint();
 })();
 </script>
 </body>
